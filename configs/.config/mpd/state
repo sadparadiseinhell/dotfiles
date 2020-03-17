@@ -1,0 +1,32 @@
+sw_volume: 59
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: pause
+current: 9
+time: 135.471000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:Summer Of Haze/11. Jessica (2014)/01. Autumn ∞ Harvest ∞ Happiness.mp3
+1:Summer Of Haze/11. Jessica (2014)/02. Hey Jessica, I Rolled A Joint.mp3
+2:Summer Of Haze/11. Jessica (2014)/03. Ice Cube.mp3
+3:Summer Of Haze/11. Jessica (2014)/04. Олдовые Найки.mp3
+4:Summer Of Haze/11. Jessica (2014)/05. Sensi Sensi.mp3
+5:Summer Of Haze/11. Jessica (2014)/06. Super Crystal Track.mp3
+6:Summer Of Haze/11. Jessica (2014)/07. Miss Ya.mp3
+7:Summer Of Haze/11. Jessica (2014)/08. Twilight.mp3
+8:Summer Of Haze/11. Jessica (2014)/09. Before I Sleep.mp3
+9:Summer Of Haze/11. Jessica (2014)/10. Celestial.mp3
+10:Summer Of Haze/11. Jessica (2014)/11. 8Δby Kush.mp3
+11:Summer Of Haze/11. Jessica (2014)/12. Weedwave.mp3
+12:Summer Of Haze/11. Jessica (2014)/13. Jessy Is Always Out Of Reach.mp3
+13:Summer Of Haze/11. Jessica (2014)/14. Δnthem Of Haze.mp3
+14:Summer Of Haze/11. Jessica (2014)/15. Swinging Leaf Marijuana.mp3
+15:Summer Of Haze/11. Jessica (2014)/16. Thx.mp3
+16:Summer Of Haze/11. Jessica (2014)/17. Sakura.mp3
+playlist_end
