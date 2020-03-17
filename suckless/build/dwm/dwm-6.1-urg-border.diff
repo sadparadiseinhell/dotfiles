@@ -1,0 +1,60 @@
+From 8b7bc42822cd5924450bbfc9ed598f72254473ba Mon Sep 17 00:00:00 2001
+From: Alexander Huemer <alexander.huemer@xx.vu>
+Date: Sat, 7 Mar 2015 21:45:48 +0100
+Subject: [PATCH] Make the borders of urgent windows a different color
+
+---
+ config.def.h |  1 +
+ dwm.c        | 10 ++++++++--
+ 2 files changed, 9 insertions(+), 2 deletions(-)
+
+diff --git a/config.def.h b/config.def.h
+index 875885b..5276f02 100644
+--- a/config.def.h
++++ b/config.def.h
+@@ -8,6 +8,7 @@ static const char normfgcolor[]     = "#bbbbbb";
+ static const char selbordercolor[]  = "#005577";
+ static const char selbgcolor[]      = "#005577";
+ static const char selfgcolor[]      = "#eeeeee";
++static const char urgbordercolor[]  = "#ff0000";
+ static const unsigned int borderpx  = 1;        /* border pixel of windows */
+ static const unsigned int snap      = 32;       /* snap pixel */
+ static const Bool showbar           = True;     /* False means no bar */
+diff --git a/dwm.c b/dwm.c
+index c8fc7d7..0924ace 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -58,7 +58,7 @@
+ 
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+-enum { SchemeNorm, SchemeSel, SchemeLast }; /* color schemes */
++enum { SchemeNorm, SchemeSel, SchemeUrg, SchemeLast }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+@@ -1537,6 +1537,9 @@ setup(void) {
+ 	scheme[SchemeSel].border = drw_clr_create(drw, selbordercolor);
+ 	scheme[SchemeSel].bg = drw_clr_create(drw, selbgcolor);
+ 	scheme[SchemeSel].fg = drw_clr_create(drw, selfgcolor);
++	scheme[SchemeUrg].border = drw_clr_create(drw, urgbordercolor);
++	scheme[SchemeUrg].bg = drw_clr_create(drw, selbgcolor);
++	scheme[SchemeUrg].fg = drw_clr_create(drw, selfgcolor);
+ 	/* init bars */
+ 	updatebars();
+ 	updatestatus();
+@@ -1982,8 +1985,11 @@ updatewmhints(Client *c) {
+ 			wmh->flags &= ~XUrgencyHint;
+ 			XSetWMHints(dpy, c->win, wmh);
+ 		}
+-		else
++		else {
+ 			c->isurgent = (wmh->flags & XUrgencyHint) ? True : False;
++			if (c->isurgent)
++				XSetWindowBorder(dpy, c->win, scheme[SchemeUrg].border->pix);
++		}
+ 		if(wmh->flags & InputHint)
+ 			c->neverfocus = !wmh->input;
+ 		else
+-- 
+2.1.4

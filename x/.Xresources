@@ -1,0 +1,128 @@
+!__   __                                            
+!\ \ / /                                            
+! \ V / _ __ ___  ___  ___  _   _ _ __ ___ ___  ___ 
+!  > < | '__/ _ \/ __|/ _ \| | | | '__/ __/ _ \/ __|
+! / . \| | |  __/\__ \ (_) | |_| | | | (_|  __/\__ \
+!/_/ \_\_|  \___||___/\___/ \__,_|_|  \___\___||___/
+!
+
+
+!Reread the file and apply the settings:
+!xrdb -load ~/.Xresources
+
+!Config file for URxvt
+!#include ".rxvtrc"
+
+
+! Urxvt settings -----------------------------------
+
+! Color theme
+! special
+*.foreground:   #ffffff
+*.background:   #181B1E
+*.cursorColor:  #c7ccd1
+
+! black
+*.color0:       #1c2023
+*.color8:       #747c84
+
+! red
+*.color1:       #c7ae95
+*.color9:       #c7ae95
+
+! green
+*.color2:       #95c7ae
+*.color10:      #95c7ae
+
+! yellow
+*.color3:       #aec795
+*.color11:      #aec795
+
+! blue
+*.color4:       #ae95c7
+*.color12:      #ae95c7
+
+! magenta
+*.color5:       #c795ae
+*.color13:      #c795ae
+
+! cyan
+*.color6:       #95aec7
+*.color14:      #95aec7
+
+! white
+*.color7:       #c7ccd1
+*.color15:      #f3f4f5
+
+
+! Window geometry 
+
+URxvt.geometry:         60x22
+URxvt.loginShell:       false
+URxvt.meta:             ignore
+URxvt.utmpInhibit:      true
+URxvt.internalBorder:	20
+
+
+! Font
+
+!URxvt*font:xft:		Hack:size=10
+URxvt*font:xft:			DejaVu Sans Mono:size=9
+!URxvt*font:xft:		xos4 Terminus:size=8
+!URxvt.letterSpace:		-1
+
+
+! Scrollback buffer
+
+URxvt.secondaryWheel: 	1
+
+
+! Cursor
+
+URxvt.cursorUnderline:	1
+URxvt.cursorBlink:      true
+URxvt.cursorColor:		white
+
+
+! Man-pages color
+
+URxvt.colorMode:         on
+URxvt.boldColors:        on
+URxvt.dynamicColors:     on
+URxvt.colorULMode:       on
+URxvt.underLine:         off
+URxvt.colorBDMode:       on
+URxvt.colorBD:           cyan
+
+
+! Scrollbar
+
+URxvt*scrollBar:		false
+URxvt*scrollBar_right:  true
+URxvt*scrollstyle:      rxvt
+
+
+! App icon
+
+!URxvt.iconFile:		/usr/share/icons/hicolor/scalable/apps/Terminal.svg
+
+
+! Clickable URLs
+
+URxvt.perl-ext-common: 	default,matcher,resize-font
+URxvt.url-launcher: 	/usr/bin/chromium
+URxvt.matcher.button: 	1
+URxvt.colorUL:          cyan
+URxvt.underlineURLs:    true
+URxvt.underlineColor:   cyan
+
+
+! Save number lines in the scrollback buffer
+
+URxvt*saveLines:        2000
+
+
+! Changing font size on the fly
+
+URxvt.resize-font.smaller: C-Down
+URxvt.resize-font.bigger: C-Up

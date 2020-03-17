@@ -1,0 +1,29 @@
+From 9cff68c93cb727e97fa486f011b294511e110176 Mon Sep 17 00:00:00 2001
+From: MahouShoujoMivutilde <MahouShoujoMivutilde@users.noreply.github.com>
+Date: Sat, 7 Sep 2019 20:04:16 +0300
+Subject: [PATCH] Centers windows names on status bar.
+
+In original version when name is very long mid variable can turn negative, this patch variation takes this into account. This makes sure name will not overlap on tags.
+---
+ dwm.c | 5 ++++-
+ 1 file changed, 4 insertions(+), 1 deletion(-)
+
+diff --git a/dwm.c b/dwm.c
+index 4465af1..3d0eac4 100644
+--- a/dwm.c
++++ b/dwm.c
+@@ -730,8 +730,11 @@ drawbar(Monitor *m)
+
+ 	if ((w = m->ww - sw - x) > bh) {
+ 		if (m->sel) {
++			int mid = (m->ww - TEXTW(m->sel->name)) / 2 - x;
++			/* make sure name will not overlap on tags even when it is very long */
++			mid = mid >= lrpad / 2 ? mid : lrpad / 2;
+ 			drw_setscheme(drw, scheme[m == selmon ? SchemeSel : SchemeNorm]);
+-			drw_text(drw, x, 0, w, bh, lrpad / 2, m->sel->name, 0);
++			drw_text(drw, x, 0, w, bh, mid, m->sel->name, 0);
+ 			if (m->sel->isfloating)
+ 				drw_rect(drw, x + boxs, boxs, boxw, boxw, m->sel->isfixed, 0);
+ 		} else {
+--
+2.23.0

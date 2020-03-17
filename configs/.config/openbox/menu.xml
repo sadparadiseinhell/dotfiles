@@ -1,0 +1,158 @@
+<?xml version="1.0" encoding="utf-8"?>
+<openbox_menu xmlns="http://openbox.org/3.4/menu">
+	<menu id="apps-editors-menu" label="editors">
+		<item label="vim">
+			<action name="Execute">
+				<execute>urxvt -e vim</execute>
+			</action>
+		</item>
+		<item label="nano">
+			<action name="Execute">
+				<execute>urxvt -e nano</execute>
+			</action>
+		</item>
+		<item label="leafpad">
+			<action name="Execute">
+				<execute>leafpad</execute>
+			</action>
+		</item>
+		<item label="sublime text">
+			<action name="Execute">
+				<execute>subl3</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-term-menu" label="terminal">
+		<item label="rxvt unicode">
+			<action name="Execute">
+				<command>urxvt</command>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-net-menu" label="internet">
+		<item label="telegram">
+			<action name="Execute">
+				<execute>telegram-desktop</execute>
+			</action>
+		</item>
+		<item label="firefox">
+			<action name="Execute">
+				<command>firefox</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+					<wmclass>Firefox</wmclass>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="chromium">
+			<action name="Execute">
+				<execute>chromium</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-multimedia-menu" label="media">
+		<item label="ncmpcpp">
+			<action name="Execute">
+				<execute>urxvt -e ncmpcpp</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-fileman-menu" label="file managers">
+		<item label="pcmanfm">
+			<action name="Execute">
+				<command>pcmanfm</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="ranger">
+			<action name="Execute">
+				<command>urxvt -e ranger</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+	</menu>
+	<menu id="apps-graphics-menu" label="graphics">
+		<item label="gimp">
+			<action name="Execute">
+				<command>gimp</command>
+				<startupnotify>
+					<enabled>yes</enabled>
+				</startupnotify>
+			</action>
+		</item>
+		<item label="inkscape">
+			<action name="Execute">
+				<execute>inkscape</execute>
+			</action>
+		</item>
+	</menu>
+	<menu id="root-menu" label="Openbox 3">
+		<menu id="apps-accessories-menu"/>
+		<menu id="apps-editors-menu"/>
+		<menu id="apps-graphics-menu"/>
+		<menu id="apps-net-menu"/>
+		<menu id="apps-office-menu"/>
+		<menu id="apps-multimedia-menu"/>
+		<menu id="apps-term-menu"/>
+		<menu id="apps-fileman-menu"/>
+		<menu id="system-menu"/>
+		<menu id="root-menu-502523" label="settings">
+			<menu id="root-menu-502523-865149" label="customize">
+				<item label="lxappearance">
+					<action name="Execute">
+						<execute>lxappearance</execute>
+					</action>
+				</item>
+				<item label="theme changer">
+					<action name="Execute">
+						<execute>~/scripts/theme_changer_dmenu.sh</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="root-menu-502523-89294" label="tint2">
+				<item label="tint2 config">
+					<action name="Execute">
+						<execute>tint2conf</execute>
+					</action>
+				</item>
+			</menu>
+			<menu id="root-menu-502523-172611" label="openbox">
+				<item label="config manager">
+					<action name="Execute">
+						<execute>obconf</execute>
+					</action>
+				</item>
+				<item label="restart">
+					<action name="Restart"/>
+				</item>
+				<item label="reconfigure">
+					<action name="Reconfigure"/>
+				</item>
+			</menu>
+		</menu>
+		<menu id="root-menu-492815" label="system">
+			<item label="shutdown">
+				<action name="Execute">
+					<execute>systemctl poweroff</execute>
+				</action>
+			</item>
+			<item label="reboot">
+				<action name="Execute">
+					<execute>systemctl reboot</execute>
+				</action>
+			</item>
+			<item label="logout">
+				<action name="Exit"/>
+			</item>
+			<item label="lock">
+				<action name="Execute">
+					<execute>~/scripts/lock.sh</execute>
+				</action>
+			</item>
+		</menu>
+	</menu>
+</openbox_menu>
