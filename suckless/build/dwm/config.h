@@ -36,6 +36,7 @@ static const Rule rules[] = {
 	{ "feh",               NULL,       NULL,       0,            1,           -1 },
 	{ "Sxiv",              NULL,       NULL,       0,            1,           -1 },
 	{ "Transmission-gtk",  NULL,       NULL,       1 << 5,       0,           -1 },
+	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,           -1 },
 };
 
 /* layout(s) */
@@ -78,9 +79,9 @@ static Key keys[] = {
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("pcmanfm") },
-	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          SHCMD("$HOME/scripts/refreshdwmbar.sh | pamixer -i 5") },
-	{ 0,         XF86XK_AudioLowerVolume,      spawn,          SHCMD("HOME/scripts/refreshdwmbar.sh  | pamixer -d 5") },
-	{ 0,                XF86XK_AudioMute,      spawn,          SHCMD("$HOME/scripts/refreshdwmbar.sh | pamixer -t") },
+	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer -i 5") },
+	{ 0,         XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer -d 5") },
+	{ 0,                XF86XK_AudioMute,      spawn,          SHCMD("pamixer -t") },
 	{ 0,                            XK_Print,  spawn,          SHCMD("$HOME/scripts/screenshot-menu.sh") },
 	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("$HOME/scripts/lock.sh") },
 	{ 0,                XF86XK_AudioPlay,      spawn,          SHCMD("mpc toggle") },
