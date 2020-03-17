@@ -1,0 +1,41 @@
+sw_volume: 66
+audio_device_state:1:pulse audio
+audio_device_state:1:my_fifo
+state: play
+current: 17
+time: 3.915000
+random: 0
+repeat: 0
+single: 0
+consume: 0
+crossfade: 0
+mixrampdb: 0.000000
+mixrampdelay: -1.000000
+playlist_begin
+0:(2018) Anacondaz - Я Тебя Никогда/01. Anacondaz - Ни Капли Не Больно.flac
+1:(2018) Anacondaz - Я Тебя Никогда/02. Anacondaz - Дубак.flac
+2:(2018) Anacondaz - Я Тебя Никогда/03. Anacondaz - Твоему Новому Парню.flac
+3:(2018) Anacondaz - Я Тебя Никогда/04. Anacondaz - Нахуй Тебя И Твоих Друзей.flac
+4:(2018) Anacondaz - Я Тебя Никогда/05. Anacondaz - Воспоминания О Тебе.flac
+5:(2018) Anacondaz - Я Тебя Никогда/06. Anacondaz - Ты Знаешь, Кто Он.flac
+6:(2018) Anacondaz - Я Тебя Никогда/07. Anacondaz - Драма.flac
+7:(2018) Anacondaz - Я Тебя Никогда/08. Anacondaz - Бессонница (ft. Влади).flac
+8:(2018) Anacondaz - Я Тебя Никогда/09. Anacondaz - Не Курю.flac
+9:(2018) Anacondaz - Я Тебя Никогда/10. Anacondaz - Каберне (ft. RAM).flac
+10:(2018) Anacondaz - Я Тебя Никогда/11. Anacondaz - Двое (ft. Animal Джаz).flac
+11:Summer Of Haze/13. Infinite (2017)/01. Till I Infinity.mp3
+12:Summer Of Haze/13. Infinite (2017)/02. Love Ʊ Down.mp3
+13:Summer Of Haze/13. Infinite (2017)/03. Obscura Kisses.mp3
+14:Summer Of Haze/13. Infinite (2017)/04. Mother Mary Comes To Me.mp3
+15:Summer Of Haze/13. Infinite (2017)/05. Ghosthaze Chilla.mp3
+16:Summer Of Haze/13. Infinite (2017)/06. Only Ʊ.mp3
+17:Summer Of Haze/13. Infinite (2017)/07. Muriendo Verano.mp3
+18:Summer Of Haze/13. Infinite (2017)/08. Teardrop.mp3
+19:Summer Of Haze/13. Infinite (2017)/09. IFWY.mp3
+20:Summer Of Haze/13. Infinite (2017)/10. Russian Dopes Сука.mp3
+21:Summer Of Haze/13. Infinite (2017)/11. Twilight Occulta.mp3
+22:Summer Of Haze/13. Infinite (2017)/12. ▲रात में तुम्हारे साथ जाना होगा▲.mp3
+23:Summer Of Haze/13. Infinite (2017)/13. Mavka.mp3
+24:Summer Of Haze/13. Infinite (2017)/14. Sour ● Theme  ( feat. J.¥).mp3
+25:Summer Of Haze/13. Infinite (2017)/15. Ghetto Sunrise.mp3
+playlist_end
