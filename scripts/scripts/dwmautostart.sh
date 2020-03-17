@@ -12,12 +12,6 @@ upd(){
 	echo -e " ^c#ff9999^^d^ $upd "
 }
 
-spotify(){
-	spotify="$(python $HOME/scripts/spotify_status.py \
-	-f '  {artist} - {song}')"
-	echo -e " $spotify "
-}
-
 weather(){
 	weather="$(curl -s wttr.in/city_name?format="+%t")"
 	echo -e "  $weather "
@@ -52,8 +46,10 @@ pulse () {
 }
 
 mpd () {
-	mpd="$(mpc current --format " %artist% - %title%")"
-	echo -e " $mpd "
+	mpd="$(mpc current --format "%artist% - %title%" 2> /dev/null)"
+	if [[ -n "$mpd" ]]; then
+		echo "  ^c#e64d4d^^d^  $(echo $mpd) " 
+	fi
 }
 
 cnnctn () {
@@ -76,7 +72,7 @@ done &
 
 # - - - Autostart - - - #
 
-picom --config $HOME/.config/compton.conf &                               # composite manager
+picom --config $HOME/.config/picom.conf &                                 # composite manager
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &     # keyboard layout
 dunst -config $HOME/.cache/wal/dwm-dunstrc &                              # notification daemon
 xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
