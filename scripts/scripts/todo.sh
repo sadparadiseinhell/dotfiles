@@ -31,7 +31,7 @@ if [[ $MAIN = 'add' ]]; then
 	fi
 	
 elif [[ $MAIN = 'list' ]]; then
-	echo -n $(echo -e "$(cat $TODO)" | grep -v -e '^$' | dmenu -p 'list  ') > $LISTSEL
+	echo -n $(echo -e "$(cat $TODO)" | grep -v -e '^$' | dmenu -l 5 -p 'list  ') > $LISTSEL
 
 	if [[ -s "$LISTSEL" ]]; then
 		DELLIST=$(echo -e 'delete\nexit' | dmenu -p 'delete this')
