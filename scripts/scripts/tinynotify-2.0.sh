@@ -1,6 +1,5 @@
 #!/bin/bash
 
-MPD="$(ps aux | grep [m]pd | wc -l)"
 MUSIC_DIR=$HOME/music/
 COVER=/tmp/cover.png
 SIZE=200x200
@@ -41,21 +40,21 @@ ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
 
 }
 
-#if [ "$MPD" -eq 0 ]; then
-#    sleep 5
-#	notify-send "MPD offline"
-#	exit
-#elif [ "$MPD" -ge 1 ]; then
-
-	dunstify -r 3595 "$(mpc current --wait &>/dev/null)" &>/dev/null
-
-	while true; do
-		extract_cover
-        dunstify -r 3595 "$(mpc current -f "[%artist%\n %title%]")" -i $COVER -t 2000 
-		rm /tmp/cover.png
-		
-		while true; do
-		    mpc idle player &>/dev/null && (mpc status | grep "\[playing\]" &>/dev/null) && break
-		done
-	done
-#fi
+while true; do
+    MPD="$(ps aux | grep [m]pd | wc -l)"
+    if [ "$MPD" -ge 1 ]; then
+        mpc current --wait &>/dev/null
+        while true; do
+            extract_cover
+            dunstify -t 2000 -r 3595 "$(mpc current -f "[%artist%\n %title%]" 2> /dev/null)" -i $COVER
+            rm /tmp/cover.png
+            
+            while true; do
+                mpc idle player &>/dev/null && (mpc status | grep "\[playing\]" &>/dev/null) && break
+            done
+            
+        done
+    elif [ "$MPD" -eq 0 ]; then
+        sleep 5
+    fi
+done
