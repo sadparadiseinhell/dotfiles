@@ -25,18 +25,19 @@ static const Rule rules[] = {
 	 *	WM_CLASS(STRING) = instance, class
 	 *	WM_NAME(STRING) = title
 	 */
-	/* class               instance    title       tags mask     isfloating   monitor */
-	{ "Gimp",              NULL,       NULL,       1 << 4,       0,           -1 },
-	{ "Firefox",           NULL,       NULL,       1 << 8,       0,           -1 },
-	{ "Spotify",           NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "Subl3",             NULL,       NULL,       1 << 1,       0,           -1 },
-	{ "Chromium",          NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "TelegramDesktop",   NULL,       NULL,       1 << 0,       0,           -1 },
-	{ "mpv",               NULL,       NULL,       1 << 2,       0,           -1 },
-	{ "feh",               NULL,       NULL,       0,            1,           -1 },
-	{ "Sxiv",              NULL,       NULL,       0,            1,           -1 },
-	{ "Transmission-gtk",  NULL,       NULL,       1 << 5,       0,           -1 },
-	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,           -1 },
+	/* class               instance    title       tags mask     iscentered     isfloating   monitor */
+	{ "Gimp",              NULL,       NULL,       1 << 4,       0,             0,           -1 },
+	{ "Firefox",           NULL,       NULL,       1 << 8,       0,             0,           -1 },
+	{ "Spotify",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
+	{ "Subl3",             NULL,       NULL,       1 << 1,       0,             0,           -1 },
+	{ "Chromium",          NULL,       NULL,       1 << 0,       0,             0,           -1 },
+	{ "TelegramDesktop",   NULL,       NULL,       1 << 0,       0,             0,           -1 },
+	{ "mpv",               NULL,       NULL,       1 << 2,       0,             0,           -1 },
+	{ "feh",               NULL,       NULL,       0,            0,             1,           -1 },
+	{ "Sxiv",              NULL,       NULL,       0,            1,             1,           -1 },
+	{ "Transmission-gtk",  NULL,       NULL,       1 << 5,       0,             0,           -1 },
+	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,             0,           -1 },
+	{ "updates",           NULL,       NULL,       0,            1,             1,           -1 },
 };
 
 /* layout(s) */
