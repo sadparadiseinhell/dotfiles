@@ -16,7 +16,11 @@ execute () {
 }
 
 confirm () {
-	CONFIRM=$(echo -e "no\nyes" | dmenu -p "$opt  ")
+	if [[ -z $opt ]]; then
+		exit 0
+	else
+		CONFIRM=$(echo -e "no\nyes" | dmenu -p "$opt  ")
+	fi
 }
 
 confirm && execute
