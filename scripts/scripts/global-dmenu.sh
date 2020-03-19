@@ -1,16 +1,22 @@
 #!/bin/bash
 
-chosen=$(echo -e "power\nscreenshot\nset wallpaper\nto-do\ntimer\nvideo" | dmenu -p "menus  ")
-if [[ $chosen = 'power' ]]; then
-	$HOME/scripts/power-menu.sh
-elif [[ $chosen = 'screenshot' ]]; then
-	$HOME/scripts/screenshot-menu.sh
-elif [[ $chosen = 'set wallpaper' ]]; then
-	$HOME/scripts/setwall.sh
-elif [[ $chosen = 'to-do' ]]; then
-	$HOME/scripts/todo.sh
-elif [[ $chosen = 'timer' ]]; then
-	$HOME/scripts/tt.sh
-elif [[ $chosen = 'video' ]]; then
-	$HOME/scripts/video.sh
-fi
+chosen=$(echo -e "power\nscreenshot\nset wallpaper\nto-do\ntimer\nvideo\ncalculator\nupdates" | dmenu -p "menus  ")
+
+case $chosen in
+	power)
+		$HOME/scripts/power-menu.sh ;;
+	screen*)
+		$HOME/scripts/screenshot-menu.sh ;;
+	set*)
+		$HOME/scripts/setwall.sh ;;
+	to-do)
+		$HOME/scripts/todo.sh ;;
+	timer)
+		$HOME/scripts/tt.sh ;;
+	video)
+		$HOME/scripts/video.sh ;;
+	calc*)
+		echo ' ' | grep 0 | dmenu -p 'enter an example  ' | bc | dmenu -p 'result  ' ;;
+	updates)
+		$HOME/scripts/checkupdates.sh ;;
+esac
