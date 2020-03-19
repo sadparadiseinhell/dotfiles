@@ -6,6 +6,9 @@ alias music="cd $HOME/music/"
 alias images="cd $HOME/wallpapers/"
 alias dotfiles="cd $HOME/dotfiles/"
 
+# Files
+alias ls="ls --color=auto"
+
 # Pacman
 alias install="sudo pacman -S"
 alias update="sudo pacman -Syu"
@@ -35,7 +38,7 @@ alias lock="$HOME/scripts/lock.sh"
 alias power-menu="$HOME/scripts/power-menu.sh"
 alias scrot-menu="$HOME/scripts/screenshot-menu.sh"
 
-# rebuild
+# Rebuild
 alias dwm-rebuild="cd $HOME/build/dwm; make; make clean install; home"
 alias st-rebuild="cd $HOME/build/st; make; make clean install; home"
 alias slock-rebuild="cd $HOME/build/slock; make; sudo make clean install; home"
