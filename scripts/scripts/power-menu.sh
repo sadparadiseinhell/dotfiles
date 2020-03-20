@@ -3,7 +3,8 @@
 opt="$(echo -e "lock\nlogout\nsuspend\nhibernate\nreboot\npoweroff" | dmenu -p "power menu  ")"
 execute () {
 	case $opt in
-		h*|p*|r*|s*) ACTION="systemctl $opt" ;;
+		h*|r*|s*) ACTION="systemctl $opt" ;;
+		p*) ACTION="$(paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga' | systemctl $opt)" ;;
 		lock) ACTION="$HOME/scripts/lock.sh" ;;
 		logout) ACTION="/usr/bin/killall xinit" ;;
 	esac
