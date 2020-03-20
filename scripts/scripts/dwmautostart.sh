@@ -3,8 +3,9 @@
 # - - - Bar - - - #
 
 dte(){
-	dte="$(date +"%H:%M")"
-	echo -e " ^c#99c2ff^^d^ $dte "
+	time="$(date '+%H:%M')"
+	date="$(date '+%a, %d, %b')"
+	echo -e " ^c#cc99ff^^d^ $date  ^c#99c2ff^^d^ $time "
 }
 
 upd(){
@@ -21,28 +22,28 @@ alsa () {
 	vol="$(amixer get Master | grep -o "[0-9]*%" | tr -d '%')"
 
 	if [ "$vol" -eq 0 ]; then
-		echo "  ^c#e64d4d^muted^d^ "
-	elif [ "$vol" -le 33 ]; then
-		echo "  ^c#74c474^^d^ $vol% "
-	elif [ "$vol" -le 66 ]; then
-		echo "  ^c#ffb380^^d^ $vol% "
-	elif [ "$vol" -le 100 ]; then
-		echo "  ^c#ff9999^^d^ $vol% "
-	fi
+		echo "  ^c#ff695c^muted^d^ "
+	elif [ "$vol" -eq 0 ]; then
+        echo "  ^c#ffb380^^d^ $vol% "
+    elif [ "$vol" -le 50 ]; then
+        echo "  ^c#80d182^^d^ $vol% "
+    elif [ "$vol" -le 100 ]; then
+        echo "  ^c#ff9999^^d^ $vol% "
+    fi
 }
 
 pulse () {
-	vol="$(pamixer --get-volume-human | tr -d '%')"
+    vol="$(pamixer --get-volume-human | tr -d '%')"
 
-	if [ "$vol" = "muted" ]; then
-		echo "  ^c#e64d4d^muted^d^ "
-	elif [ "$vol" -le 33 ]; then
-		echo "  ^c#74c474^^d^ $vol% "
-	elif [ "$vol" -le 66 ]; then
-		echo "  ^c#ffb380^^d^ $vol% "
-	elif [ "$vol" -le 100 ]; then
-		echo "  ^c#ff9999^^d^ $vol% "
-	fi
+    if [ "$vol" = "muted" ]; then
+        echo "  ^c#ff695c^^d^ $vol "
+    elif [ "$vol" -eq 0 ]; then
+        echo "  ^c#ffb380^^d^ $vol% "
+    elif [ "$vol" -le 50 ]; then
+        echo "  ^c#80d182^^d^ $vol% "
+    elif [ "$vol" -le 100 ]; then
+        echo "  ^c#ff9999^^d^ $vol% "
+    fi
 }
 
 mpd () {
