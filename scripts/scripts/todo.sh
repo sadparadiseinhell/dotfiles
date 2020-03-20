@@ -34,8 +34,8 @@ elif [[ $MAIN = 'list' ]]; then
 	echo -n $(echo -e "$(cat $TODO)" | grep -v -e '^$' | dmenu -l 5 -p 'list  ') > $LISTSEL
 
 	if [[ -s "$LISTSEL" ]]; then
-		DELLIST=$(echo -e 'delete\nexit' | dmenu -p 'delete this')
-		if [[ $DELLIST = 'delete' ]]; then
+		DELLIST=$(echo -e 'no\nyes' | dmenu -p 'delete?  ')
+		if [[ $DELLIST = 'yes' ]]; then
 			DEL=$(cat $LISTSEL)
 			sed -i "/$DEL/d" $TODO
 			notify-send "$(echo -e "to-do deleted:\n $(cat $LISTSEL)")" -t 2000
