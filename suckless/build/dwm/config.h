@@ -4,7 +4,7 @@
 
 /* appearance */
 static const unsigned int borderpx  = 3;
-static const unsigned int gappx     = 10;        /* border pixel of windows */
+static const unsigned int gappx     = 10;       /* border pixel of windows */
 static const unsigned int snap      = 32;       /* snap pixel */
 static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
@@ -18,7 +18,7 @@ static const char col_cyan[]        = "#005577";
 #include "/home/ma/.cache/wal/colors-wal-dwm.h"
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", "", "" };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -27,17 +27,18 @@ static const Rule rules[] = {
 	 */
 	/* class               instance    title       tags mask     iscentered     isfloating   monitor */
 	{ "Gimp",              NULL,       NULL,       1 << 4,       0,             0,           -1 },
-	{ "Firefox",           NULL,       NULL,       1 << 8,       0,             0,           -1 },
 	{ "Spotify",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
 	{ "Subl3",             NULL,       NULL,       1 << 1,       0,             0,           -1 },
+	{ "vim",               NULL,       NULL,       1 << 1,       0,             0,           -1 },
 	{ "Chromium",          NULL,       NULL,       1 << 0,       0,             0,           -1 },
-	{ "TelegramDesktop",   NULL,       NULL,       1 << 0,       0,             0,           -1 },
+	{ "TelegramDesktop",   NULL,       NULL,       1 << 3,       0,             0,           -1 },
 	{ "mpv",               NULL,       NULL,       1 << 2,       0,             0,           -1 },
 	{ "feh",               NULL,       NULL,       0,            0,             1,           -1 },
 	{ "Sxiv",              NULL,       NULL,       0,            1,             1,           -1 },
-	{ "Transmission-gtk",  NULL,       NULL,       1 << 5,       0,             0,           -1 },
+	{ "Transmission-gtk",  NULL,       NULL,       1 << 6,       1,             0,           -1 },
 	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,             0,           -1 },
 	{ "updates",           NULL,       NULL,       0,            1,             1,           -1 },
+	{ "ncmpcpp",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
 };
 
 /* layout(s) */
@@ -69,31 +70,50 @@ static const Layout layouts[] = {
 
 /* commands */
 static char dmenumon[2] = "0"; /* component of dmenucmd, manipulated in spawn() */
-static const char *dmenucmd[] = { "dmenu_run", NULL };
-static const char *termcmd[]  = { "st", NULL };
-static const char scratchpadname[] = "scratchpad";
+static const char *dmenucmd[]      = { "dmenu_run", NULL };
+static const char *termcmd[]       = { "st", NULL };
+static const char scratchpadname[] = { "scratchpad" };
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "75x25", NULL };
+static const char *browser[]       = { "chromium", NULL };
+static const char *editor[]        = { "subl3", NULL };
+static const char *vim[]           = { "st", "-c", "'vim'", "-e", "vim", NULL };
+static const char *fm[]            = { "pcmanfm", NULL };
+static const char *ncmpcpp[]       = { "st", "-c", "'ncmpcpp'", "-e", "ncmpcpp", NULL };
+static const char *menu[]          = { "/bin/sh", "-c", "$HOME/scripts/global-dmenu.sh", NULL };
+static const char *scrotmenu[]     = { "/bin/sh", "-c", "$HOME/scripts/screenshot-menu.sh", NULL };
+static const char *lock[]          = { "/bin/sh", "-c", "$HOME/scripts/lock.sh", NULL };
+static const char *logout[]        = { "killall", "xinit", NULL };
+static const char *play[]          = { "mpc", "toggle", NULL };
+static const char *next[]          = { "mpc", "next", NULL };
+static const char *prev[]          = { "mpc", "prev", NULL };
+static const char *volup[]         = { "pamixer", "-i", "5", NULL };
+static const char *voldown[]       = { "pamixer", "-d", "5", NULL };
+static const char *mute[]          = { "pamixer", "-t", NULL };
+static const char *refreshbar[]    = { "/bin/sh", "-c", "$HOME/scripts/refreshdwmbar.sh", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
 	{ MODKEY,                       XK_p,      spawn,          {.v = dmenucmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
-	{ MODKEY|ShiftMask,             XK_f,      spawn,          SHCMD("pcmanfm") },
-	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          SHCMD("pamixer -i 5") },
-	{ 0,         XF86XK_AudioLowerVolume,      spawn,          SHCMD("pamixer -d 5") },
-	{ 0,                XF86XK_AudioMute,      spawn,          SHCMD("pamixer -t") },
-	{ 0,                            XK_Print,  spawn,          SHCMD("$HOME/scripts/screenshot-menu.sh") },
-	{ MODKEY|ShiftMask,             XK_l,      spawn,          SHCMD("$HOME/scripts/lock.sh") },
-	{ 0,                XF86XK_AudioPlay,      spawn,          SHCMD("mpc toggle") },
-	{ 0,                XF86XK_AudioNext,      spawn,          SHCMD("mpc next") },
-	{ 0,                XF86XK_AudioPrev,      spawn,          SHCMD("mpc prev") },
-	{ MODKEY|ShiftMask,             XK_p,      spawn,          SHCMD("$HOME/scripts/global-dmenu.sh") },
-	{ MODKEY|ShiftMask,             XK_n,      spawn,          SHCMD("st -e ncmpcpp") },
-	{ MODKEY|ShiftMask,             XK_r,      spawn,          SHCMD("st -e ranger") },
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          SHCMD("st -e vim") },
-	{ ControlMask,                  XK_Alt_L,  spawn,          SHCMD("$HOME/scripts/refreshdwmbar.sh") },
-	{ MODKEY|ShiftMask,             XK_b,      spawn,          SHCMD("chromium") },
+	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browser } },
+	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = editor } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = vim } },
+	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fm } },
+	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = ncmpcpp } },
+	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = menu } },
+	{ 0,                            XK_Print,  spawn,          {.v = scrotmenu } },
+	{ MODKEY|ShiftMask,             XK_l,      spawn,          {.v = lock } },
+	{ MODKEY|ShiftMask,             XK_x,      spawn,          {.v = logout } },
+	{ 0,                XF86XK_AudioPlay,      spawn,          {.v = play } },
+	{ 0,                XF86XK_AudioNext,      spawn,          {.v = next } },
+	{ 0,                XF86XK_AudioPrev,      spawn,          {.v = prev } },
+	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volup } },
+	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = voldown } },
+	{ 0,                XF86XK_AudioMute,      spawn,          {.v = mute } },
+	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = refreshbar } },
+	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = refreshbar } },
+	{ 0,                XF86XK_AudioMute,      spawn,          {.v = refreshbar } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
@@ -130,7 +150,6 @@ static Key keys[] = {
 	TAGKEYS(                        XK_8,                      7)
 	TAGKEYS(                        XK_9,                      8)
 	{ MODKEY|ShiftMask,             XK_q,      quit,           {0} },
-	{ MODKEY|ShiftMask,             XK_x,      spawn,          SHCMD("$(killall xinit)") },
 };
 
 /* button definitions */
@@ -141,6 +160,7 @@ static Button buttons[] = {
 	{ ClkLtSymbol,          0,              Button3,        setlayout,      {.v = &layouts[2]} },
 	{ ClkWinTitle,          0,              Button2,        zoom,           {0} },
 	{ ClkStatusText,        0,              Button2,        spawn,          {.v = termcmd } },
+	{ ClkStatusText,        0,              Button1,        spawn,          {.v = menu } },
 	{ ClkClientWin,         MODKEY,         Button1,        movemouse,      {0} },
 	{ ClkClientWin,         MODKEY,         Button2,        togglefloating, {0} },
 	{ ClkClientWin,         MODKEY,         Button3,        resizemouse,    {0} },
@@ -149,4 +169,3 @@ static Button buttons[] = {
 	{ ClkTagBar,            MODKEY,         Button1,        tag,            {0} },
 	{ ClkTagBar,            MODKEY,         Button3,        toggletag,      {0} },
 };
-
