@@ -16,7 +16,7 @@ case $chosen in
 	video)
 		$HOME/scripts/video.sh ;;
 	calc*)
-		echo ' ' | grep 0 | dmenu -p 'enter an example  ' | bc | dmenu -p 'result  ' | xclip -selection c ;;
+		echo | grep 0 | dmenu -p 'enter an example  ' | bc | dmenu -p 'result  ' | xclip -selection c ;;
 	updates)
 		$HOME/scripts/checkupdates.sh ;;
 	screencast)
