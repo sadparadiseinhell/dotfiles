@@ -8,6 +8,7 @@ alias dotfiles="cd $HOME/dotfiles/"
 
 # Files
 alias ls="ls --color=auto"
+alias ll="ls -l"
 
 # Pacman
 alias install="sudo pacman -S"
