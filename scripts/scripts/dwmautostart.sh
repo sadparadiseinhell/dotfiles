@@ -2,20 +2,15 @@
 
 # - - - Bar - - - #
 
-dte(){
+dt(){
 	time="$(date '+%H:%M')"
-	date="$(date '+%a, %d, %b')"
-	echo -e " ^c#cc99ff^^d^ $date  ^c#99c2ff^^d^ $time "
+	date="$(date '+%a, %b %d')"
+	echo -e " ^c#cc99ff^^d^ $date  ^c#99c2ff^^d^ $time  "
 }
 
 upd(){
 	upd="$(checkupdates | wc -l)"
 	echo -e " ^c#ff9999^^d^ $upd "
-}
-
-weather(){
-	weather="$(curl -s wttr.in/city_name?format="+%t")"
-	echo -e "  $weather "
 }
 
 alsa () {
@@ -67,8 +62,8 @@ kblayout () {
 }
 
 while true; do
-	xsetroot -name "$(pulse) $(upd) $(dte)"
-	sleep 1
+	xsetroot -name "$(pulse) $(upd) $(dt)"
+	sleep 1m
 done &
 
 # - - - Autostart - - - #
