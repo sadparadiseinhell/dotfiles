@@ -7,7 +7,7 @@ SOUND="/usr/share/sounds/freedesktop/stereo/camera-shutter.oga"
 chosen=$(echo -e "fullscreen\narea\narea [clipboard]\nactive window" | dmenu -p "scrot menu  ")
 if [[ $chosen = "fullscreen" ]]; then
 	sleep 1
-	scrot "$HOME/scrot.png"
+	maim "$HOME/scrot.png"
 	notify-send "screenshot saved!" -i $HOME/scrot.png -t 2500
 	paplay "$SOUND"
 	mv $HOME/scrot.png $SCROTDIR/$NAME
@@ -21,7 +21,7 @@ elif [[ $chosen = "area [clipboard]" ]]; then
 	notify-send 'screenshot copied to clipboard' -t 2500
 elif [[ $chosen = "active window" ]]; then
 	sleep 1
-	scrot -u -b "$HOME/scrot.png"
+	maim -i $(xdotool getactivewindow) "$HOME/scrot.png"
 	notify-send "screenshot saved!" -i $HOME/scrot.png -t 2500
 	paplay "$SOUND"
 	mv $HOME/scrot.png $SCROTDIR/$NAME
