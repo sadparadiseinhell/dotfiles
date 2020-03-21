@@ -25,13 +25,6 @@ dmenurebuild () {
 	cd $HOME
 }
 
-tabbedrebuild () {
-	cd $HOME/build/tabbed
-	make &> /dev/null
-	make clean install &> /dev/null
-	cd $HOME
-}
-
 dunstreload () {
 	killall dunst &> /dev/null
 	killall dunst &> /dev/null
@@ -43,7 +36,6 @@ if [[ "$chosen" ]]; then
 	dmenurebuild
 	dwmrebuild
 	strebuild
-	tabbedrebuild
 	dunstreload
 	sleep 1
 	notify-send "$chosen is set as wallpaper" -t 3200
