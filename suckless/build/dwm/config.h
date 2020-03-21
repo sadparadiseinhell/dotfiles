@@ -26,19 +26,18 @@ static const Rule rules[] = {
 	 *	WM_NAME(STRING) = title
 	 */
 	/* class               instance    title       tags mask     iscentered     isfloating   monitor */
-	{ "Gimp",              NULL,       NULL,       1 << 4,       0,             0,           -1 },
-	{ "Spotify",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
-	{ "Subl3",             NULL,       NULL,       1 << 1,       0,             0,           -1 },
-	{ "vim",               NULL,       NULL,       1 << 1,       0,             0,           -1 },
-	{ "Chromium",          NULL,       NULL,       1 << 0,       0,             0,           -1 },
-	{ "TelegramDesktop",   NULL,       NULL,       1 << 3,       0,             0,           -1 },
-	{ "mpv",               NULL,       NULL,       1 << 2,       0,             0,           -1 },
 	{ "feh",               NULL,       NULL,       0,            0,             1,           -1 },
 	{ "Sxiv",              NULL,       NULL,       0,            1,             1,           -1 },
-	{ "Transmission-gtk",  NULL,       NULL,       1 << 6,       1,             0,           -1 },
-	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,             0,           -1 },
 	{ "updates",           NULL,       NULL,       0,            1,             1,           -1 },
+	{ "Chromium",          NULL,       NULL,       1 << 0,       0,             0,           -1 },
+	{ "Subl3",             NULL,       NULL,       1 << 1,       0,             0,           -1 },
+	{ "vim",               NULL,       NULL,       1 << 1,       0,             0,           -1 },
 	{ "ncmpcpp",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
+	{ "mpv",               NULL,       NULL,       1 << 2,       0,             0,           -1 },
+	{ "TelegramDesktop",   NULL,       NULL,       1 << 3,       0,             0,           -1 },
+	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,             0,           -1 },
+	{ "Gimp",              NULL,       NULL,       1 << 4,       0,             0,           -1 },
+	{ "Transmission-gtk",  NULL,       NULL,       1 << 6,       1,             0,           -1 },
 };
 
 /* layout(s) */
