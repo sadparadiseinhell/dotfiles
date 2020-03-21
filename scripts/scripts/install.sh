@@ -1,8 +1,8 @@
 #!/bin/bash
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \npython-pywal \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nranger \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nfortune-mod \nlxappearance \npacman-contrib \nxarchiver \nunzip \nscrot \nman \nxclip \nxautolock \nstow \ntree \nw3m \nvim \nbc" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \npython-pywal \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nranger \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nfortune-mod \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \ntree \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans" | sort)
 
-PA=$(echo -e "skb \nspotify \nsublime-text-dev \npaper-icon-theme-git \ntelegram-desktop-bin \nchromium-widevine \nttf-monaco \nclipmenu" | sort)
+PA=$(echo -e "skb \nspotify \nsublime-text-dev \npaper-icon-theme-git \nchromium-widevine \nclipmenu" | sort)
 
 
 if [ -x "$(command -v tput)" ]; then
