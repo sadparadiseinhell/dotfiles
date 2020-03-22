@@ -9,12 +9,7 @@ LISTSEL="$HOME/.todo/listsel.txt"
 ADDED="$HOME/.todo/added.txt"
 SOUNDADDED='/usr/share/sounds/freedesktop/stereo/dialog-information.oga'
 
-confirm () {
-	CONFIRM=$(echo -e "no\nyes" | dmenu -p 'sure?  ')
-}
-
 if [[ $MAIN = 'add' ]]; then
-	#echo '' | grep 0 | dmenu -p 'add todo  ' | gawk '{ print $0, strftime("[%Y-%m-%d]") }' >> $TODO
 	if [[ -d $HOME/.todo/ ]]; then
 		echo 'folder exists' &> /dev/null
 	else
@@ -27,12 +22,12 @@ if [[ $MAIN = 'add' ]]; then
 		notify-send "$(echo -e "to-do added:\n $(cat $ADDED)")" -t 2000
 		paplay "$SOUNDADDED" 2>/dev/null &
 		cat $ADDED >> $TODO
-		rm $ADDED
 	fi
-	
+	rm $ADDED
+
 elif [[ $MAIN = 'list' ]]; then
 	if [[ -s $TODO ]]; then
-		echo -n $(echo -e "$(cat $TODO)" | grep -v -e '^$' | dmenu -l 5 -p 'list ') > $LISTSEL
+		dmenu -l 5 -p 'list ' < $TODO > $LISTSEL
 
 		if [[ -s "$LISTSEL" ]]; then
 			DELLIST=$(echo -e 'no\nyes' | dmenu -p 'delete?  ')
@@ -40,18 +35,15 @@ elif [[ $MAIN = 'list' ]]; then
 				DEL=$(cat $LISTSEL)
 				sed -i "/$DEL/d" $TODO
 				notify-send "$(echo -e "to-do deleted:\n $(cat $LISTSEL)")" -t 2000
-			else
-				exit 0
 			fi
 		fi
-		rm $LISTSEL &> /dev/null
+		rm $LISTSEL
 	else
 		echo "(´。＿。｀)" | dmenu -p "it's empty here "
-		exit 0
 	fi
 
 elif [[ $MAIN = 'delete all' ]]; then
-	confirm
+	CONFIRM=$(echo -e "no\nyes" | dmenu -p 'sure?  ')
 	if [[ $CONFIRM = 'no' ]]; then
 		exit 0
 	else
