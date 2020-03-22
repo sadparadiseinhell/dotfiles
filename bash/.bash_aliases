@@ -23,6 +23,7 @@ alias xreload="xrdb -load $HOME/.Xresources"
 alias push="$HOME/scripts/push.sh"
 alias git-push="cd $HOME/dotfiles/; git add -A; git commit -m 'minor changes'; git push; home"
 alias ga="git add"
+alias gc="git commit -m"
 
 # Media
 alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]" $1'
