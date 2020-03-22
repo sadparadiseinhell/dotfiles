@@ -34,6 +34,7 @@ static const Rule rules[] = {
 	{ "vim",               NULL,       NULL,       1 << 1,       0,             0,           -1 },
 	{ "ncmpcpp",           NULL,       NULL,       1 << 2,       0,             0,           -1 },
 	{ "mpv",               NULL,       NULL,       1 << 2,       0,             0,           -1 },
+	{ "discord",           NULL,       NULL,       1 << 3,       0,             0,           -1 },
 	{ "TelegramDesktop",   NULL,       NULL,       1 << 3,       0,             0,           -1 },
 	{ "Inkscape",          NULL,       NULL,       1 << 4,       0,             0,           -1 },
 	{ "Gimp",              NULL,       NULL,       1 << 4,       0,             0,           -1 },
@@ -85,10 +86,9 @@ static const char *logout[]        = { "killall", "xinit", NULL };
 static const char *play[]          = { "mpc", "toggle", NULL };
 static const char *next[]          = { "mpc", "next", NULL };
 static const char *prev[]          = { "mpc", "prev", NULL };
-static const char *volup[]         = { "pamixer", "-i", "5", NULL };
-static const char *voldown[]       = { "pamixer", "-d", "5", NULL };
-static const char *mute[]          = { "pamixer", "-t", NULL };
-static const char *refreshbar[]    = { "/bin/sh", "-c", "$HOME/scripts/refreshdwmbar.sh", NULL };
+static const char *volup[]         = { "/bin/sh", "-c", "$HOME/scripts/volume.sh up", NULL };
+static const char *voldown[]       = { "/bin/sh", "-c", "$HOME/scripts/volume.sh down", NULL };
+static const char *mute[]          = { "/bin/sh", "-c", "$HOME/scripts/volume.sh mute", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
@@ -110,9 +110,6 @@ static Key keys[] = {
 	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = volup } },
 	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = voldown } },
 	{ 0,                XF86XK_AudioMute,      spawn,          {.v = mute } },
-	{ 0,         XF86XK_AudioRaiseVolume,      spawn,          {.v = refreshbar } },
-	{ 0,         XF86XK_AudioLowerVolume,      spawn,          {.v = refreshbar } },
-	{ 0,                XF86XK_AudioMute,      spawn,          {.v = refreshbar } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
 	{ MODKEY,                       XK_k,      focusstack,     {.i = -1 } },
