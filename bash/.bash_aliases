@@ -16,23 +16,23 @@ alias update="sudo pacman -Syu"
 alias sp="sudo pacman"
 
 # Xresources
-alias xconf="vim $HOME/.Xresources"
-alias xreload="xrdb -load $HOME/.Xresources"
+#alias xconf="vim $HOME/.Xresources"
+#alias xreload="xrdb -load $HOME/.Xresources"
 
 # GitHub
-alias push="$HOME/scripts/push.sh"
-alias git-push="cd $HOME/dotfiles/; git add -A; git commit -m 'minor changes'; git push; home"
+alias push="cd $HOME/dotfiles/; git add -A; git commit -m 'minor changes'; git push; home"
 alias ga="git add"
 alias gc="git commit -m"
 
 # Media
-alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?1080]+bestaudio[ext=m4a]" $1'
-alias start-media-server="minidlnad"
-alias stop-media-server="pkill minidlnad"
+alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m4a]" $1'
+#alias start-media-server="minidlnad"
+#alias stop-media-server="pkill minidlnad"
 
 # Colors
 alias changecolorscheme="$HOME/scripts/changecs.sh"
 alias setwallpaper="$HOME/scripts/setwall.sh"
+alias colortest="$HOME/scripts/colortest.sh"
 
 # Scripts
 alias info="$HOME/scripts/tfetch.sh"
@@ -45,4 +45,3 @@ alias dwm-rebuild="cd $HOME/build/dwm; make; make clean install; home"
 alias st-rebuild="cd $HOME/build/st; make; make clean install; home"
 alias slock-rebuild="cd $HOME/build/slock; make; sudo make clean install; home"
 alias dmenu-rebuild="cd $HOME/build/dmenu; make; make clean install; home"
-alias tabbed-rebuild="cd $HOME/build/tabbed; make; make clean install; home"
