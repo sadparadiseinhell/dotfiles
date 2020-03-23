@@ -30,7 +30,6 @@ alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m
 #alias stop-media-server="pkill minidlnad"
 
 # Colors
-alias changecolorscheme="$HOME/scripts/changecs.sh"
 alias setwallpaper="$HOME/scripts/setwall.sh"
 alias colortest="$HOME/scripts/colortest.sh"
 
@@ -41,7 +40,7 @@ alias power-menu="$HOME/scripts/power-menu.sh"
 alias scrot-menu="$HOME/scripts/screenshot-menu.sh"
 
 # Rebuild
-alias dwm-rebuild="cd $HOME/build/dwm; make; make clean install; home"
-alias st-rebuild="cd $HOME/build/st; make; make clean install; home"
+alias dwm-rebuild="cd $HOME/build/dwm; make; sudo make clean install; home"
+alias st-rebuild="cd $HOME/build/st; make; sudo make clean install; home"
 alias slock-rebuild="cd $HOME/build/slock; make; sudo make clean install; home"
-alias dmenu-rebuild="cd $HOME/build/dmenu; make; make clean install; home"
+alias dmenu-rebuild="cd $HOME/build/dmenu; make; sudo make clean install; home"
