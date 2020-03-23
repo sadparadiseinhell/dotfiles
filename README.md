@@ -21,9 +21,7 @@
 * network manager: [network manager](https://wiki.gnome.org/Projects/NetworkManager/)
 * notification daemon: [dunst](https://dunst-project.org/)
 * screen locker: [slock](https://tools.suckless.org/slock/) with patches
-* screenshot tool:
-  - [scrot](https://github.com/resurrecting-open-source-projects/scrot)
-  - [maim](https://github.com/naelstrof/maim)
+* screenshot tool: [maim](https://github.com/naelstrof/maim)
 * terminal: [st](https://st.suckless.org/)
 * text editor:
   - [sublime text 3](https://www.sublimetext.com/3)
