@@ -9,8 +9,6 @@ fi
 
 # - # - #
 
-feh --bg-scale $HOME/wallpapers/nord-solid.png
-
 $HOME/scripts/dwmautostart.sh &
 while true; do
     dwm >/dev/null 2>&1
