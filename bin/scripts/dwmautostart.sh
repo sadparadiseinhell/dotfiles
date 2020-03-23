@@ -1,5 +1,6 @@
 #!/bin/sh
 
+$HOME/scripts/wallpapers.sh &                                             # set wallpaper
 $HOME/scripts/statusbar.sh &                                              # bar
 picom --config $HOME/.config/picom.conf &                                 # composite manager
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &     # keyboard layout
