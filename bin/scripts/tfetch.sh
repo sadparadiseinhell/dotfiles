@@ -57,5 +57,6 @@ ${lc}sh:     ${r}$SHELL${r}
 ${lc}wm:     ${r}$(wm)${r}
 ${lc}term:   ${r}$TERMINAL${r}
 
-${red}▀▀${green}▀▀${yellow}▀▀${blue}▀▀${magenta}▀▀${cyan}▀▀${white}▀▀${r}
 EOF
+
+#${red}▀▀${green}▀▀${yellow}▀▀${blue}▀▀${magenta}▀▀${cyan}▀▀${white}▀▀${r}
