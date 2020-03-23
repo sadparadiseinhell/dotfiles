@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \npython-pywal \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nfortune-mod \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \ntree \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans" | sort)
 
 PA=$(echo -e "skb \nsublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
 
@@ -93,23 +93,19 @@ dotfiles () {
 		if [[ "$opt" = "All" ]]; then
 			rm $HOME/.bashrc
 			cd $HOME/dotfiles/
-			stow bash/ bin/ configs/ images/ suckless/ tmux/ vim/ x/
-
-			sudo chmod 777 /usr/local/bin
-			sudo chmod 777 /usr/local/man
-			sudo chmod 777 /usr/local/man1
+			stow bash/ bin/ colors/ configs/ images/ suckless/ tmux/ vim/ x/
 
 			cd $HOME/build/dwm/
 			make &> /dev/null
-			make install
+			sudo make install
 
 			cd $HOME/build/st
 			make &> /dev/null
-			make install
+			sudo make install
 
 			cd $HOME/build/dmenu
 			make &> /dev/null
-			make install
+			sudo make install
 
 			cd $HOME/build/slock/
 			make &> /dev/null
@@ -117,35 +113,28 @@ dotfiles () {
 
 			cd $HOME
 
-			sudo cp $HOME/dotfiles/configs/.config/wal/colors-wal-dwm.h /usr/lib/python3.8/site-packages/pywal/templates/
 			echo -e "\nDONE\n"
 
 			break
 			
 		elif [[ "$opt" = "Individually" ]]; then
 
-			read -p "$(echo -e "\nInstall dwm? (y/N): ")" choice
+			read -p "$(echo -e "\nInstall dwm, st, dmenu and slock? (y/N): ")" choice
 			if [[ "$choice" = [Yy] ]]; then
 				cd $HOME/dotfiles/
 				stow suckless/
-
-				sudo cp $HOME/dotfiles/configs/.config/wal/colors-wal-dwm.h /usr/lib/python3.8/site-packages/pywal/templates/
 				
-				sudo chmod 777 /usr/local/bin
-				sudo chmod 777 /usr/local/man
-				sudo chmod 777 /usr/local/man1
-
 				cd $HOME/build/dwm/
 				make &> /dev/null
-				make install
+				sudo make install
 
 				cd $HOME/build/st
 				make &> /dev/null
-				make install
+				sudo make install
 
 				cd $HOME/build/dmenu
 				make &> /dev/null
-				make install
+				sudo make install
 
 				cd $HOME/build/slock/
 				make &> /dev/null
@@ -309,7 +298,7 @@ dotfiles    # Clone and install dotfiles
 
 read -p "$(echo -e "\nSet wallpaper? (y/N): ")" choice    # Set wallpaper
 if [[ "$choice" = [Yy] ]]; then
-	wal -q -s -t -i $HOME/wallpapers/
+	feh -z --bg-fill $HOME/wallpapers/
 	echo -e "\nDONE"
 fi
 
