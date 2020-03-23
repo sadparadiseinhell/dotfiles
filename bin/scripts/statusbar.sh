@@ -1,11 +1,11 @@
 #!/bin/sh
 
-source $HOME/.cache/wal/colors.sh
+source $HOME/.colors/nord-colors.sh
 
 dt(){
 	time="$(date '+%H:%M')"
 	date="$(date '+%a, %b %d')"
-	echo -e " ^c$color2^^d^ $date  ^c$color4^^d^ $time  "
+	echo -e " ^c$color3^^d^ $date  ^c$color4^^d^ $time  "
 }
 
 upd(){
@@ -21,7 +21,7 @@ alsa () {
 	elif [ "$vol" -eq 0 ]; then
         echo "  ^c$color7^^d^ $vol% "
     elif [ "$vol" -le 50 ]; then
-        echo "  ^c$color4^^d^ $vol% "
+        echo "  ^c$color2^^d^ $vol% "
     elif [ "$vol" -le 100 ]; then
         echo "  ^c$color1^^d^ $vol% "
     fi
@@ -31,11 +31,11 @@ pulse () {
     vol="$(pamixer --get-volume-human | tr -d '%')"
 
     if [ "$vol" = "muted" ]; then
-        echo "  ^c$color6^^d^ $vol "
+        echo "  ^c$color1^^d^ $vol "
     elif [ "$vol" -eq 0 ]; then
         echo "  ^c$color7^^d^ $vol% "
     elif [ "$vol" -le 50 ]; then
-        echo "  ^c$color4^^d^ $vol% "
+        echo "  ^c$color2^^d^ $vol% "
     elif [ "$vol" -le 100 ]; then
         echo "  ^c$color1^^d^ $vol% "
     fi
