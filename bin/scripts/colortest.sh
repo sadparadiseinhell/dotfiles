@@ -16,4 +16,4 @@ clear
 
 echo -e "${red}███ ${green}███ ${yellow}███ ${blue}███ ${magenta}███ ${cyan}███ ${white}███${reset}"
 echo -e "${red}███ ${green}███ ${yellow}███ ${blue}███ ${magenta}███ ${cyan}███ ${white}███${reset}"
-echo -e "${grey}▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔${reset}\n"
+echo -e "${grey}▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔ ▔▔▔${reset}"
