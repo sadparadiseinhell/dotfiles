@@ -9,7 +9,7 @@ fi
 
 # - # - #
 
-wal -t -R &
+feh --bg-scale $HOME/wallpapers/nord-solid.png
 
 $HOME/scripts/dwmautostart.sh &
 while true; do
