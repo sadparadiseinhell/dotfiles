@@ -8,10 +8,8 @@ call plug#begin('~/.vim/plugged')
 	Plug 'jiangmiao/auto-pairs'
 	
 	" Colorsschemes
-	Plug 'dylanaraps/wal.vim'
+	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
-	Plug 'dracula/vim', { 'as': 'dracula'  }
-	Plug 'jaredgorski/spacecamp'
 
 call plug#end()
 
@@ -56,10 +54,10 @@ let g:lightline = {
       \ }
 
 " Colorscheme
-colorscheme dracula
-let g:gruvbox_contrast_dark = 'hard'
-set background=dark
-highlight Normal ctermfg=grey ctermbg=black
+colorscheme nord
+"let g:gruvbox_contrast_dark = 'hard'
+"set background=dark
+"highlight Normal ctermfg=grey ctermbg=black
 
 " Colorizer
 :let g:colorizer_auto_color = 1
