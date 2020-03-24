@@ -1,17 +1,15 @@
 ### screenshot:
 
-![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dwmscrot.png)
+![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dwmscrotnord.png)
 
 ### list of applications:
 
 * audio player:
   - [mpd](https://www.musicpd.org/) + [ncmpcpp](https://rybczak.net/ncmpcpp/)
   - [spotify](https://www.spotify.com/us/download/linux)
-    - customize: [spicetify](https://github.com/khanhas/spicetify-cli)
 * application launcher: [dmenu](https://tools.suckless.org/dmenu/) with patches
 * aur helper: [yay](https://github.com/Jguer/yay)
 * browser: [chromium](https://www.chromium.org/)
-* color-scheme generator: [pywal](https://github.com/dylanaraps/pywal)
 * compositor for X: [picom](https://github.com/yshui/picom)
 * file manager: [pcmanfm](https://wiki.lxde.org/en/PCManFM) and [ranger](https://ranger.github.io/)
 * image viewer:
