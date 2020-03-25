@@ -1,10 +1,15 @@
---- config.def.h
-+++ config.def.h
-@@ -8,6 +8,7 @@ static const char normfgcolor[]     = "#bbbbbb";
- static const char selbordercolor[]  = "#005577";
- static const char selbgcolor[]      = "#005577";
- static const char selfgcolor[]      = "#eeeeee";
-+static const char urgbordercolor[]  = "#ff0000";
- static const unsigned int borderpx  = 1;        /* border pixel of windows */
- static const unsigned int snap      = 32;       /* snap pixel */
- static const Bool showbar           = True;     /* False means no bar */
+--- config.def.h	2019-02-02 14:55:28.000000000 +0200
++++ config.def.h	2019-11-18 19:36:22.515566509 +0200
+@@ -26,9 +26,9 @@ static const Rule rules[] = {
+ 	 *	WM_CLASS(STRING) = instance, class
+ 	 *	WM_NAME(STRING) = title
+ 	 */
+-	/* class      instance    title       tags mask     isfloating   monitor */
+-	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
+-	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
++	/* class      instance    title       tags mask     switchtotag    isfloating   monitor */
++	{ "Gimp",     NULL,       NULL,       0,            0,             1,           -1 },
++	{ "Firefox",  NULL,       NULL,       1 << 8,       0,             0,           -1 },
+ };
+ 
+ /* layout(s) */

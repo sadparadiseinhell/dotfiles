@@ -1,34 +1,18 @@
---- dwm.c
-+++ dwm.c
-@@ -58,7 +58,7 @@
- 
- /* enums */
- enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
--enum { SchemeNorm, SchemeSel, SchemeLast }; /* color schemes */
-+enum { SchemeNorm, SchemeSel, SchemeUrg, SchemeLast }; /* color schemes */
- enum { NetSupported, NetWMName, NetWMState,
-        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
-        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
-@@ -1537,6 +1537,9 @@ setup(void) {
- 	scheme[SchemeSel].border = drw_clr_create(drw, selbordercolor);
- 	scheme[SchemeSel].bg = drw_clr_create(drw, selbgcolor);
- 	scheme[SchemeSel].fg = drw_clr_create(drw, selfgcolor);
-+	scheme[SchemeUrg].border = drw_clr_create(drw, urgbordercolor);
-+	scheme[SchemeUrg].bg = drw_clr_create(drw, selbgcolor);
-+	scheme[SchemeUrg].fg = drw_clr_create(drw, selfgcolor);
- 	/* init bars */
- 	updatebars();
- 	updatestatus();
-@@ -1982,8 +1985,11 @@ updatewmhints(Client *c) {
- 			wmh->flags &= ~XUrgencyHint;
- 			XSetWMHints(dpy, c->win, wmh);
- 		}
--		else
-+		else {
- 			c->isurgent = (wmh->flags & XUrgencyHint) ? True : False;
-+			if (c->isurgent)
-+				XSetWindowBorder(dpy, c->win, scheme[SchemeUrg].border->pix);
-+		}
- 		if(wmh->flags & InputHint)
- 			c->neverfocus = !wmh->input;
- 		else
+--- dwm.c	2019-02-02 14:55:28.000000000 +0200
++++ dwm.c	2019-11-18 19:37:18.792187705 +0200
+@@ -92,6 +92,7 @@ struct Client {
+ 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
+ 	int bw, oldbw;
+ 	unsigned int tags;
++	unsigned int switchtotag;
+ 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
+ 	Client *next;
+ 	Client *snext;
+@@ -137,6 +138,7 @@ typedef struct {
+ 	const char *instance;
+ 	const char *title;
+ 	unsigned int tags;
++	unsigned int switchtotag;
+ 	int isfloating;
+ 	int monitor;
+ } Rule;
