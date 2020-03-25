@@ -5,7 +5,7 @@ dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer
 mpc pause
 pkill -u $USER -USR1 dunst
 
-slock
+slock -m "$(echo -e "\n\n$(fortune)")"
 
 pkill -u $USER -USR2 dunst
 #mpc play
