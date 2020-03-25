@@ -5,7 +5,7 @@
     follow = mouse
 
     # Make the width 3740 (3840 - 100), have 50 left margin and 95 above
-    geometry = "250x0-25+53"
+    geometry = "300x0-25+53"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -14,7 +14,7 @@
     shrink = yes
 
     # The transparency of the window.  Range: [0; 100].
-    transparency = 5
+    transparency = 0
 
     # The height of the entire notification.  If the height is smaller
     # than the font height and padding combined, it will be raised
@@ -46,8 +46,9 @@
     idle_threshold = 90
 
     # Font and typography settings
-    font = Roboto Bold 11
-    alignment = center
+    #font = Roboto Bold 10
+    font = Roboto 10
+    alignment = left
     word_wrap = yes
 
     # The spacing between lines.  If the height is smaller than the font height, it will get raised to the font height.
@@ -64,7 +65,7 @@
     icon_path = “/usr/share/icons/Paper/48x48/status/:/usr/share/icons/Paper/48x48/devices/”
 
     # Scale larger icons down to this size, set to 0 to disable
-    max_icon_size = 68
+    max_icon_size = 60
 
     # Allow some HTML tags like <i> and <u> in notifications
     markup = full
@@ -103,6 +104,11 @@
     sticky_history = false
     history_length = 10
 
+    # Defines action of mouse event
+    mouse_left_click = close_current
+    mouse_middle_click = do_action
+    mouse_right_click = close_all
+
 # These are the keybindings used to control dunst notifications
 [shortcuts]
     close = ctrl+space
@@ -127,3 +133,8 @@
     background = "#2E3440"
     foreground = "#e5e9f0"
     timeout = 8
+
+[mpd_notify]
+	appname = tinynotify
+	format = "<b>%s\n%b</b>"
+	timeout = 3
