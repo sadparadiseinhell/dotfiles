@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nterminus-font \nfortune-mod" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nterminus-font \nfortune-mod \ntranslate-shell" | sort)
 
 PA=$(echo -e "skb \nsublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
 
@@ -69,6 +69,22 @@ aurpackages () {
 	fi
 }
 
+lock_on_suspend () {
+	sudo echo -e "[Unit]
+Description=Lock X session using slock for user %i
+Before=sleep.target
+
+[Service]
+User=%i
+Environment=DISPLAY=:0
+ExecStartPre=/usr/bin/xset dpms force suspend
+ExecStart=/usr/bin/slock
+
+[Install]
+WantedBy=sleep.target" > /etc/systemd/system/slock@.service
+sudo systemctl enable slock@ma.service
+}
+
 dotfiles () {
 
 	echo
@@ -110,6 +126,7 @@ dotfiles () {
 			cd $HOME/build/slock/
 			make &> /dev/null
 			sudo make install
+			lock_on_suspend
 
 			cd $HOME
 
@@ -139,6 +156,7 @@ dotfiles () {
 				cd $HOME/build/slock/
 				make &> /dev/null
 				sudo make install
+				lock_on_suspend
 
 				cd $HOME
 

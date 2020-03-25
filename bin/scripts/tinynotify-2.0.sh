@@ -21,7 +21,7 @@ ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
             echo "inspecting $DIR"
         fi
 
-        for CANDIDATE in "$DIR/Cover."{png,jpg}; do
+        for CANDIDATE in "$DIR/"[Cc]over""{.png,.jpg}; do
             if [ -f "$CANDIDATE" ]; then
                 STATUS=0
                 convert "$CANDIDATE" $COVER &> /dev/null
@@ -46,7 +46,8 @@ while true; do
         mpc current --wait &>/dev/null
         while true; do
             extract_cover
-            dunstify -t 2000 -r 3595 "$(mpc current -f "[%artist%\n %title%]" 2> /dev/null)" -i $COVER
+            dunstify -r 3595 -a tinynotify -i $COVER \
+            'Now Playing:' "$(mpc current -f "[%artist%\n%title%]" 2> /dev/null)"
             rm /tmp/cover.png
             
             while true; do
@@ -58,3 +59,5 @@ while true; do
         sleep 5
     fi
 done
+
+st -c 'ncmpcpp' -e ncmpcpp

@@ -11,9 +11,9 @@ xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
 -cornerredelay 10 -cornersize 20 &                                        # automatic screen lock
 
 if [ "$(ps -aux | grep [m]pd | wc -l)" -eq 0 ]; then                      #
-	mpd                                                                   #
+	mpd
 else                                                                      # MPD
-	echo ":(" &> /dev/null                                                #
+	echo ":(" &> /dev/null
 fi                                                                        #
 
 sleep 1                                                                   # zZzZz
