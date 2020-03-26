@@ -13,4 +13,4 @@ fi
 # If not running interactively, don't do anything
 [[ $- != *i* ]] && return
 
-PS1="\W \e[32m$\e[0m "
+PS1="\W $ "
