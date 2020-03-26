@@ -2,6 +2,7 @@
 
 $HOME/scripts/wallpapers.sh &                                             # set wallpaper
 $HOME/scripts/statusbar.sh &                                              # bar
+amixer set Headphone unmute 100% &                                        # unmute headphone
 picom --config $HOME/.config/picom.conf &                                 # composite manager
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &     # keyboard layout
 dunst -config $HOME/.config/dunst/dunstrc &                               # notification daemon
@@ -14,7 +15,7 @@ if [ "$(ps -aux | grep [m]pd | wc -l)" -eq 0 ]; then                      #
 	mpd
 else                                                                      # MPD
 	echo ":(" &> /dev/null
-fi                                                                        #
+fi &                                                                      #
 
 sleep 1                                                                   # zZzZz
 paplay /usr/share/sounds/freedesktop/stereo/service-login.oga &           # startup sound
@@ -22,4 +23,4 @@ sleep 2                                                                   # zZzZ
 notify-send "$($HOME/scripts/greeting.sh)" &                              # greeting script
 $HOME/scripts/updates.sh &                                                # update notification script
 $HOME/scripts/tinynotify-2.0.sh &                                         # MPD notification script
-$HOME/scripts/todonotify.sh                                               # To-Do notification
+$HOME/scripts/todonotify.sh &                                             # To-Do notification

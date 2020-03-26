@@ -6,13 +6,13 @@ FILE='/tmp/color.png'
 #SNOWSTORM='#D8DEE9 #E5E9F0 #ECEFF4'
 
 while true; do
-	if [[ $TIME -lt 06 ]]; then
-		convert -size 32x32 xc:#2E3440 $FILE
-	elif [[ $TIME -lt 18 ]]; then
+	if [[ $TIME -ge 06 ]]; then
 		convert -size 32x32 xc:#D8DEE9 $FILE
-	elif [[ $TIME -lt 21 ]]; then
+	elif [[ $TIME -ge 18 ]]; then
 		convert -size 32x32 xc:#3B4252 $FILE
-	elif [[ $TIME -lt 24 ]]; then
+	elif [[ $TIME -ge 21 ]]; then
+		convert -size 32x32 xc:#2E3440 $FILE
+	elif [[ $TIME -ge 00 ]]; then
 		convert -size 32x32 xc:#2E3440 $FILE
 	fi
 	feh --bg-tile $FILE

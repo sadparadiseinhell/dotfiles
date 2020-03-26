@@ -19,7 +19,7 @@ if [[ $MAIN = 'add' ]]; then
 	echo '' | grep 0 | dmenu -p 'add to-do ' >> $ADDED
 
 	if [[ -s $ADDED ]]; then
-		notify-send "$(echo -e "to-do added:\n $(cat $ADDED)")" -t 2000
+		notify-send "$(echo -e "to-do added:\n$(cat $ADDED)")" -t 2000
 		paplay "$SOUNDADDED" 2>/dev/null &
 		cat $ADDED >> $TODO
 	fi
@@ -34,7 +34,7 @@ elif [[ $MAIN = 'list' ]]; then
 			if [[ $DELLIST = 'yes' ]]; then
 				DEL=$(cat $LISTSEL)
 				sed -i "/$DEL/d" $TODO
-				notify-send "$(echo -e "to-do deleted:\n $(cat $LISTSEL)")" -t 2000
+				notify-send "$(echo -e "to-do deleted:\n$(cat $LISTSEL)")" -t 2000
 			fi
 		fi
 		rm $LISTSEL

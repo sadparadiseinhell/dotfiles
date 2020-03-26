@@ -2,12 +2,11 @@
 
 MUSIC_DIR=$HOME/music/
 COVER=/tmp/cover.png
-SIZE=200x200
-SONG=$(mpc -f %file% | head -1)
+SIZE=150x150
 
 extract_cover() {
 
-ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
+    ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
 
 	STATUS=$?
 
@@ -41,23 +40,16 @@ ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
 }
 
 while true; do
-    MPD="$(ps aux | grep [m]pd | wc -l)"
-    if [ "$MPD" -ge 1 ]; then
-        mpc current --wait &>/dev/null
-        while true; do
-            extract_cover
-            dunstify -r 3595 -a tinynotify -i $COVER \
-            'Now Playing:' "$(mpc current -f "[%artist%\n%title%]" 2> /dev/null)"
-            rm /tmp/cover.png
-            
-            while true; do
-                mpc idle player &>/dev/null && (mpc status | grep "\[playing\]" &>/dev/null) && break
-            done
-            
-        done
-    elif [ "$MPD" -eq 0 ]; then
-        sleep 5
-    fi
-done
+    mpc current --wait &>/dev/null
+    while true; do
+        extract_cover
+        dunstify -r 3595 -a tinynotify -i $COVER \
+        'Now Playing:' "$(mpc current -f "[%artist%\n%title%]" 2> /dev/null)"
+        rm /tmp/cover.png
 
-st -c 'ncmpcpp' -e ncmpcpp
+        while true; do
+            mpc idle player &>/dev/null && (mpc status | grep "\[playing\]" &>/dev/null) && break
+        done
+        
+    done
+done
