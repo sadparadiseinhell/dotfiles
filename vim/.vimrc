@@ -43,9 +43,9 @@ set nowritebackup
 
 " Lightline
 
-set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'jellybeans',
+"set laststatus=2
+"let g:lightline = {
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
