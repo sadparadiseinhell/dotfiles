@@ -10,7 +10,19 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Roboto:style=Bold:size=10" };
 static const char dmenufont[]       = "Roboto:style=Bold:size=10";
-#include "/home/ma/.colors/nord-dwm.h"
+static const char norm_fg[]         = "#D8DEE9";
+static const char norm_bg[]         = "#2E3440";
+static const char norm_border[]     = "#434C5E";
+
+static const char sel_fg[]          = "#ECEFF4";
+static const char sel_bg[]          = "#81A1C1";
+static const char sel_border[]      = "#81A1C1";
+
+static const char *colors[][3] = {
+    /*               fg           bg         border                         */
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border  },  // focused win
+};
 
 /* tagging */
 static const char *tags[] = { "", "", "", "", "", "", "" };
