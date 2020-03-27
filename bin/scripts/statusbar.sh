@@ -63,5 +63,5 @@ kblayout () {
 
 while true; do
 	xsetroot -name "$(pulse) $(upd) $(dt)"
-	sleep 1m
+	sleep 60
 done &

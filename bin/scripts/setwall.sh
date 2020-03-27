@@ -1,7 +1,7 @@
 #!/bin/bash
 
 WALLDIR="$HOME/wallpapers"
-CHOSEN=$(ls $WALLDIR | dmenu -p "select wallpaper  " )
+CHOSEN=$(ls $WALLDIR | dmenu -p "select wallpaper " )
 
 if [[ "$CHOSEN" ]]; then
 	feh --bg-fill $WALLDIR/$CHOSEN

@@ -1,17 +1,17 @@
 #!/bin/bash
 
-TIME=$(date "+%H")
+TIME=$(date '+%H')
 
-sleep 5s
+sleep 4
 
 if [ $TIME -lt 05 ]; then
-	echo "good night"
+	notify-send -t 3000 'good night'
 elif [ $TIME -lt 12 ]; then
-	echo "good morning"
+	notify-send -t 3000 'good morning'
 elif [ $TIME -lt 16 ]; then
-	echo "good afternoon"
+	notify-send -t 3000 'good afternoon'
 elif [ $TIME -lt 23 ]; then
-	echo "good evening"
+	notify-send -t 3000 'good evening'
 else
-	echo "good night"
+	notify-send -t 3000 'good night'
 fi

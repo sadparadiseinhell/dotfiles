@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(echo -e "power\nscreenshot\nset wallpaper\nto-do\ntimer\nvideo\ncalculator\nupdates\nscreencast\ntranslator" | dmenu -p "menu  ")
+chosen=$(echo -e 'power\nscreenshot\nset wallpaper\nto-do\ntimer\nvideo\ncalculator\nupdates\nscreencast\ntranslator' | dmenu -p 'menu ')
 
 case $chosen in
 	power)
@@ -16,7 +16,7 @@ case $chosen in
 	video)
 		$HOME/scripts/video.sh ;;
 	calc*)
-		echo | grep 0 | dmenu -p 'enter an example  ' | bc | dmenu -p 'result  ' | xclip -selection c ;;
+		$HOME/scripts/tinycalculator.sh ;;
 	updates)
 		$HOME/scripts/checkupdates.sh ;;
 	screencast)

@@ -1,10 +1,10 @@
 #!/bin/bash
 
-MENU=$(echo -e 'link\nlocal' | dmenu -p 'link/local:  ')
+MENU=$(echo -e 'link\nlocal' | dmenu -p 'link/local: ')
 
 local_storage () {
 	DIR="$HOME/movies/"
-	CHOSEN="$(ls $DIR | dmenu -l 5 -p 'select video  ')"
+	CHOSEN="$(ls $DIR | dmenu -l 5 -p 'select video ')"
 	if [[ "$CHOSEN" = *.mkv ]]; then
 		mpv "$DIR$CHOSEN"
 	elif [[ -d "$DIR$CHOSEN" ]]; then
@@ -16,9 +16,13 @@ local_storage () {
 }
 
 by_link () {
-	choice=$( (echo 1 | grep 0) | dmenu -p 'paste a link to a video  ')
+	choice=$( (echo 1 | grep 0) | dmenu -p 'paste a link to a video ')
 	if [[ -n $choice ]]; then
 		mpv --ytdl-format="[height=720]" $choice
+		STATUS=$?
+		if [[ $STATUS -ne 0 ]]; then
+			notify-send -u critical -t 2000 'video cannot be opened'
+		fi
 	else
 		exit 0
 	fi

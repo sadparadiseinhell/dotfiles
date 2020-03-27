@@ -4,7 +4,7 @@ MENU=$(echo -e 'english to russian\nrussian to english' | dmenu -p 'translator '
 if [[ -z $MENU ]]; then
 	exit 0
 else
-	INPUT=$(echo '' | grep 0 | dmenu -p 'input ')
+	INPUT=$(echo | grep 0 | dmenu -p 'input ')
 	if [[ -z $INPUT ]]; then
 		exit 0
 	else

@@ -1,9 +1,8 @@
 #!/bin/bash
 
-LIST="$HOME/.todo/todo.txt"
+LIST="$HOME/.todo.txt"
 
-if [[ -s "$LIST" ]]; then
-	notify-send "$(echo -e "to-do:\n$(cat $LIST)")" -u critical -t 3500
-else
-	exit 0
+if [[ -s $LIST ]]; then
+	sleep 8
+	notify-send 'to-do:' "$(cat $LIST)" -u critical -t 3500
 fi

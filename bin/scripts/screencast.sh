@@ -1,6 +1,6 @@
 #!/bin/bash
 
-MENU=$(echo -e 'start\nstop' | dmenu -p 'screencast  ')
+MENU=$(echo -e 'start\nstop' | dmenu -p 'screencast ')
 NAME="$(date +%G_%m_%d_%T)_screencast.mp4"
 
 case $MENU in
