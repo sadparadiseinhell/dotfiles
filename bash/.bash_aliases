@@ -17,7 +17,7 @@ alias sp="sudo pacman"
 
 # Xresources
 #alias xconf="vim $HOME/.Xresources"
-#alias xreload="xrdb -load $HOME/.Xresources"
+alias xreload="xrdb -load $HOME/.Xresources"
 
 # GitHub
 alias push="cd $HOME/dotfiles/; git add -A; git commit -m 'minor changes'; git push; home"
