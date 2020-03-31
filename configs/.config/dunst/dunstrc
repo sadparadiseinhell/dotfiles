@@ -46,7 +46,8 @@
     idle_threshold = 90
 
     # Font and typography settings
-    font = Roboto Bold 10
+    #font = Roboto Bold 10
+    font = Noto Sans Bold 10
     alignment = left
     word_wrap = yes
 
