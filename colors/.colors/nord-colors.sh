@@ -1,3 +1,8 @@
+#2E3440 #3B4252 #434C5E #4C566A          # Polar Night
+#D8DEE9 #E5E9F0 #ECEFF4                  # Snow Storm
+#8FBCBB #88C0D0 #81A1C1 #5E81AC          # Frost
+#BF616A #D08770 #EBCB8B #A3BE8C #B48EAD  # Aurora
+
 # Special
 background='#3b4252'
 foreground='#e5e9f0'
