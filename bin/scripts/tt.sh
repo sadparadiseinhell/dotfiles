@@ -5,8 +5,7 @@ END='/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
 TIME=$(echo -e '5 minutes\n30 minutes\n1 hour\nstop timer' | dmenu -p 'set the time ')
 
 if [[ -z $TIME ]]; then
-	notify-send -u low 'try another time' -t 2000
-	exit
+	exit 0
 elif [[ $TIME = '5 minutes' ]]; then
 	SEC=300
 elif [[ $TIME = '30 minutes' ]]; then

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 HOST=$(hostname)
 OS=$(hostnamectl | awk '/Operating System/ {print $3}')
@@ -15,14 +15,13 @@ wm () {
         ID="$(xprop -root -notype _NET_SUPPORTING_WM_CHECK)"
         WM="$(xprop -id ${ID##* } -notype -len 100 -f _NET_WM_NAME 8t)"
         WM=${WM/*WM_NAME = } WM=${WM/\"} WM=${WM/\"*} WM=${WM,,}
-        echo "${WM:-$FB}"
+        echo "${WM}"
     else
         echo "${WM:-tty$XDG_VTNR}"
     fi
 }
 
-
-# COLORS
+# Colors
 
 if [ -x "$(command -v tput)" ]; then
 	bold="$(tput bold)"
@@ -38,14 +37,12 @@ if [ -x "$(command -v tput)" ]; then
 	reset="$(tput sgr0)"
 fi
 
-lc="${reset}${bold}${green}"        # labels
-nc="${reset}${bold}${blue}"         # user and hostname
-r="${reset}"                        # reset
-b="${bold}"                         # bold
+lc="${reset}${bold}${green}" # labels
+nc="${reset}${bold}${blue}"  # user and hostname
+r="${reset}"                 # reset
+b="${bold}"                  # bold
 
-# OUTPUT
-
-clear
+# Output
 
 cat <<EOF
 ${nc}$USER${r}@${nc}${HOST}${r}

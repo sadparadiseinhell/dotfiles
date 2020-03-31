@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nmaim \nttf-hack \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nvim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nterminus-font \nfortune-mod \ntranslate-shell" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nterminus-font \nfortune-mod \nnoto-fonts \maim" | sort)
 
 PA=$(echo -e "skb \nsublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
 
@@ -69,6 +69,11 @@ aurpackages () {
 	fi
 }
 
+vim_plug () {
+	curl -fLo ~/.local/share/nvim/site/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+}
+
 lock_on_suspend () {
 	sudo echo -e "[Unit]
 Description=Lock X session using slock for user %i
@@ -92,12 +97,11 @@ dotfiles () {
 	echo '| DOTFILES |'
 	echo '------------'
 
-	read -p "$(echo -e "\nClone dotfiles and startpage from GitHub repository? (y/N): ")" choice
+	read -p "$(echo -e "\nClone startpage from GitHub repository? (y/N): ")" choice
 	if [[ "$choice" = [Yy] ]]; then
 		cd $HOME/
-	    git clone https://github.com/sadparadiseinhell/dotfiles.git
-	    git clone https://github.com/sadparadiseinhell/sadparadiseinhell.github.io.git
-	    echo -e "\nREPOSITORIES SUCCESSFULLY CLONED\n"
+		git clone https://github.com/sadparadiseinhell/sadparadiseinhell.github.io.git
+		echo -e "\nREPOSITORIES SUCCESSFULLY CLONED\n"
 	else
 		echo -e "\n~\n"
 	fi
@@ -109,7 +113,7 @@ dotfiles () {
 		if [[ "$opt" = "All" ]]; then
 			rm $HOME/.bashrc
 			cd $HOME/dotfiles/
-			stow bash/ bin/ colors/ configs/ images/ suckless/ tmux/ vim/ x/
+			stow bash/ bin/ colors/ configs/ images/ suckless/ tmux/ x/
 
 			cd $HOME/build/dwm/
 			make &> /dev/null
@@ -129,6 +133,8 @@ dotfiles () {
 			lock_on_suspend
 
 			cd $HOME
+
+			vim_plug
 
 			echo -e "\nDONE\n"
 
@@ -184,10 +190,11 @@ dotfiles () {
 				echo -e "\n~\n"
 			fi
 
-			read -p "$(echo -e "Make symlinks for vim dotfiles? (y/N): ")" choice
+			read -p "$(echo -e "Make symlinks for config dotfiles? (y/N): ")" choice
 			if [[ "$choice" = [Yy] ]]; then
 				cd $HOME/dotfiles/
-				stow vim/
+				stow configs/
+				vim_plug
 				echo -e "\nDONE\n"
 			else
 				echo -e "\n~\n"
