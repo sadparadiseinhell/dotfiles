@@ -15,7 +15,6 @@
 * image viewer:
   - [feh](https://feh.finalrewind.org/)
   - [sxiv](https://github.com/muennich/sxiv)
-* keyboard layout indicator: [skb](https://plhk.ru/)
 * network manager: [network manager](https://wiki.gnome.org/Projects/NetworkManager/)
 * notification daemon: [dunst](https://dunst-project.org/)
 * screen locker: [slock](https://tools.suckless.org/slock/) with patches
@@ -23,6 +22,6 @@
 * terminal: [st](https://st.suckless.org/)
 * text editor:
   - [sublime text 3](https://www.sublimetext.com/3)
-  - [vim](https://www.vim.org/)
+  - [neovim](https://neovim.io/)
     - plugin manager: [plug](https://github.com/junegunn/vim-plug)
 * wm: [dwm](https://dwm.suckless.org/) with patches
