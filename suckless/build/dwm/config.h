@@ -11,16 +11,15 @@ static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Roboto:style=Bold:size=10" };
 static const char dmenufont[]       = "Roboto:style=Bold:size=10";
 static const char norm_fg[]         = "#D8DEE9";
-static const char norm_bg[]         = "#2E3440";
+static const char norm_bg[]         = "#3B4252";
 static const char norm_border[]     = "#434C5E";
-
 static const char sel_fg[]          = "#ECEFF4";
-static const char sel_bg[]          = "#81A1C1";
-static const char sel_border[]      = "#81A1C1";
+static const char sel_bg[]          = "#5E81AC";
+static const char sel_border[]      = "#5E81AC";
 
 static const char *colors[][3] = {
     /*               fg           bg         border                         */
-    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border }, // unfocused wins
+    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border },  // unfocused wins
     [SchemeSel]  = { sel_fg,      sel_bg,    sel_border  },  // focused win
 };
 
@@ -38,7 +37,7 @@ static const Rule rules[] = {
 	{ "updates",           NULL,      NULL,   0,          0,            1,           1,           -1 },
 	{ "Chromium",          NULL,      NULL,   1 << 0,     0,            0,           0,           -1 },
 	{ "Subl3",             NULL,      NULL,   1 << 1,     1,            0,           0,           -1 },
-	{ "vim",               NULL,      NULL,   1 << 1,     1,            0,           0,           -1 },
+	{ "nvim",              NULL,      NULL,   1 << 1,     1,            0,           0,           -1 },
 	{ "ncmpcpp",           NULL,      NULL,   1 << 2,     1,            0,           0,           -1 },
 	{ "mpv",               NULL,      NULL,   1 << 2,     1,            0,           0,           -1 },
 	{ "discord",           NULL,      NULL,   1 << 3,     0,            0,           0,           -1 },
@@ -83,7 +82,7 @@ static const char scratchpadname[] = { "scratchpad" };
 static const char *scratchpadcmd[] = { "st", "-t", scratchpadname, "-g", "75x25", NULL };
 static const char *browser[]       = { "chromium", NULL };
 static const char *editor[]        = { "subl3", NULL };
-static const char *vim[]           = { "st", "-c", "'vim'", "-e", "vim", NULL };
+static const char *nvim[]          = { "st", "-c", "'nvim'", "-e", "nvim", NULL };
 static const char *fm[]            = { "pcmanfm", NULL };
 static const char *ncmpcpp[]       = { "st", "-c", "'ncmpcpp'", "-e", "ncmpcpp", NULL };
 static const char *menu[]          = { "/bin/sh", "-c", "$HOME/scripts/global-dmenu.sh", NULL };
@@ -104,7 +103,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_grave,  togglescratch,  {.v = scratchpadcmd } },
 	{ MODKEY|ShiftMask,             XK_b,      spawn,          {.v = browser } },
 	{ MODKEY|ShiftMask,             XK_s,      spawn,          {.v = editor } },
-	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = vim } },
+	{ MODKEY|ShiftMask,             XK_v,      spawn,          {.v = nvim } },
 	{ MODKEY|ShiftMask,             XK_f,      spawn,          {.v = fm } },
 	{ MODKEY|ShiftMask,             XK_n,      spawn,          {.v = ncmpcpp } },
 	{ MODKEY|ShiftMask,             XK_p,      spawn,          {.v = menu } },

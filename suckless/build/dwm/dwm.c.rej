@@ -1,18 +1,60 @@
---- dwm.c	2019-02-02 14:55:28.000000000 +0200
-+++ dwm.c	2019-11-18 19:37:18.792187705 +0200
-@@ -92,6 +92,7 @@ struct Client {
- 	int basew, baseh, incw, inch, maxw, maxh, minw, minh;
- 	int bw, oldbw;
- 	unsigned int tags;
-+	unsigned int switchtotag;
- 	int isfixed, isfloating, isurgent, neverfocus, oldstate, isfullscreen;
- 	Client *next;
- 	Client *snext;
-@@ -137,6 +138,7 @@ typedef struct {
- 	const char *instance;
- 	const char *title;
- 	unsigned int tags;
-+	unsigned int switchtotag;
- 	int isfloating;
- 	int monitor;
- } Rule;
+--- dwm.c
++++ dwm.c
+@@ -57,30 +57,12 @@
+ #define TAGMASK                 ((1 << LENGTH(tags)) - 1)
+ #define TEXTW(X)                (drw_fontset_getwidth(drw, (X)) + lrpad)
+ 
+-#define SYSTEM_TRAY_REQUEST_DOCK    0
+-
+-/* XEMBED messages */
+-#define XEMBED_EMBEDDED_NOTIFY      0
+-#define XEMBED_WINDOW_ACTIVATE      1
+-#define XEMBED_FOCUS_IN             4
+-#define XEMBED_MODALITY_ON         10
+-
+-#define XEMBED_MAPPED              (1 << 0)
+-#define XEMBED_WINDOW_ACTIVATE      1
+-#define XEMBED_WINDOW_DEACTIVATE    2
+-
+-#define VERSION_MAJOR               0
+-#define VERSION_MINOR               0
+-#define XEMBED_EMBEDDED_VERSION (VERSION_MAJOR << 16) | VERSION_MINOR
+-
+ /* enums */
+ enum { CurNormal, CurResize, CurMove, CurLast }; /* cursor */
+ enum { SchemeNorm, SchemeSel }; /* color schemes */
+ enum { NetSupported, NetWMName, NetWMState, NetWMCheck,
+-       NetSystemTray, NetSystemTrayOP, NetSystemTrayOrientation, NetSystemTrayOrientationHorz,
+        NetWMFullscreen, NetActiveWindow, NetWMWindowType,
+        NetWMWindowTypeDialog, NetClientList, NetLast }; /* EWMH atoms */
+-enum { Manager, Xembed, XembedInfo, XLast }; /* Xembed atoms */
+ enum { WMProtocols, WMDelete, WMState, WMTakeFocus, WMLast }; /* default atoms */
+ enum { ClkTagBar, ClkLtSymbol, ClkStatusText, ClkWinTitle,
+        ClkClientWin, ClkRootWin, ClkLast }; /* clicks */
+@@ -713,23 +619,19 @@ dirtomon(int dir)
+ void
+ drawbar(Monitor *m)
+ {
+-	int x, w, sw = 0, stw = 0;
++	int x, w, sw = 0;
+ 	int boxs = drw->fonts->h / 9;
+ 	int boxw = drw->fonts->h / 6 + 2;
+ 	unsigned int i, occ = 0, urg = 0;
+ 	Client *c;
+ 
+-	if(showsystray && m == systraytomon(m))
+-		stw = getsystraywidth();
+-
+ 	/* draw status first so it can be overdrawn by tags later */
+ 	if (m == selmon) { /* status is only drawn on selected monitor */
+ 		drw_setscheme(drw, scheme[SchemeNorm]);
+-		sw = TEXTW(stext) - lrpad / 2 + 2; /* 2px right padding */
+-		drw_text(drw, m->ww - sw - stw, 0, sw, bh, lrpad / 2 - 2, stext, 0);
++		sw = TEXTW(stext) - lrpad + 2; /* 2px right padding */
++		drw_text(drw, m->ww - sw, 0, sw, bh, 0, stext, 0);
+ 	}
+ 
+-	resizebarwin(m);
+ 	for (c = m->clients; c; c = c->next) {
+ 		occ |= c->tags;
+ 		if (c->isurgent)
