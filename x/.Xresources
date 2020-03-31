@@ -18,41 +18,40 @@
 
 ! Color theme
 ! special
-*.foreground:   #ffffff
-*.background:   #181B1E
-*.cursorColor:  #c7ccd1
+*.foreground:   #d8dee9
+*.background:   [90]#2e3440
 
 ! black
-*.color0:       #1c2023
-*.color8:       #747c84
+*.color0:       #3b4252
+*.color8:       #4c566a
 
 ! red
-*.color1:       #c7ae95
-*.color9:       #c7ae95
+*.color1:       #bf616a
+*.color9:       #bf616a
 
 ! green
-*.color2:       #95c7ae
-*.color10:      #95c7ae
+*.color2:       #a3be8c
+*.color10:      #a3be8c
 
 ! yellow
-*.color3:       #aec795
-*.color11:      #aec795
+*.color3:       #ebcb8b
+*.color11:      #ebcb8b
 
 ! blue
-*.color4:       #ae95c7
-*.color12:      #ae95c7
+*.color4:       #81a1c1
+*.color12:      #81a1c1
 
 ! magenta
-*.color5:       #c795ae
-*.color13:      #c795ae
+*.color5:       #b48ead
+*.color13:      #b48ead
 
 ! cyan
-*.color6:       #95aec7
-*.color14:      #95aec7
+*.color6:       #88c0d0
+*.color14:      #8fbcbb
 
 ! white
-*.color7:       #c7ccd1
-*.color15:      #f3f4f5
+*.color7:       #e5e9f0
+*.color15:      #eceff4
 
 
 ! Window geometry 
@@ -126,3 +125,5 @@ URxvt*saveLines:        2000
 
 URxvt.resize-font.smaller: C-Down
 URxvt.resize-font.bigger: C-Up
+
+URxvt.depth: 32
