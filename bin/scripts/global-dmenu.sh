@@ -1,6 +1,6 @@
 #!/bin/bash
 
-chosen=$(echo -e 'power\nscreenshot\nset wallpaper\nto-do\ntimer\nvideo\ncalculator\nupdates\nscreencast' | dmenu -p 'menu ')
+chosen=$(echo -e 'power\nscreenshot\ntheme\nset wallpaper\nto-do\ntimer\nvideo\ncalculator\nupdates\nscreencast' | dmenu -p 'menu ')
 
 case $chosen in
 	power)
@@ -21,4 +21,6 @@ case $chosen in
 		$HOME/scripts/checkupdates.sh ;;
 	screencast)
 		$HOME/scripts/screencast.sh ;;
+	theme)
+		$HOME/scripts/settheme.sh ;;
 esac

@@ -1,6 +1,9 @@
 #!/bin/sh
 
 picom --config $HOME/.config/picom.conf &                                  # composite manager
+#picom --config $HOME/.config/picom.conf \
+#--blur-method 'dual_kawase' --blur-strength 8 \
+#--experimental-backends &
 $HOME/scripts/statusbar.sh &                                               # bar
 $HOME/scripts/wallpaper.sh &                                               # set wallpaper
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &      # keyboard layout
@@ -16,6 +19,7 @@ else                                                                       # MPD
 	echo ':('  > /dev/null
 fi &                                                                       #
 
+killall dwm &                                                              # reload dwm
 paplay /usr/share/sounds/freedesktop/stereo/service-login.oga &            # startup sound
 $HOME/scripts/greeting.sh &                                                # greeting script
 $HOME/scripts/todonotify.sh &                                              # To-Do notification
