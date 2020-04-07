@@ -26,8 +26,8 @@ alias gc="git commit -m"
 
 # Media
 alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m4a]" $1'
-#alias start-media-server="minidlnad"
-#alias stop-media-server="pkill minidlnad"
+alias start-minidlna="minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid"
+alias stop-minidlna="killall minidlnad"
 
 # Colors
 alias setwallpaper="$HOME/scripts/setwall.sh"
