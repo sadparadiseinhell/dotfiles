@@ -1,6 +1,6 @@
 ### screenshot:
 
-![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dwmscrotnord.png)
+![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dracula_dark_bg_scrot.png)
 
 ### list of applications:
 
