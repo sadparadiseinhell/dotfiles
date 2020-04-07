@@ -117,24 +117,19 @@
 
 # Set the background and foreground (text) color for all notifications
 [urgency_low]
-    frame_color = "#ebcb8b"
-    background = "#2E3440"
-    foreground = "#e5e9f0"
+    frame_color = "#F4F99D"
+    background = "#282A36"
+    foreground = "#F8F8F2"
     timeout = 4
 
 [urgency_normal]
-    frame_color = "#434C5E"
-    background = "#2E3440"
-    foreground = "#e5e9f0"
+    frame_color = "#CAA9FA"
+    background = "#282A36"
+    foreground = "#F8F8F2"
     timeout = 5
 
 [urgency_critical]
-    frame_color = "#bf616a"
-    background = "#2E3440"
-    foreground = "#e5e9f0"
+    frame_color = "#FF6E67"
+    background = "#282A36"
+    foreground = "#F8F8F2"
     timeout = 8
-
-[mpd_notify]
-	appname = tinynotify
-	format = "<b>%s\n%b</b>"
-	timeout = 3

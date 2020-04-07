@@ -7,9 +7,10 @@ call plug#begin('~/.vim/plugged')
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'jiangmiao/auto-pairs'
 	
-	" Colorsschemes
+	" Colorschemes
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
+	Plug 'dracula/vim', { 'as': 'dracula' }
 
 call plug#end()
 
@@ -45,7 +46,7 @@ set nowritebackup
 
 "set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'nord',
+      \ 'colorscheme': 'dracula',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -54,10 +55,10 @@ let g:lightline = {
       \ }
 
 " Colorscheme
-colorscheme nord
-"let g:gruvbox_contrast_dark = 'hard'
-"set background=dark
-"highlight Normal ctermfg=grey ctermbg=black
+colorscheme dracula
+let g:dracula_contrast_dark = 'hard'
+set background=dark
+highlight Normal ctermfg=white ctermbg=black
 
 " Colorizer
 :let g:colorizer_auto_color = 1
