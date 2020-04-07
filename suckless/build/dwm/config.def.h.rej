@@ -1,15 +1,10 @@
---- config.def.h	2019-02-02 14:55:28.000000000 +0200
-+++ config.def.h	2019-11-18 19:36:22.515566509 +0200
-@@ -26,9 +26,9 @@ static const Rule rules[] = {
- 	 *	WM_CLASS(STRING) = instance, class
- 	 *	WM_NAME(STRING) = title
- 	 */
--	/* class      instance    title       tags mask     isfloating   monitor */
--	{ "Gimp",     NULL,       NULL,       0,            1,           -1 },
--	{ "Firefox",  NULL,       NULL,       1 << 8,       0,           -1 },
-+	/* class      instance    title       tags mask     switchtotag    isfloating   monitor */
-+	{ "Gimp",     NULL,       NULL,       0,            0,             1,           -1 },
-+	{ "Firefox",  NULL,       NULL,       1 << 8,       0,             0,           -1 },
- };
- 
- /* layout(s) */
+--- config.def.h
++++ config.def.h
+@@ -85,6 +86,7 @@ static Key keys[] = {
+ 	{ MODKEY,                       XK_period, focusmon,       {.i = +1 } },
+ 	{ MODKEY|ShiftMask,             XK_comma,  tagmon,         {.i = -1 } },
+ 	{ MODKEY|ShiftMask,             XK_period, tagmon,         {.i = +1 } },
++	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
+ 	TAGKEYS(                        XK_1,                      0)
+ 	TAGKEYS(                        XK_2,                      1)
+ 	TAGKEYS(                        XK_3,                      2)

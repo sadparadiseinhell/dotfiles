@@ -10,17 +10,16 @@ static const int showbar            = 1;        /* 0 means no bar */
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Roboto:style=Bold:size=10" };
 static const char dmenufont[]       = "Roboto:style=Bold:size=10";
-static const char norm_fg[]         = "#D8DEE9";
-static const char norm_bg[]         = "#3B4252";
-static const char norm_border[]     = "#434C5E";
-static const char sel_fg[]          = "#ECEFF4";
-static const char sel_bg[]          = "#5E81AC";
-static const char sel_border[]      = "#5E81AC";
-
-static const char *colors[][3] = {
-    /*               fg           bg         border                         */
-    [SchemeNorm] = { norm_fg,     norm_bg,   norm_border },  // unfocused wins
-    [SchemeSel]  = { sel_fg,      sel_bg,    sel_border  },  // focused win
+static char normfgcolor[]           = "#D8DEE9";
+static char normbgcolor[]           = "#2E3440";
+static char normbordercolor[]       = "#434C5E";
+static char selfgcolor[]            = "#ECEFF4";
+static char selbgcolor[]            = "#81A1C1";
+static char selbordercolor[]        = "#81A1C1";
+static char *colors[][3]            = {
+    /*               fg           bg           border          */
+	[SchemeNorm] = { normfgcolor, normbgcolor, normbordercolor },  // unfocused wins
+	[SchemeSel]  = { selfgcolor,  selbgcolor,  selbordercolor  },  // focused win
 };
 
 /* tagging */
@@ -48,9 +47,9 @@ static const Rule rules[] = {
 };
 
 /* layout(s) */
-static const float mfact     = 0.50; /* factor of master area size [0.05..0.95] */
-static const int nmaster     = 1;    /* number of clients in master area */
-static const int resizehints = 0;    /* 1 means respect size hints in tiled resizals */
+static const float mfact      = 0.50; /* factor of master area size [0.05..0.95] */
+static const int nmaster      = 1;    /* number of clients in master area */
+static const int resizehints  = 0;    /* 1 means respect size hints in tiled resizals */
 
 #include "gaplessgrid.c"
 #include "bstack.c"
@@ -142,6 +141,7 @@ static Key keys[] = {
 	{ MODKEY,                       XK_minus,  setgaps,        {.i = -5 } },
 	{ MODKEY,                       XK_equal,  setgaps,        {.i = +5 } },
 	{ MODKEY|ShiftMask,             XK_equal,  setgaps,        {.i = 0  } },
+	{ MODKEY,                       XK_F5,     xrdb,           {.v = NULL } },
 	TAGKEYS(                        XK_1,                      0)
 	TAGKEYS(                        XK_2,                      1)
 	TAGKEYS(                        XK_3,                      2)
