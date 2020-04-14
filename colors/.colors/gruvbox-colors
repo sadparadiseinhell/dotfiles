@@ -54,7 +54,6 @@ dwm.selfgcolor:      #ebdbb2
 
 
 ! dmenu colors
-dmenu.font:          Roboto:style=Bold:size=10
 dmenu.background:    #282828
 dmenu.foreground:    #a89984
 dmenu.selbackground: #83a598
