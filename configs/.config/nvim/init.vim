@@ -11,6 +11,7 @@ call plug#begin('~/.vim/plugged')
 	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
 	Plug 'dracula/vim', { 'as': 'dracula' }
+	Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
@@ -46,7 +47,7 @@ set nowritebackup
 
 "set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'dracula',
+      \ 'colorscheme': 'gruvbox',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -55,8 +56,8 @@ let g:lightline = {
       \ }
 
 " Colorscheme
-colorscheme dracula
-let g:dracula_contrast_dark = 'hard'
+colorscheme gruvbox
+let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 highlight Normal ctermfg=white ctermbg=black
 

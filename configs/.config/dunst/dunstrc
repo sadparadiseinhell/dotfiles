@@ -117,19 +117,19 @@
 
 # Set the background and foreground (text) color for all notifications
 [urgency_low]
-    frame_color = "#F4F99D"
-    background = "#282A36"
-    foreground = "#F8F8F2"
+    frame_color = "#444267"
+    background = "#292d3e"
+    foreground = "#959dcb"
     timeout = 4
 
 [urgency_normal]
-    frame_color = "#CAA9FA"
-    background = "#282A36"
-    foreground = "#F8F8F2"
+    frame_color = "#676e95"
+    background = "#292d3e"
+    foreground = "#959dcb"
     timeout = 5
 
 [urgency_critical]
-    frame_color = "#FF6E67"
-    background = "#282A36"
-    foreground = "#F8F8F2"
+    frame_color = "#f07178"
+    background = "#292d3e"
+    foreground = "#959dcb"
     timeout = 8
