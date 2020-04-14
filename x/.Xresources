@@ -1,11 +1,10 @@
-!
+
 !██╗  ██╗██████╗ ███████╗███████╗ ██████╗ ██╗   ██╗██████╗  ██████╗███████╗███████╗
 !╚██╗██╔╝██╔══██╗██╔════╝██╔════╝██╔═══██╗██║   ██║██╔══██╗██╔════╝██╔════╝██╔════╝
 ! ╚███╔╝ ██████╔╝█████╗  ███████╗██║   ██║██║   ██║██████╔╝██║     █████╗  ███████╗
 ! ██╔██╗ ██╔══██╗██╔══╝  ╚════██║██║   ██║██║   ██║██╔══██╗██║     ██╔══╝  ╚════██║
 !██╔╝ ██╗██║  ██║███████╗███████║╚██████╔╝╚██████╔╝██║  ██║╚██████╗███████╗███████║
 !╚═╝  ╚═╝╚═╝  ╚═╝╚══════╝╚══════╝ ╚═════╝  ╚═════╝ ╚═╝  ╚═╝ ╚═════╝╚══════╝╚══════╝
-!
 
 
 ! Reread the file and apply the settings:
@@ -13,11 +12,10 @@
 
 
 ! Theme
-#include "/home/ma/.colors/dracula-colors"
+#include "/home/ma/.colors/palenight-colors"
 
 
 ! dwm colors
-
 !dwm.normbordercolor: #434C5E
 !dwm.normbgcolor:     #2E3440
 !dwm.normfgcolor:     #D8DEE9
@@ -27,8 +25,6 @@
 
 
 ! dmenu colors
-
-!dmenu.font:          Roboto:style=Bold:size=10
 !dmenu.background:    #2E3440
 !dmenu.foreground:    #D8DEE9
 !dmenu.selbackground: #5E81AC
@@ -42,9 +38,7 @@
 !slock.caps:          #EBCB8B
 
 
-! ---- Terminal settings ---- !
-
-! Color theme
+! Color scheme
 ! special
 !*.foreground:        #d8dee9
 !*.background:        #2E3440
@@ -83,68 +77,6 @@
 !*.color15:           #eceff4
 
 
-! Window geometry 
-
-URxvt.geometry:         60x22
-URxvt.loginShell:       false
-URxvt.meta:             ignore
-URxvt.utmpInhibit:      true
-URxvt.internalBorder:   20
-
-
 ! Font
-
-!*.font:                 DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
-!URxvt*font:xft:         xos4 Terminus:size=8
-!URxvt.letterSpace:     -1
-
-
-! Scrollback buffer
-
-URxvt.secondaryWheel:   1
-
-
-! Cursor
-
-URxvt.cursorUnderline:  1
-URxvt.cursorBlink:      true
-URxvt.cursorColor:      white
-
-
-! Man-pages color
-
-URxvt.colorMode:         on
-URxvt.boldColors:        on
-URxvt.dynamicColors:     on
-URxvt.colorULMode:       on
-URxvt.underLine:         off
-URxvt.colorBDMode:       on
-URxvt.colorBD:           cyan
-
-
-! Scrollbar
-
-URxvt*scrollBar:        false
-URxvt*scrollBar_right:  true
-URxvt*scrollstyle:      rxvt
-
-
-! Clickable URLs
-
-URxvt.perl-ext-common: 	default,matcher,resize-font
-URxvt.url-launcher: 	/usr/bin/chromium
-URxvt.matcher.button: 	1
-URxvt.colorUL:          cyan
-URxvt.underlineURLs:    true
-URxvt.underlineColor:   cyan
-
-
-! Save number lines in the scrollback buffer
-
-URxvt*saveLines:        2000
-
-
-! Changing font size on the fly
-
-*.resize-font.smaller:  C-Down
-*.resize-font.bigger:   C-Up
+st.font:                DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
+dmenu.font:             Roboto:style=Bold:size=10
