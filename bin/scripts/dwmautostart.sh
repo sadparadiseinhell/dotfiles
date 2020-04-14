@@ -5,6 +5,7 @@ picom --config $HOME/.config/picom.conf &                                  # com
 #--blur-method 'dual_kawase' --blur-strength 8 \
 #--experimental-backends &
 $HOME/scripts/statusbar.sh &                                               # bar
+$HOME/scripts/theme.sh -R &
 $HOME/scripts/wallpaper.sh &                                               # set wallpaper
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &      # keyboard layout
 dunst -config $HOME/.config/dunst/dunstrc &                                # notification daemon
@@ -19,9 +20,8 @@ else                                                                       # MPD
 	echo ':('  > /dev/null
 fi &                                                                       #
 
-killall dwm &                                                              # reload dwm
 paplay /usr/share/sounds/freedesktop/stereo/service-login.oga &            # startup sound
-$HOME/scripts/greeting.sh &                                                # greeting script
-$HOME/scripts/todonotify.sh &                                              # To-Do notification
-$HOME/scripts/updates.sh &                                                 # update notification script
-$HOME/scripts/tinynotify.sh &                                              # MPD notification script
+sleep 4; $HOME/scripts/greeting.sh &                                       # greeting
+sleep 8; $HOME/scripts/todonotify.sh &                                     # To-Do notification
+$HOME/scripts/updates.sh &                                                 # update notification
+$HOME/scripts/tinympdnotify.sh &                                           # MPD notification

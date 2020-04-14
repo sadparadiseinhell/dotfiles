@@ -8,10 +8,11 @@ show_updates () {
 		notify-send "$(echo -e 'no updates available\npls try again later')" -t 2000
 		exit 0
 	else
-		echo -e "$(checkupdates)" | dmenu -l $HEIGHT
+		echo "$(checkupdates)" | dmenu -l $HEIGHT
 	fi
-
+	
 	SECONDMENU=$(echo -e 'no\nyes' | dmenu -p 'update? ')
+	
 	if [[ $SECONDMENU = 'yes' ]]; then
 		st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm
 		if [[ $? -eq 0 ]]; then

@@ -12,7 +12,7 @@ case $chosen in
 	to-do)
 		$HOME/scripts/todo.sh ;;
 	timer)
-		$HOME/scripts/tt.sh ;;
+		$HOME/scripts/tinytimer.sh ;;
 	video)
 		$HOME/scripts/video.sh ;;
 	calc*)
@@ -22,5 +22,5 @@ case $chosen in
 	screencast)
 		$HOME/scripts/screencast.sh ;;
 	theme)
-		$HOME/scripts/settheme.sh ;;
+		$HOME/scripts/theme.sh ;;
 esac

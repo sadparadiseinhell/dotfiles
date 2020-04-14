@@ -21,8 +21,6 @@ wm () {
     fi
 }
 
-# Colors
-
 if [ -x "$(command -v tput)" ]; then
 	bold="$(tput bold)"
 	black="$(tput setaf 0)"
@@ -37,23 +35,33 @@ if [ -x "$(command -v tput)" ]; then
 	reset="$(tput sgr0)"
 fi
 
-lc="${reset}${bold}${green}" # labels
-nc="${reset}${bold}${blue}"  # user and hostname
-r="${reset}"                 # reset
-b="${bold}"                  # bold
+lc="${reset}${bold}${blue}"
+nc="${reset}${bold}${red}"
+r="${reset}"
+b="${bold}"
+p="${bold}${blue}"
+pb="${bold}${yellow}"
 
-# Output
-
+output () {
+#${red}▀▀${green}▀▀${yellow}▀▀${blue}▀▀${magenta}▀▀${cyan}▀▀${white}▀▀${r}
 cat <<EOF
-${nc}$USER${r}@${nc}${HOST}${r}
 
-${lc}os:     ${r}$OS${r}
-${lc}up:     ${r}$UPTIME${r}
-${lc}pkgs:   ${r}$PACKAGES${r}
-${lc}sh:     ${r}$SHELL${r}
-${lc}wm:     ${r}$(wm)${r}
-${lc}term:   ${r}$TERMINAL${r}
+${p}    .--.      ${nc}$USER${r}@${nc}${HOST}${r}
+${p}   /${r}o${pb}_${r}o${p} |     ${lc}os:    ${r}$OS${r}
+${p}   |${pb}:_/${p} |     ${lc}up:    ${r}$UPTIME${r}
+${p}  //   \ \    ${lc}pkgs:  ${r}$PACKAGES${r}
+${p} (|     | )   ${lc}sh:    ${r}$SHELL${r}
+${p}/'\_   _/'\   ${lc}wm:    ${r}$(wm)${r}
+${p}\___)${r}=${p}(___/   ${lc}term:  ${r}$TERMINAL${r}
 
 EOF
+}
 
-#${red}▀▀${green}▀▀${yellow}▀▀${blue}▀▀${magenta}▀▀${cyan}▀▀${white}▀▀${r}
+case $1 in
+	-s)
+	output; sleep .5; maim -u scrot.png &
+		;;
+	*)
+	output
+		;;
+esac

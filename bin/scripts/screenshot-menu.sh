@@ -3,21 +3,21 @@
 CHOICE=$(echo -e 'fullscreen\narea\narea to clipboard\nactive window' | dmenu -p 'scrot menu ')
 SOUND='/usr/share/sounds/freedesktop/stereo/camera-shutter.oga'
 SCROTDIR="$HOME/screenshots/"
-NAME="$(date +%G_%m_%d_%T)_scrot.png"
+NAME="$(date +%G_%m_%d_%T).png"
 FILE="$HOME/scrot.png"
 
 case $CHOICE in
 	full*)
 		sleep 1
-		maim $FILE
-		notify-send 'screenshot saved!' -i $FILE -t 2500
+		maim -u $FILE
+		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
 		paplay $SOUND
 		mv $FILE $SCROTDIR/$NAME
 		;;
 	area)
 		sleep .5
 		maim -s $FILE
-		notify-send 'screenshot saved!' -i $FILE -t 2500
+		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
 		paplay $SOUND
 		mv $FILE $SCROTDIR/$NAME
 		;;
@@ -28,8 +28,8 @@ case $CHOICE in
 		;;
 	active*)
 		sleep 1
-		maim -i $(xdotool getactivewindow) $FILE
-		notify-send 'screenshot saved!' -i $FILE -t 2500
+		maim -u -i $(xdotool getactivewindow) $FILE
+		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
 		paplay $SOUND
 		mv $FILE $SCROTDIR/$NAME
 		;;

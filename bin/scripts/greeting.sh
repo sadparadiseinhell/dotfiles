@@ -1,17 +1,18 @@
-#!/bin/bash
+#!/bin/sh
 
 TIME=$(date '+%H')
 
-sleep 4
-
-if [ $TIME -lt 05 ]; then
-	notify-send -t 3000 'good night'
-elif [ $TIME -lt 12 ]; then
-	notify-send -t 3000 'good morning'
-elif [ $TIME -lt 16 ]; then
-	notify-send -t 3000 'good afternoon'
-elif [ $TIME -lt 23 ]; then
-	notify-send -t 3000 'good evening'
-else
-	notify-send -t 3000 'good night'
-fi
+case $TIME in
+	0[6-9]|1[0-2])
+		notify-send -t 3000 'good morning'
+		;;
+	1[3-6])
+		notify-send -t 3000 'good afternoon'
+		;;
+	1[7-9]|2[0-2])
+		notify-send -t 3000 'good evening'
+		;;
+	23|0[0-5])
+		notify-send -t 3000 'good night'
+		;;
+esac

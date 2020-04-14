@@ -9,14 +9,14 @@ case $1 in
 	pamixer -u &> /dev/null
 	pamixer -i 5 &> /dev/null
 	refreshbar
-	;;
+		;;
 	down)
 	pamixer -u &> /dev/null
 	pamixer -d 5 &> /dev/null
 	refreshbar
-	;;
+		;;
 	mute)
 	pamixer -t &> /dev/null
 	refreshbar
-	;;
+		;;
 esac

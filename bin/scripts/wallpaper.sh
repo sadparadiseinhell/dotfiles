@@ -1,6 +1,6 @@
-#!/bin/bash
+#!/bin/sh
 
-source $HOME/.colors/dracula.sh
+source /home/ma/.colors/palenight.sh
 
 FILE='/tmp/color.png'
 
@@ -19,9 +19,6 @@ while true; do
 			;;
 		2[2-3]|0[0-5])
 			convert -size 32x32 xc:$darker $FILE
-			;;
-		*)
-			notify-send -u critical 'wallpaper.sh:' 'error'
 			;;
 	esac
 	feh --bg-tile $FILE

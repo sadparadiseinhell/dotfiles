@@ -1,7 +1,7 @@
-#!/bin/bash
-#
+#!/bin/sh
+
 # Source: https://tools.suckless.org/dmenu/scripts/todo
-#
+
 
 FILE="$HOME/.todo.txt"
 touch "$FILE"
