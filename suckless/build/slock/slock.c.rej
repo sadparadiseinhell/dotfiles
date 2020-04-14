@@ -1,37 +1,37 @@
 --- slock.c
 +++ slock.c
-@@ -15,6 +15,7 @@
+@@ -15,7 +15,6 @@
  #include <unistd.h>
  #include <sys/types.h>
  #include <X11/extensions/Xrandr.h>
-+#include <X11/extensions/Xinerama.h>
+-#include <X11/extensions/Xinerama.h>
  #include <X11/keysym.h>
  #include <X11/Xlib.h>
  #include <X11/Xutil.h>
-@@ -409,12 +506,25 @@ main(int argc, char **argv) {
+@@ -314,25 +217,12 @@ main(int argc, char **argv) {
  	gid_t dgid;
  	const char *hash;
  	Display *dpy;
--	int s, nlocks, nscreens;
-+	int i, s, nlocks, nscreens;
-+	int count_fonts;
-+	char **font_names;
+-	int i, s, nlocks, nscreens;
+-	int count_fonts;
+-	char **font_names;
++	int s, nlocks, nscreens;
  
  	ARGBEGIN {
  	case 'v':
  		fprintf(stderr, "slock-"VERSION"\n");
  		return 0;
-+	case 'm':
-+		message = EARGF(usage());
-+		break;
-+	case 'f':
-+		if (!(dpy = XOpenDisplay(NULL)))
-+			die("slock: cannot open display\n");
-+		font_names = XListFonts(dpy, "*", 10000 /* list 10000 fonts*/, &count_fonts);
-+		for (i=0; i<count_fonts; i++) {
-+			fprintf(stderr, "%s\n", *(font_names+i));
-+		}
-+		return 0;
+-	case 'm':
+-		message = EARGF(usage());
+-		break;
+-	case 'f':
+-		if (!(dpy = XOpenDisplay(NULL)))
+-			die("slock: cannot open display\n");
+-		font_names = XListFonts(dpy, "*", 10000 /* list 10000 fonts*/, &count_fonts);
+-		for (i=0; i<count_fonts; i++) {
+-			fprintf(stderr, "%s\n", *(font_names+i));
+-		}
+-		return 0;
  	default:
  		usage();
  	} ARGEND
