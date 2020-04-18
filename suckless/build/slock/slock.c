@@ -6,7 +6,6 @@
 
 #include <ctype.h>
 #include <errno.h>
-#include <math.h>
 #include <grp.h>
 #include <pwd.h>
 #include <stdarg.h>
@@ -16,17 +15,21 @@
 #include <unistd.h>
 #include <sys/types.h>
 #include <X11/extensions/Xrandr.h>
-#include <X11/extensions/dpms.h>
 #include <X11/keysym.h>
 #include <X11/Xlib.h>
 #include <X11/Xutil.h>
+
 #include <X11/XKBlib.h>
-#include <X11/Xresource.h>
+#include <X11/XF86keysym.h>
+#include <time.h>
+#include <X11/extensions/dpms.h>
 
 #include "arg.h"
 #include "util.h"
 
 char *argv0;
+
+static time_t locktime;
 
 enum {
 	INIT,
@@ -49,19 +52,7 @@ struct xrandr {
 	int errbase;
 };
 
-/* Xresources preferences */
-enum resource_type {
-	STRING = 0,
-	INTEGER = 1,
-	FLOAT = 2
-};
-
-typedef struct {
-	char *name;
-	enum resource_type type;
-	void *dst;
-} ResourcePref;
-
+#include "patch/include.h"
 #include "config.h"
 
 static void
@@ -74,6 +65,8 @@ die(const char *errstr, ...)
 	va_end(ap);
 	exit(1);
 }
+
+#include "patch/include.c"
 
 #ifdef __linux__
 #include <fcntl.h>
@@ -125,18 +118,6 @@ gethash(void)
 			    "Make sure to suid or sgid slock.\n");
 		hash = sp->sp_pwdp;
 	}
-#else
-	if (!strcmp(hash, "*")) {
-#ifdef __OpenBSD__
-		if (!(pw = getpwuid_shadow(getuid())))
-			die("slock: getpwnam_shadow: cannot retrieve shadow entry. "
-			    "Make sure to suid or sgid slock.\n");
-		hash = pw->pw_passwd;
-#else
-		die("slock: getpwuid: cannot retrieve shadow entry. "
-		    "Make sure to suid or sgid slock.\n");
-#endif /* __OpenBSD__ */
-	}
 #endif /* HAVE_SHADOW_H */
 
 	return hash;
@@ -148,8 +129,10 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 {
 	XRRScreenChangeNotifyEvent *rre;
 	char buf[32], passwd[256], *inputhash;
-	int caps, num, screen, running, failure, oldc;
-	unsigned int len, color, indicators;
+	int num, screen, running, failure, oldc;
+	unsigned int len, color;
+	int caps;
+	unsigned int indicators;
 	KeySym ksym;
 	XEvent ev;
 
@@ -163,6 +146,7 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 		caps = indicators & 1;
 
 	while (running && !XNextEvent(dpy, &ev)) {
+		running = !((time(NULL) - locktime < timetocancel) && (ev.type == MotionNotify));
 		if (ev.type == KeyPress) {
 			explicit_bzero(&buf, sizeof(buf));
 			num = XLookupString(&ev.xkey, buf, sizeof(buf), &ksym, 0);
@@ -204,9 +188,19 @@ readpw(Display *dpy, struct xrandr *rr, struct lock **locks, int nscreens,
 			case XK_Caps_Lock:
 				caps = !caps;
 				break;
+			case XF86XK_AudioLowerVolume:
+			case XF86XK_AudioMute:
+			case XF86XK_AudioRaiseVolume:
+			case XF86XK_AudioPlay:
+			case XF86XK_AudioStop:
+			case XF86XK_AudioPrev:
+			case XF86XK_AudioNext:
+				XSendEvent(dpy, DefaultRootWindow(dpy), True, KeyPressMask, &ev);
+				break;
 			default:
 				if (num && !iscntrl((int)buf[0]) &&
-				    (len + num < sizeof(passwd))) {
+				    (len + num < sizeof(passwd)))
+				{
 					memcpy(passwd + len, buf, num);
 					len += num;
 				}
@@ -287,7 +281,9 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 			ptgrab = XGrabPointer(dpy, lock->root, False,
 			                      ButtonPressMask | ButtonReleaseMask |
 			                      PointerMotionMask, GrabModeAsync,
-			                      GrabModeAsync, None, invisible, CurrentTime);
+			                      GrabModeAsync, None,
+			                      invisible,
+			                      CurrentTime);
 		}
 		if (kbgrab != GrabSuccess) {
 			kbgrab = XGrabKeyboard(dpy, lock->root, True,
@@ -301,6 +297,7 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 				XRRSelectInput(dpy, lock->win, RRScreenChangeNotifyMask);
 
 			XSelectInput(dpy, lock->root, SubstructureNotifyMask);
+			locktime = time(NULL);
 			return lock;
 		}
 
@@ -322,57 +319,6 @@ lockscreen(Display *dpy, struct xrandr *rr, int screen)
 	return NULL;
 }
 
-int
-resource_load(XrmDatabase db, char *name, enum resource_type rtype, void *dst)
-{
-	char **sdst = dst;
-	int *idst = dst;
-	float *fdst = dst;
-
-	char fullname[256];
-	char fullclass[256];
-	char *type;
-	XrmValue ret;
-
-	snprintf(fullname, sizeof(fullname), "%s.%s", "slock", name);
-	snprintf(fullclass, sizeof(fullclass), "%s.%s", "Slock", name);
-	fullname[sizeof(fullname) - 1] = fullclass[sizeof(fullclass) - 1] = '\0';
-
-	XrmGetResource(db, fullname, fullclass, &type, &ret);
-	if (ret.addr == NULL || strncmp("String", type, 64))
-		return 1;
-
-	switch (rtype) {
-	case STRING:
-		*sdst = ret.addr;
-		break;
-	case INTEGER:
-		*idst = strtoul(ret.addr, NULL, 10);
-		break;
-	case FLOAT:
-		*fdst = strtof(ret.addr, NULL);
-		break;
-	}
-	return 0;
-}
-
-void
-config_init(Display *dpy)
-{
-	char *resm;
-	XrmDatabase db;
-	ResourcePref *p;
-
-	XrmInitialize();
-	resm = XResourceManagerString(dpy);
-	if (!resm)
-		return;
-
-	db = XrmGetStringDatabase(resm);
-	for (p = resources; p < resources + LEN(resources); p++)
-		resource_load(db, p->name, p->type, p->dst);
-}
-
 static void
 usage(void)
 {
@@ -391,7 +337,6 @@ main(int argc, char **argv) {
 	Display *dpy;
 	int s, nlocks, nscreens;
 	CARD16 standby, suspend, off;
-
 	ARGBEGIN {
 	case 'v':
 		fprintf(stderr, "slock-"VERSION"\n");
@@ -442,10 +387,11 @@ main(int argc, char **argv) {
 	if (!(locks = calloc(nscreens, sizeof(struct lock *))))
 		die("slock: out of memory\n");
 	for (nlocks = 0, s = 0; s < nscreens; s++) {
-		if ((locks[s] = lockscreen(dpy, &rr, s)) != NULL)
+		if ((locks[s] = lockscreen(dpy, &rr, s)) != NULL) {
 			nlocks++;
-		else
+		} else {
 			break;
+		}
 	}
 	XSync(dpy, 0);
 
@@ -483,7 +429,6 @@ main(int argc, char **argv) {
 
 	/* everything is now blank. Wait for the correct password */
 	readpw(dpy, &rr, locks, nscreens, hash);
-
 	/* reset DPMS values to inital ones */
 	DPMSSetTimeouts(dpy, standby, suspend, off);
 	XSync(dpy, 0);

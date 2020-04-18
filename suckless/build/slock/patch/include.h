@@ -1,0 +1,3 @@
+/* Patches */
+
+#include "xresources.h"
