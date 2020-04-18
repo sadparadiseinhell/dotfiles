@@ -5,8 +5,7 @@ picom --config $HOME/.config/picom.conf &                                  # com
 #--blur-method 'dual_kawase' --blur-strength 8 \
 #--experimental-backends &
 $HOME/scripts/statusbar.sh &                                               # bar
-$HOME/scripts/theme.sh -R &
-$HOME/scripts/wallpaper.sh &                                               # set wallpaper
+$HOME/scripts/theme.sh -R &                                                # set theme
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &      # keyboard layout
 dunst -config $HOME/.config/dunst/dunstrc &                                # notification daemon
 xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
@@ -14,7 +13,7 @@ xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
 'locking screen in 10 seconds'" -corners +-00 -cornerdelay 10 \
 -cornerredelay 10 -cornersize 20 &                                         # automatic screen lock
 
-if [ "$(ps -aux | grep [m]pd | wc -l)" -eq 0 ]; then                       #
+if [ "$(ps -aux | grep '[m]pd' | wc -l)" -eq 0 ]; then                       #
 	mpd
 else                                                                       # MPD
 	echo ':('  > /dev/null

@@ -5,13 +5,13 @@ MENU=$(echo -e 'local\nlink\ndownload' | dmenu -p 'link/local: ')
 local_storage () {
 	DIR="$HOME/movies/"
 	CHOICE="$(ls $DIR | dmenu -l 5 -p 'select video ')"
-	if [[ "$CHOICE" = *.mkv ]]; then
+	if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
 		mpv "$DIR$CHOICE"
 		exit 0
-	elif [[ -d "$DIR$CHOICE" ]]; then
+	elif [[ -n $CHOICE ]] && [[ -d "$DIR$CHOICE" ]]; then
 		cd "$DIR$CHOICE"
 		mpv *{.mkv,.avi,.mp4}
-		if [[ $STATUS != 0 ]]; then
+		if [[ $? != 0 ]]; then
 			cd $(ls $DIR$CHOICE)
 			mpv *{.mkv,.avi,.mp4}
 			exit 0
@@ -20,12 +20,9 @@ local_storage () {
 		exit 0
 	fi
 
-	STATUS=$?
-
-	if [[ $STATUS != 0 ]]; then
-		notify-send -u critical -t 2000 'video cannot be opened'
+	if [[ $? != 0 ]]; then
+		notify-send -u critical -t 3000 'video cannot be opened'
 	fi
-
 }
 
 by_link () {
@@ -36,10 +33,8 @@ by_link () {
 		exit 0
 	fi
 
-	STATUS=$?
-
-	if [[ $STATUS != 0 ]]; then
-		notify-send -u critical -t 2000 'video cannot be opened'
+	if [[ $? != 0 ]]; then
+		notify-send -u critical -t 3000 'video cannot be opened'
 	fi
 }
 
@@ -48,11 +43,12 @@ download () {
 	if [[ -z $LINK ]]; then
 		exit 0
 	fi
+
 	cd $HOME/movies
 	youtube-dl -f bestvideo[height=1080]+bestaudio[ext=m4a] --merge-output-format mkv $LINK
-	STATUS=$?
-	if [[ $STATUS != 0 ]]; then
-		notify-send -u critical -t 2000 'video cannot be downloaded'
+
+	if [[ $? != 0 ]]; then
+		notify-send -u critical -t 3000 'video cannot be downloaded'
 		exit 0
 	else
 		notify-send -t 2000 'video downloaded'

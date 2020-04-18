@@ -39,11 +39,20 @@ pulse () {
 		echo "  $VOL% "
 	fi
 }
+
 # Current song
 mpd () {
 	MPD="$(mpc current --format "%artist% - %title%" 2> /dev/null)"
 	if [[ -n "$MPD" ]]; then
 		echo "  $MPD "
+	fi
+}
+
+# Playing indicator
+mpd_indicator () {
+	STATUS=$(mpc status 2> /dev/null | head -n 2 | tail -n 1 | awk '{print $1}')
+	if [[ $STATUS = '[playing]' ]]; then
+		echo '   '
 	fi
 }
 
@@ -65,6 +74,6 @@ weather () {
 }
 
 while true; do
-	xsetroot -name " $(pulse) $(dte) $(tme) "
+	xsetroot -name " $(pulse) $(dte) $(tme) $(mpd_indicator)"
 	sleep 60
 done &

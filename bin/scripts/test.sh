@@ -1,11 +1,11 @@
 #!/bin/sh
 
 if [[ -z $1 ]]; then
-	THEME=$(ls -p .colors | grep -v / | dmenu -p 'theme ')
-	XRES="$HOME/dotfiles/colors/.colors/$THEME"
-else
+	THEME=$(echo -e 'dracula\ngruvbox\nnord\nmaterial\npalenight' | dmenu -p 'theme ')
+	XRES="$HOME/dotfiles/colors/.colors/$THEME-colors"
+elif [[ $1 = '-R' ]]; then
 	THEME=$1
-	XRES="$HOME/dotfiles/colors/.colors/$(cat $HOME/.currtheme)"
+	XRES="$HOME/dotfiles/colors/.colors/$(cat $HOME/.currtheme)-colors"
 fi
 
 DUNSTFILE="$HOME/dotfiles/configs/.config/dunst/dunstrc"
@@ -20,7 +20,7 @@ change_theme () {
 
 wallpaper () {
 	THEME=$(cat $HOME/.currtheme)
-	COLOR=$(cat .colors/$THEME | grep -m 1 'background' | awk '{print $2}')
+	COLOR=$(cat .colors/$THEME-colors | grep -m 1 'background' | awk '{print $2}')
 	FILE='/tmp/color.png'
 	
 	convert -size 32x32 xc:$COLOR $FILE
@@ -33,7 +33,7 @@ restore () {
 }
 
 case $THEME in
-	d*|g*|n*|m*|p*|t*)
+	d*|g*|n*|m*|p*)
 		change_theme
 		wallpaper
 		notify-send 'current theme:' "$THEME"
