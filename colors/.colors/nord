@@ -1,0 +1,78 @@
+
+! ███╗   ██╗ ██████╗ ██████╗ ██████╗ 
+! ████╗  ██║██╔═══██╗██╔══██╗██╔══██╗
+! ██╔██╗ ██║██║   ██║██████╔╝██║  ██║
+! ██║╚██╗██║██║   ██║██╔══██╗██║  ██║
+! ██║ ╚████║╚██████╔╝██║  ██║██████╔╝
+! ╚═╝  ╚═══╝ ╚═════╝ ╚═╝  ╚═╝╚═════╝ 
+
+
+! special
+*.foreground:        #D8DEE9
+*.background:        #2E3440
+*.cursorColor:       #E5E9F0
+
+! black
+*.color0:            #3B4252
+*.color8:            #4C566A
+
+! red
+*.color1:            #BF616A
+*.color9:            #BF616A
+
+! green
+*.color2:            #A3BE8C
+*.color10:           #A3BE8C
+
+! yellow
+*.color3:            #EBCB8B
+*.color11:           #EBCB8B
+
+! blue
+*.color4:            #81A1C1
+*.color12:           #81A1C1
+
+! magenta
+*.color5:            #B48EAD
+*.color13:           #B48EAD
+
+! cyan
+*.color6:            #88C0D0
+*.color14:           #8FBCBB
+
+! white
+*.color7:            #E5E9F0
+*.color15:           #ECEFF4
+
+
+! dwm normal colors
+dwm.normfgcolor:     #D8DEE9
+dwm.normbgcolor:     #2E3440
+dwm.normbordercolor: #434C5E
+dwm.normfloatcolor:  #434C5E
+
+! dwm sel colors
+dwm.selfgcolor:      #ECEFF4
+dwm.selbgcolor:      #81A1C1
+dwm.selbordercolor:  #81A1C1
+dwm.selfloatcolor:   #B48EAD 
+
+! dwm urgent colors
+dwm.urgfgcolor:      #ECEFF4
+dwm.urgbgcolor:      #BF616A
+dwm.urgbordercolor:  #BF616A
+dwm.urgfloatcolor:   #B48EAD
+
+
+! dmenu colors
+dmenu.background:    #2E3440
+dmenu.foreground:    #D8DEE9
+dmenu.selbackground: #81A1C1
+dmenu.selforeground: #ECEFF4
+
+
+! slock colors
+slock.init:          #2E3440
+slock.input:         #81A1C1
+slock.failed:        #BF616A
+slock.caps:          #EBCB8B

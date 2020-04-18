@@ -1,0 +1,84 @@
+
+! ██████╗  █████╗ ██╗     ███████╗███╗   ██╗██╗ ██████╗ ██╗  ██╗████████╗
+! ██╔══██╗██╔══██╗██║     ██╔════╝████╗  ██║██║██╔════╝ ██║  ██║╚══██╔══╝
+! ██████╔╝███████║██║     █████╗  ██╔██╗ ██║██║██║  ███╗███████║   ██║   
+! ██╔═══╝ ██╔══██║██║     ██╔══╝  ██║╚██╗██║██║██║   ██║██╔══██║   ██║   
+! ██║     ██║  ██║███████╗███████╗██║ ╚████║██║╚██████╔╝██║  ██║   ██║   
+! ╚═╝     ╚═╝  ╚═╝╚══════╝╚══════╝╚═╝  ╚═══╝╚═╝ ╚═════╝ ╚═╝  ╚═╝   ╚═╝   
+
+
+! wallpaper color
+! light:             #8796b0
+! dark:              #676e95
+! darker:            #292d3e
+
+
+! special
+*foreground:         #959dcb
+*background:         #292d3e
+*.cursorColor:       #959dcb
+
+! black
+*color0:             #292d3e
+*color8:             #676e95
+
+! red
+*color1:             #f07178
+*color9:             #f78c6c
+
+! green
+*color2:             #c3e88d
+*color10:            #c8ea95
+
+! yellow
+*color3:             #ffcb6b
+*color11:            #ffdb99
+
+! blue
+*color4:             #82aaff
+*color12:            #8796b0
+
+! magenta
+*color5:             #c792ea
+*color13:            #959dcb
+
+! cyan
+*color6:             #89ddff
+*color14:            #b3e9ff
+
+! white
+*color7:             #959dcb
+*color15:            #ffffff
+
+
+! dwm normal colors
+dwm.normfgcolor:     #959dcb
+dwm.normbgcolor:     #292d3e
+dwm.normbordercolor: #444267
+dwm.normfloatcolor:  #444267
+
+! dwm sel colors
+dwm.selfgcolor:      #ffffff
+dwm.selbgcolor:      #676e95
+dwm.selbordercolor:  #676e95
+dwm.selfloatcolor:   #959dcb            
+
+! dwm urgent colors
+dwm.urgfgcolor:      #ffffff
+dwm.urgbgcolor:      #f07178
+dwm.urgbordercolor:  #f07178
+dwm.urgfloatcolor:   #c792ea
+
+
+! dmenu colors
+dmenu.background:    #292d3e
+dmenu.foreground:    #959dcb
+dmenu.selbackground: #676e95
+dmenu.selforeground: #FFFFFF
+
+
+! slock colors
+slock.init:          #292d3e
+slock.input:         #676e95
+slock.failed:        #f07178
+slock.caps:          #ffcb6b
