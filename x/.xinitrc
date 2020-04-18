@@ -9,7 +9,6 @@ fi
 
 # - # - #
 
-xrdb -load ~/.Xresources &
 $HOME/scripts/dwmautostart.sh &
 while true; do
    dwm >/dev/null 2>&1

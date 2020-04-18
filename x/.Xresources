@@ -12,71 +12,79 @@
 
 
 ! Theme
-#include "/home/ma/.colors/palenight-colors"
+!#include "PATH TO FILE"
 
 
-! dwm colors
-!dwm.normbordercolor: #434C5E
-!dwm.normbgcolor:     #2E3440
-!dwm.normfgcolor:     #D8DEE9
-!dwm.selbordercolor:  #5E81AC
-!dwm.selbgcolor:      #5E81AC
-!dwm.selfgcolor:      #ECEFF4
+! special
+*.foreground:        #D8DEE9
+*.background:        #2E3440
+
+! black
+*.color0:            #3B4252
+*.color8:            #4C566A
+
+! red
+*.color1:            #BF616A
+*.color9:            #BF616A
+
+! green
+*.color2:            #A3BE8C
+*.color10:           #A3BE8C
+
+! yellow
+*.color3:            #EBCB8B
+*.color11:           #EBCB8B
+
+! blue
+*.color4:            #81A1C1
+*.color12:           #81A1C1
+
+! magenta
+*.color5:            #B48EAD
+*.color13:           #B48EAD
+
+! cyan
+*.color6:            #88C0D0
+*.color14:           #8FBCBB
+
+! white
+*.color7:            #E5E9F0
+*.color15:           #ECEFF4
+
+
+! dwm normal colors
+dwm.normfgcolor:     #D8DEE9
+dwm.normbgcolor:     #2E3440
+dwm.normbordercolor: #434C5E
+dwm.normfloatcolor:  #434C5E
+
+! dwm sel colors
+dwm.selfgcolor:      #ECEFF4
+dwm.selbgcolor:      #81A1C1
+dwm.selbordercolor:  #81A1C1
+dwm.selfloatcolor:   #B48EAD 
+
+! dwm urgent colors
+dwm.urgfgcolor:      #ECEFF4
+dwm.urgbgcolor:      #BF616A
+dwm.urgbordercolor:  #BF616A
+dwm.urgfloatcolor:   #B48EAD
 
 
 ! dmenu colors
-!dmenu.background:    #2E3440
-!dmenu.foreground:    #D8DEE9
-!dmenu.selbackground: #5E81AC
-!dmenu.selforeground: #ECEFF4
+dmenu.background:    #2E3440
+dmenu.foreground:    #D8DEE9
+dmenu.selbackground: #81A1C1
+dmenu.selforeground: #ECEFF4
 
 
 ! slock colors
-!slock.init:          #2E3440
-!slock.input:         #5E81AC
-!slock.failed:        #BF616A
-!slock.caps:          #EBCB8B
-
-
-! Color scheme
-! special
-!*.foreground:        #d8dee9
-!*.background:        #2E3440
-!*.alpha:            1.0
-
-! black
-!*.color0:            #2E3440
-!*.color8:            #4c566a
-
-! red
-!*.color1:            #bf616a
-!*.color9:            #bf616a
-
-! green
-!*.color2:            #a3be8c
-!*.color10:           #a3be8c
-
-! yellow
-!*.color3:            #ebcb8b
-!*.color11:           #ebcb8b
-
-! blue
-!*.color4:            #81a1c1
-!*.color12:           #81a1c1
-
-! magenta
-!*.color5:            #b48ead
-!*.color13:           #b48ead
-
-! cyan
-!*.color6:            #88c0d0
-!*.color14:           #8fbcbb
-
-! white
-!*.color7:            #e5e9f0
-!*.color15:           #eceff4
+slock.init:          #2E3440
+slock.input:         #81A1C1
+slock.failed:        #BF616A
+slock.caps:          #EBCB8B
 
 
 ! Font
-st.font:                DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
-dmenu.font:             Roboto:style=Bold:size=10
+st.font:             DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
+dmenu.font:          Roboto:style=Bold:size=10
