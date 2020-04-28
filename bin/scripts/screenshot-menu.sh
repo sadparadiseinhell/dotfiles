@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 CHOICE=$(echo -e 'fullscreen\narea\narea to clipboard\nactive window' | dmenu -p 'scrot menu ')
 SOUND='/usr/share/sounds/freedesktop/stereo/camera-shutter.oga'

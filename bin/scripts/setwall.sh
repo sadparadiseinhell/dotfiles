@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 WALLDIR="$HOME/wallpapers"
 CHOSEN=$(ls $WALLDIR | dmenu -p "select wallpaper " )

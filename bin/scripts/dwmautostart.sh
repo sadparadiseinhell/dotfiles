@@ -13,10 +13,8 @@ xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
 'locking screen in 10 seconds'" -corners +-00 -cornerdelay 10 \
 -cornerredelay 10 -cornersize 20 &                                         # automatic screen lock
 
-if [ "$(ps -aux | grep '[m]pd' | wc -l)" -eq 0 ]; then                       #
-	mpd
-else                                                                       # MPD
-	echo ':('  > /dev/null
+if [ "$(ps -aux | grep '[m]pd' | wc -l)" -eq 0 ]; then                     #
+	mpd                                                                    # MPD
 fi &                                                                       #
 
 paplay /usr/share/sounds/freedesktop/stereo/service-login.oga &            # startup sound

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 OPT="$(echo -e 'lock\nlogout\nsuspend\nhibernate\nreboot\npoweroff' | dmenu -p 'power menu ')"
 execute () {

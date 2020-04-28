@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 START='/usr/share/sounds/freedesktop/stereo/window-attention.oga'
 END='/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MENU=$(echo -e 'show updates\nupdate system' | dmenu -p 'updates ')
 HEIGHT=$(checkupdates | wc -l)

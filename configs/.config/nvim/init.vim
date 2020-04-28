@@ -47,7 +47,7 @@ set nowritebackup
 
 "set laststatus=2
 let g:lightline = {
-      \ 'colorscheme': 'gruvbox',
+      \ 'colorscheme': 'nord',
       \ 'active': {
       \   'right': [ [ 'lineinfo' ],
       \              [ 'percent' ],
@@ -56,7 +56,7 @@ let g:lightline = {
       \ }
 
 " Colorscheme
-colorscheme gruvbox
+colorscheme palenight
 let g:gruvbox_contrast_dark = 'hard'
 set background=dark
 highlight Normal ctermfg=white ctermbg=black

@@ -136,4 +136,4 @@ song_window_title_format = " {%a} - {%t}"
 ##     state (either unknown, play, pause, or stop) for its duration     ##
 ##
 #
-#execute_on_player_state_change = notify-send "$(mpc current)"
+#execute_on_player_state_change = 

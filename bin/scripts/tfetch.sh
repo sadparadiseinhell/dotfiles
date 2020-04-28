@@ -6,7 +6,7 @@ SHELL="$(basename "$SHELL")"
 KERNEL=$(uname -sr)
 UPTIME=$(uptime -p | sed -e 's/up //; s/ hours/h/; s/ hour/h/; s/ minutes/m/; s/ minute/m/; s/,//')
 PACKAGES="$(pacman -Qq | wc -l)"
-RESOLUTION="$(xrandr | awk '/*/ {print $1}')"
+#RESOLUTION="$(xrandr | awk '/*/ {print $1}')"
 TERMINAL="$(xprop -id $WINDOWID WM_CLASS | cut -d" " -f3 | sed -e 's/^.\(.*\)..$/\1/; s/st-256color/st/')"
 MEMORY="$(free -m | awk '/^Mem:/ {print $3 "M / " $2 "M"}')"
 
@@ -46,13 +46,13 @@ output () {
 #${red}▀▀${green}▀▀${yellow}▀▀${blue}▀▀${magenta}▀▀${cyan}▀▀${white}▀▀${r}
 cat <<EOF
 
-${p}    .--.      ${nc}$USER${r}@${nc}${HOST}${r}
-${p}   /${r}o${pb}_${r}o${p} |     ${lc}os:    ${r}$OS${r}
-${p}   |${pb}:_/${p} |     ${lc}up:    ${r}$UPTIME${r}
-${p}  //   \ \    ${lc}pkgs:  ${r}$PACKAGES${r}
-${p} (|     | )   ${lc}sh:    ${r}$SHELL${r}
-${p}/'\_   _/'\   ${lc}wm:    ${r}$(wm)${r}
-${p}\___)${r}=${p}(___/   ${lc}term:  ${r}$TERMINAL${r}
+${nc}$USER${r}@${nc}${HOST}${r}
+${lc}os:    ${r}$OS${r}
+${lc}up:    ${r}$UPTIME${r}
+${lc}pkgs:  ${r}$PACKAGES${r}
+${lc}sh:    ${r}$SHELL${r}
+${lc}wm:    ${r}$(wm)${r}
+${lc}term:  ${r}$TERMINAL${r}
 
 EOF
 }

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 while true; do
 	MAIN=$(echo | grep 0 | dmenu -p 'enter an example ')

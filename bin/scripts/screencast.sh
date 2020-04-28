@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 MENU=$(echo -e 'start\nstop' | dmenu -p 'screencast ')
 NAME="$(date +%G_%m_%d_%T)_screencast.mp4"

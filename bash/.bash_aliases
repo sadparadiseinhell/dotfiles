@@ -25,6 +25,7 @@ alias mv='mv -v'
 
 # Pacman
 alias install='sudo pacman -S'
+alias remove='sudo pacman -R'
 alias update='sudo pacman -Syu'
 alias sp='sudo pacman'
 

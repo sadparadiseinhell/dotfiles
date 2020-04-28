@@ -1,6 +1,6 @@
 #!/bin/sh
 
-MENU=$(echo -e 'local\nlink\ndownload' | dmenu -p 'link/local: ')
+MENU=$(echo -e 'local\nlink\ntwitch\nsearch (youtube)\ndownload' | dmenu -p 'link/local: ')
 
 local_storage () {
 	DIR="$HOME/movies/"
@@ -55,6 +55,32 @@ download () {
 	fi
 }
 
+yt_search () {
+	INPUT=$(echo | grep 0 | dmenu -p 'search ')
+	if [[ -n $INPUT ]]; then
+		mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" ytdl://ytsearch:"$INPUT"
+	else
+		exit 0
+	fi
+
+	if [[ $? != 0 ]]; then
+		notify-send -u critical -t 3000 'video cannot be opened'
+	fi
+}
+
+twitch () {
+	LINK=$(echo | grep 0 | dmenu -p 'paste a link ')
+	if [[ -n $LINK ]]; then
+		mpv --ytdl-format="720p+bestaudio" $LINK
+	else
+		exit 0
+	fi
+
+	if [[ $? != 0 ]]; then
+		notify-send -u critical -t 3000 'video cannot be opened'
+	fi
+}
+
 case $MENU in
 	link)
 		by_link
@@ -64,6 +90,12 @@ case $MENU in
 		;;
 	download)
 		download
+		;;
+	search*)
+		yt_search
+		;;
+	twitch)
+		twitch
 		;;
 	*)
 		exit 0

@@ -1,4 +1,4 @@
-#!/bin/bash
+#!/bin/sh
 
 # Simple To-Do script for dmenu
 # with 'add' and 'delete' options.

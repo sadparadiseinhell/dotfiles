@@ -1,8 +1,8 @@
-#!/bin/bash
+#!/bin/sh
 
 MUSIC_DIR=$HOME/music/
 COVER=/tmp/cover.png
-SIZE=150x150
+SIZE=100x100
 
 extract_cover() {
 

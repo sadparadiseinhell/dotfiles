@@ -5,7 +5,6 @@ if [[ -z $1 ]]; then
 	XRES="$HOME/dotfiles/colors/.colors/$THEME"
 else
 	THEME=$1
-	XRES="$HOME/dotfiles/colors/.colors/$(cat $HOME/.currtheme)"
 fi
 
 DUNSTFILE="$HOME/dotfiles/configs/.config/dunst/dunstrc"
@@ -19,7 +18,6 @@ change_theme () {
 }
 
 wallpaper () {
-	THEME=$(cat $HOME/.currtheme)
 	COLOR=$(cat .colors/$THEME | grep -m 1 'background' | awk '{print $2}')
 	FILE='/tmp/color.png'
 	
@@ -28,19 +26,27 @@ wallpaper () {
 }
 
 restore () {
+	if [[ -e $HOME/.currtheme ]]; then
+		THEME=$(cat $HOME/.currtheme)
+		XRES="$HOME/dotfiles/colors/.colors/$(cat $HOME/.currtheme)"
+	else
+		THEME='nord'
+		XRES="$HOME/dotfiles/x/.Xresources"
+	fi
+	
 	xrdb -load $XRES
 	killall dwm
 }
 
 case $THEME in
-	d*|g*|n*|m*|p*|t*)
+	d*|g*|n*|m*|p*)
 		change_theme
 		wallpaper
 		notify-send 'current theme:' "$THEME"
 		;;
 	-R)
-		wallpaper
 		restore
+		wallpaper
 		;;
 	*)
 		echo "What is '$1'?"

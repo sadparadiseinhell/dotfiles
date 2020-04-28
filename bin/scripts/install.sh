@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ngit \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions" | sort)
 
 PA=$(echo -e "sublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
 
@@ -112,7 +112,7 @@ dotfiles () {
 		if [[ "$opt" = "All" ]]; then
 			rm $HOME/.bashrc
 			cd $HOME/dotfiles/
-			stow bash/ bin/ colors/ configs/ images/ suckless/ tmux/ x/ zsh/
+			stow bin/ colors/ configs/ images/ suckless/ tmux/ x/ zsh/ bash/
 
 			cd $HOME/build/dwm/
 			make &> /dev/null
@@ -129,7 +129,6 @@ dotfiles () {
 			cd $HOME/build/slock/
 			make &> /dev/null
 			sudo make install
-			lock_on_suspend
 
 			cd $HOME
 
@@ -161,7 +160,6 @@ dotfiles () {
 				cd $HOME/build/slock/
 				make &> /dev/null
 				sudo make install
-				lock_on_suspend
 
 				cd $HOME
 

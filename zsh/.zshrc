@@ -68,7 +68,7 @@ ZSH_THEME="simple"
 # Custom plugins may be added to ~/.oh-my-zsh/custom/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git)
+#plugins=(git)
 
 source $ZSH/oh-my-zsh.sh
 
@@ -125,6 +125,7 @@ alias mv='mv -v'
 
 # Pacman
 alias install='sudo pacman -S'
+alias remove='sudo pacman -R'
 alias update='sudo pacman -Syu'
 alias sp='sudo pacman'
 
@@ -178,6 +179,7 @@ alias ping='ping -c 5'
 alias off='sleep 1; xset dpms force off'
 alias vim='nvim'
 alias subl='subl3'
+alias todo='$HOME/scripts/bigtodo.sh'
 
 # Shell
 alias c='clear'

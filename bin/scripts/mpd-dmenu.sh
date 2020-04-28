@@ -8,7 +8,7 @@ else
 	if [[ $NUM -eq 1 ]]; then
 		mpc clear > /dev/null
 		mpc find artist "$ARTIST" | mpc add
-		$HOME/scripts/mpdctrl.sh play
+		$HOME/scripts/musicctrl.sh play
 		exit 0
 	else
 		ALBUM=$(mpc list album artist "$ARTIST" | dmenu -p 'album ')
@@ -17,6 +17,6 @@ else
 		fi
 		mpc clear > /dev/null
 		mpc find artist "$ARTIST" album "$ALBUM" | mpc add
-		$HOME/scripts/mpdctrl.sh play
+		$HOME/scripts/musicctrl.sh play
 	fi
 fi
