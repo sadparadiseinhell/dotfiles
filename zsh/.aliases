@@ -45,6 +45,7 @@ alias gaa='git add -A'
 alias gal='git add .'
 alias gall='git add .'
 alias gca='git commit -a'
+alias gcd="git commit -m "$(date '+%d/%m/%y %H:%M')""
 alias gc='git commit -m'
 alias gcot='git checkout'
 alias gchekout='git checkout'
@@ -78,6 +79,8 @@ alias minecraft="$HOME/.games/Minecraft_1.15.2/start.sh & exit"
 alias ping='ping -c 5'
 alias off='sleep 1; xset dpms force off'
 alias vim='nvim'
+alias subl='subl3'
+alias todo='$HOME/scripts/bigtodo.sh'
 
 # Shell
 alias c='clear'

@@ -6,8 +6,8 @@
 tput smkx
 
 # Aliases
-if [ -f ~/.bash_aliases ]; then
-. ~/.bash_aliases
+if [ -f ~/.aliases ]; then
+. ~/.aliases
 fi
 
 # If not running interactively, don't do anything
