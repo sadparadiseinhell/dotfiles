@@ -1,9 +1,9 @@
-### screenshot:
+### screenshots:
 
-* dwm
+## dwm
 ![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dracula_dark_bg_scrot.png)
 
-* openbox
+## openbox
 ![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/openboxscrot.png)
 
 ### list of applications:
