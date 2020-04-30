@@ -1,5 +1,9 @@
 #!/bin/sh 
 
+#
+# Source: https://github.com/simonvic/dotfiles
+#
+
 TODOFILE=$HOME/.todolist
 DONESYMBOL=☒
 TODOSYMBOL=☐

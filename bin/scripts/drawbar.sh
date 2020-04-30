@@ -1,3 +1,7 @@
+#
+# Source: https://github.com/simonvic/dotfiles
+#
+
 STEPS=$1
 LENGHT=$2
 DRAWEMPTY=$3
