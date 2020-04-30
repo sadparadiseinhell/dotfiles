@@ -1,10 +1,12 @@
 #!/bin/sh
 
-MENU=$(echo -e 'local\nlink\ntwitch\nsearch (youtube)\ndownload' | dmenu -p 'link/local: ')
+source $HOME/scripts/launcher.sh
+
+MENU=$(echo -e 'local\nlink\ntwitch\nsearch (youtube)\ndownload' | $LAUNCHER -p 'link/local: ')
 
 local_storage () {
 	DIR="$HOME/movies/"
-	CHOICE="$(ls $DIR | dmenu -l 5 -p 'select video ')"
+	CHOICE="$(ls $DIR | $LAUNCHER -l 5 -p 'select video ')"
 	if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
 		mpv "$DIR$CHOICE"
 		exit 0
@@ -26,7 +28,7 @@ local_storage () {
 }
 
 by_link () {
-	LINK=$( (echo 1 | grep 0) | dmenu -p 'paste a link to a video ')
+	LINK=$( (echo 1 | grep 0) | $LAUNCHER -p 'paste a link to a video ')
 	if [[ -n $LINK ]]; then
 		mpv --ytdl-format="[height=720]" $LINK
 	else
@@ -39,7 +41,7 @@ by_link () {
 }
 
 download () {
-	LINK=$(echo | grep 0 | dmenu -p 'paste a link to a video ')
+	LINK=$(echo | grep 0 | $LAUNCHER -p 'paste a link to a video ')
 	if [[ -z $LINK ]]; then
 		exit 0
 	fi
@@ -56,7 +58,7 @@ download () {
 }
 
 yt_search () {
-	INPUT=$(echo | grep 0 | dmenu -p 'search ')
+	INPUT=$(echo | grep 0 | $LAUNCHER -p 'search ')
 	if [[ -n $INPUT ]]; then
 		mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" ytdl://ytsearch:"$INPUT"
 	else
@@ -69,7 +71,7 @@ yt_search () {
 }
 
 twitch () {
-	LINK=$(echo | grep 0 | dmenu -p 'paste a link ')
+	LINK=$(echo | grep 0 | $LAUNCHER -p 'paste a link ')
 	if [[ -n $LINK ]]; then
 		mpv --ytdl-format="720p+bestaudio" $LINK
 	else

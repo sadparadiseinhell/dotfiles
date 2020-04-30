@@ -1,6 +1,8 @@
 #!/bin/sh
 
-OPT="$(echo -e 'lock\nlogout\nsuspend\nhibernate\nreboot\npoweroff' | dmenu -p 'power menu ')"
+source $HOME/scripts/launcher.sh
+
+OPT="$(echo -e 'lock\nlogout\nsuspend\nhibernate\nreboot\npoweroff' | $LAUNCHER -p 'power menu ')"
 execute () {
 	case $OPT in
 		h*|r*|s*|p*) ACTION="systemctl $OPT" ;;
@@ -23,7 +25,7 @@ confirm () {
 	if [[ -z $OPT ]]; then
 		exit 0
 	else
-		CONFIRM=$(echo -e 'no\nyes' | dmenu -p "$OPT ")
+		CONFIRM=$(echo -e 'no\nyes' | $LAUNCHER -p "$OPT ")
 	fi
 }
 

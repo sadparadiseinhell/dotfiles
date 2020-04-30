@@ -17,7 +17,7 @@
 
 ! special
 *.foreground:        #D8DEE9
-*.background:        #2E3440
+*.background:        #15181e
 
 ! black
 *.color0:            #3B4252

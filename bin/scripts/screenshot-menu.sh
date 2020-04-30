@@ -1,6 +1,8 @@
 #!/bin/sh
 
-CHOICE=$(echo -e 'fullscreen\narea\narea to clipboard\nactive window' | dmenu -p 'scrot menu ')
+source $HOME/scripts/launcher.sh
+
+CHOICE=$(echo -e 'fullscreen\narea\narea to clipboard\nactive window' | $LAUNCHER -p 'scrot menu ')
 SOUND='/usr/share/sounds/freedesktop/stereo/camera-shutter.oga'
 SCROTDIR="$HOME/screenshots/"
 NAME="$(date +%G_%m_%d_%T).png"

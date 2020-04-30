@@ -1,7 +1,9 @@
 #!/bin/sh
 
+source $HOME/scripts/launcher.sh
+
 if [[ -z $1 ]]; then
-	THEME=$(ls -p .colors | grep -v / | dmenu -p 'theme ')
+	THEME=$(ls -p .colors | grep -v / | $LAUNCHER -p 'theme ')
 	XRES="$HOME/dotfiles/colors/.colors/$THEME"
 else
 	THEME=$1
@@ -14,7 +16,7 @@ change_theme () {
 	xrdb -load $XRES
 	killall dunst 2> /dev/null
 	killall dwm
-	cat dotfiles/colors/.colors/dunst/dunst-$THEME > $DUNSTFILE
+	dunst -config $HOME/.colors/dunst/dunst-$THEME &
 }
 
 wallpaper () {
@@ -30,10 +32,11 @@ restore () {
 		THEME=$(cat $HOME/.currtheme)
 		XRES="$HOME/dotfiles/colors/.colors/$(cat $HOME/.currtheme)"
 	else
-		THEME='nord'
+		THEME='palenight'
 		XRES="$HOME/dotfiles/x/.Xresources"
 	fi
 	
+	dunst -config $HOME/.colors/dunst/dunst-$(cat $HOME/.currtheme) &
 	xrdb -load $XRES
 	killall dwm
 }

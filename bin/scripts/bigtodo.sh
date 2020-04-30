@@ -1,6 +1,6 @@
 #!/bin/sh 
 
-TODOFILE=$HOME/.bigtodo
+TODOFILE=$HOME/.todolist
 DONESYMBOL=☒
 TODOSYMBOL=☐
 DELETEDSYMBOL=✕

@@ -1,9 +1,11 @@
 #!/bin/sh
 
+source $HOME/scripts/launcher.sh
+
 WALLDIR="$HOME/wallpapers"
-CHOSEN=$(ls $WALLDIR | dmenu -p "select wallpaper " )
+CHOSEN=$(ls $WALLDIR | $LAUNCHER -p "select wallpaper " )
 
 if [[ "$CHOSEN" ]]; then
 	feh --bg-fill $WALLDIR/$CHOSEN
-	notify-send "$CHOSEN is set as wallpaper" -t 3200
+	notify-send "$CHOSEN set as wallpaper" -t 3200
 fi

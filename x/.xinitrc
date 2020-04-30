@@ -9,8 +9,9 @@ fi
 
 # - # - #
 
-$HOME/scripts/dwmautostart.sh &
-while true; do
-   dwm >/dev/null 2>&1
-done
+#$HOME/scripts/dwmautostart.sh &
+#while true; do
+#   dwm >/dev/null 2>&1
+#done
 
+exec openbox-session

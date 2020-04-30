@@ -1,6 +1,8 @@
 #!/bin/sh
 
-MENU=$(echo -e 'start\nstop' | dmenu -p 'screencast ')
+source $HOME/scripts/launcher.sh
+
+MENU=$(echo -e 'start\nstop' | $LAUNCHER -p 'screencast ')
 NAME="$(date +%G_%m_%d_%T)_screencast.mp4"
 
 case $MENU in

@@ -29,4 +29,4 @@ static const int monitortime = 60;
 
 
 /* time in seconds to cancel lock with mouse movement */
-static const int timetocancel = 2;
+static const int timetocancel = 0;

@@ -1,17 +1,22 @@
 #!/bin/sh
 
-MENU=$(echo -e 'show updates\nupdate system' | dmenu -p 'updates ')
+source $HOME/scripts/launcher.sh
+
+MENU=$(echo -e 'show updates\nupdate system' | $LAUNCHER -p 'updates ')
 HEIGHT=$(checkupdates | wc -l)
+if [[ $HEIGHT -gt 8 ]]; then
+	HEIGHT='8'
+fi
 
 show_updates () {
 	if [[ -z $(checkupdates) ]]; then
 		notify-send "$(echo -e 'no updates available\npls try again later')" -t 2000
 		exit 0
 	else
-		echo "$(checkupdates)" | dmenu -l $HEIGHT
+		echo "$(checkupdates)" | $LAUNCHER -l $HEIGHT -p 'list '
 	fi
 	
-	SECONDMENU=$(echo -e 'no\nyes' | dmenu -p 'update? ')
+	SECONDMENU=$(echo -e 'no\nyes' | $LAUNCHER -p 'update? ')
 	
 	if [[ $SECONDMENU = 'yes' ]]; then
 		st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm

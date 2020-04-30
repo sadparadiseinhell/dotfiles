@@ -1,6 +1,8 @@
 #!/bin/sh
 
-ARTIST=$(mpc list artist | dmenu -i -p 'artist ')
+source $HOME/scripts/launcher.sh
+
+ARTIST=$(mpc list artist | $LAUNCHER -p 'artist ')
 NUM=$(mpc list album artist "$ARTIST" | wc -l)
 if [[ -z $ARTIST ]]; then
 	exit 0
@@ -11,7 +13,7 @@ else
 		$HOME/scripts/musicctrl.sh play
 		exit 0
 	else
-		ALBUM=$(mpc list album artist "$ARTIST" | dmenu -p 'album ')
+		ALBUM=$(mpc list album artist "$ARTIST" | $LAUNCHER -p 'album ')
 		if [[ -z $ALBUM ]]; then
 			exit 0
 		fi

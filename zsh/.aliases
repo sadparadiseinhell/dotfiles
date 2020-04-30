@@ -26,7 +26,7 @@ alias mv='mv -v'
 # Pacman
 alias install='sudo pacman -S'
 alias remove='sudo pacman -R'
-alias update='sudo pacman -Syu'
+alias update='sudo pacman -Syu --noconfirm'
 alias sp='sudo pacman'
 
 # System
@@ -55,6 +55,7 @@ alias go='git push -u origin'
 alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m4a]" $1'
 alias start-minidlna="minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid"
 alias stop-minidlna='killall minidlnad'
+alias sxiv='sxiv -b'
 
 # Colors
 alias setwallpaper="$HOME/scripts/setwall.sh"

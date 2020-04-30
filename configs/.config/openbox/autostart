@@ -1,0 +1,34 @@
+#
+# These things are run when an Openbox X Session is started.
+# You may place a similar script in $HOME/.config/openbox/autostart
+# to run user-specific things.
+#
+
+# If you want to use GNOME config tools...
+#
+#if test -x /usr/lib/openbox/gnome-settings-daemon >/dev/null; then
+#  /usr/lib/openbox/gnome-settings-daemon &
+#elif which gnome-settings-daemon >/dev/null 2>&1; then
+#  gnome-settings-daemon &
+#fi
+
+xrdb -load $HOME/.Xresources &
+$HOME/.config/polybar/launch.sh &
+$HOME/.fehbg &
+picom --config $HOME/.config/picom.conf &
+setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &
+dunst -config $HOME/.colors/dunst/dunstrc-colored &
+xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
+-notify 10 -notifier "notify-send --urgency normal --expire-time=3500 \
+'locking screen in 10 seconds'" -corners +-00 -cornerdelay 10 \
+-cornerredelay 10 -cornersize 20 &
+
+if [ "$(ps -aux | grep '[m]pd' | wc -l)" -eq 0 ]; then
+	mpd
+fi &
+
+paplay /usr/share/sounds/freedesktop/stereo/service-login.oga &
+sleep 4; $HOME/scripts/greeting.sh &
+sleep 8; $HOME/scripts/todonotify.sh &
+$HOME/scripts/updates.sh &
+$HOME/scripts/tinympdnotify.sh &

@@ -5,7 +5,7 @@
     follow = mouse
 
     # Make the width 3740 (3840 - 100), have 50 left margin and 95 above
-    geometry = "300x0-25+53"
+    geometry = "300x0-10+10"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes
@@ -32,7 +32,7 @@
 
     # The frame color and width of the notification
     frame_color = "#434C5E"
-    frame_width = 3
+    frame_width = 1
 
     # Define a color for the separator.
     # possible values are:
@@ -109,6 +109,8 @@
     mouse_middle_click = do_action
     mouse_right_click = close_all
 
+    corner_radius=1.5
+
 # These are the keybindings used to control dunst notifications
 [shortcuts]
     close = ctrl+space
@@ -117,19 +119,19 @@
 
 # Set the background and foreground (text) color for all notifications
 [urgency_low]
-    frame_color = "#cccccc"
-    background = "#2d2d2d"
-    foreground = "#f2f2f2"
+    frame_color = "#0f1217"
+    background = "#0f1217"
+    foreground = "#91bb8e"
     timeout = 4
 
 [urgency_normal]
-    frame_color = "#cccccc"
-    background = "#2d2d2d"
-    foreground = "#f2f2f2"
+    frame_color = "#0f1217"
+    background = "#0f1217"
+    foreground = "#f7eef5"
     timeout = 5
 
 [urgency_critical]
-    frame_color = "#ff0000"
-    background = "#2d2d2d"
-    foreground = "#f2f2f2"
+    frame_color = "#0f1217"
+    background = "#0f1217"
+    foreground = "#cdaece"
     timeout = 8

@@ -1,9 +1,11 @@
 #!/bin/sh
 
-MAIN=$(echo -e 'power\nscreenshot\nmusic\ntheme\nto-do\nvideo\nupdates\nother' | dmenu -p 'menu ')
+source $HOME/scripts/launcher.sh
+
+MAIN=$(echo -e 'power\nscreenshot\nmusic\ntheme\nto-do\nvideo\nupdates\nother' | $LAUNCHER -p 'menu ')
 
 second_menu () {
-	SECOND=$(echo -e 'set wallpaper\nscreencast\ntimer\ncalculator' | dmenu -p 'menu ')
+	SECOND=$(echo -e 'set wallpaper\nscreencast\ntimer\ncalculator' | $LAUNCHER -p 'menu ')
 	case $SECOND in
 		set*)
 			$HOME/scripts/setwall.sh

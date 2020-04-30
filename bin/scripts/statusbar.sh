@@ -76,4 +76,4 @@ weather () {
 while true; do
 	xsetroot -name " $(pulse) $(dte) $(tme) $(mpd_indicator)"
 	sleep 60
-done #&
+done &
