@@ -1,13 +1,19 @@
 ### screenshot:
 
+* dwm
 ![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/dracula_dark_bg_scrot.png)
+
+* openbox
+![Image alt](https://raw.githubusercontent.com/sadparadiseinhell/dotfiles/master/images/openboxscrot.png)
 
 ### list of applications:
 
 * audio player:
   - [mpd](https://www.musicpd.org/) + [ncmpcpp](https://rybczak.net/ncmpcpp/)
   - [spotify](https://www.spotify.com/us/download/linux)
-* application launcher: [dmenu](https://tools.suckless.org/dmenu/) with patches
+* application launcher:
+  - [dmenu](https://tools.suckless.org/dmenu/) with patches (for dwm)
+  - [rofi](https://github.com/davatorium/rofi) (for openbox)
 * aur helper: [yay](https://github.com/Jguer/yay)
 * browser: [chromium](https://www.chromium.org/)
 * compositor for X: [picom](https://github.com/yshui/picom)
@@ -24,4 +30,6 @@
   - [sublime text 3](https://www.sublimetext.com/3)
   - [neovim](https://neovim.io/)
     - plugin manager: [plug](https://github.com/junegunn/vim-plug)
-* wm: [dwm](https://dwm.suckless.org/) with patches
+* wm:
+  - [dwm](https://dwm.suckless.org/) with patches
+  - [openbox](https://github.com/dylanaraps/openbox-patched)
