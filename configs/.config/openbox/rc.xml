@@ -122,15 +122,16 @@
 
        use obconf if you want to change these without having to log out
        and back in -->
-    <number>4</number>
+    <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name>1</name>
-      <name>2</name>
-      <name>3</name>
-      <name>4</name>
+      <name></name>
+      <name></name>
+      <name></name>
+      <name></name>
+      <name></name>
     </names>
-    <popupTime>875</popupTime>
+    <popupTime>575</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -217,7 +218,7 @@
         <wrap>no</wrap>
       </action>
     </keybind>
-    <keybind key="S-A-Up">
+    <!--    <keybind key="S-A-Up">
       <action name="SendToDesktop">
         <to>up</to>
         <wrap>no</wrap>
@@ -228,25 +229,55 @@
         <to>down</to>
         <wrap>no</wrap>
       </action>
+    </keybind> -->
+    <keybind key="S-A-1">
+      <action name="SendToDesktop">
+        <to>1</to>
+      </action>
     </keybind>
-    <keybind key="W-F1">
+    <keybind key="S-A-2">
+      <action name="SendToDesktop">
+        <to>2</to>
+      </action>
+    </keybind>
+    <keybind key="S-A-3">
+      <action name="SendToDesktop">
+        <to>3</to>
+      </action>
+    </keybind>
+    <keybind key="S-A-4">
+      <action name="SendToDesktop">
+        <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="S-A-5">
+      <action name="SendToDesktop">
+        <to>5</to>
+      </action>
+    </keybind>
+    <keybind key="A-1">
       <action name="GoToDesktop">
         <to>1</to>
       </action>
     </keybind>
-    <keybind key="W-F2">
+    <keybind key="A-2">
       <action name="GoToDesktop">
         <to>2</to>
       </action>
     </keybind>
-    <keybind key="W-F3">
+    <keybind key="A-3">
       <action name="GoToDesktop">
         <to>3</to>
       </action>
     </keybind>
-    <keybind key="W-F4">
+    <keybind key="A-4">
       <action name="GoToDesktop">
         <to>4</to>
+      </action>
+    </keybind>
+    <keybind key="A-5">
+      <action name="GoToDesktop">
+        <to>5</to>
       </action>
     </keybind>
     <keybind key="W-d">
@@ -318,6 +349,19 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="A-w">
+      <action name="Execute">
+        <command>rofi -show window -theme slate</command>
+      </action>
+    </keybind>
+    <keybind key="A-c">
+      <action name="Execute">
+        <command>xdotool getactivewindow windowsize 1200 800 windowmove 240 90</command>
+      </action>
+    </keybind>
+    <keybind key="A-m">
+      <action name="ToggleMaximize"/>
+    </keybind>
     <keybind key="A-l">
       <action name="Execute">
         <command>~/scripts/lock.sh</command>
@@ -354,7 +398,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>~/scripts/screenshot-menu.sh</command>
+        <command>~/scripts/scrot-menu.sh</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">
@@ -447,7 +491,7 @@
         <action name="FocusToBottom"/>
         <action name="Unfocus"/>
       </mousebind>
-      <mousebind button="A-Up" action="Click">
+      <!--      <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
@@ -466,7 +510,7 @@
         <action name="GoToDesktop">
           <to>next</to>
         </action>
-      </mousebind>
+      </mousebind> -->
       <mousebind button="A-S-Up" action="Click">
         <action name="SendToDesktop">
           <to>previous</to>
@@ -680,7 +724,7 @@
           <to>next</to>
         </action>
       </mousebind>
-      <mousebind button="A-Up" action="Click">
+      <!--      <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
@@ -699,7 +743,7 @@
         <action name="GoToDesktop">
           <to>next</to>
         </action>
-      </mousebind>
+      </mousebind> -->
       <mousebind button="Left" action="Press">
         <action name="Focus"/>
         <action name="Raise"/>
@@ -733,7 +777,7 @@
           <to>next</to>
         </action>
       </mousebind>
-      <mousebind button="A-Up" action="Click">
+      <!--      <mousebind button="A-Up" action="Click">
         <action name="GoToDesktop">
           <to>previous</to>
         </action>
@@ -742,7 +786,7 @@
         <action name="GoToDesktop">
           <to>next</to>
         </action>
-      </mousebind>
+      </mousebind> -->
     </context>
   </mouse>
   <menu>

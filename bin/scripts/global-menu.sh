@@ -41,7 +41,7 @@ case $MAIN in
 		$HOME/scripts/power-menu.sh
 		;;
 	screenshot)
-		$HOME/scripts/screenshot-menu.sh
+		$HOME/scripts/scrot-menu.sh
 		;;
 	music)
 		$HOME/scripts/mpd-menu.sh

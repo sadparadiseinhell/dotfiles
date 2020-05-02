@@ -65,7 +65,7 @@ alias colortest="$HOME/scripts/colortest.sh"
 alias info="$HOME/scripts/tfetch.sh"
 alias lock="$HOME/scripts/lock.sh"
 alias power-menu="$HOME/scripts/power-menu.sh"
-alias scrot-menu="$HOME/scripts/screenshot-menu.sh"
+alias scrot-menu="$HOME/scripts/scrot-menu.sh"
 
 # Rebuild
 alias dwm-rebuild="cd $HOME/build/dwm; make; sudo make clean install; home"
