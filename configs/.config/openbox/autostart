@@ -14,7 +14,7 @@
 
 xrdb -load $HOME/.Xresources &
 $HOME/.config/polybar/launch.sh &
-$HOME/.fehbg &
+feh --bg-fill $(cat $HOME/.currwall) &
 picom --config $HOME/.config/picom.conf &
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &
 dunst -config $HOME/.colors/dunst/dunstrc-colored &

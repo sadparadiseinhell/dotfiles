@@ -79,9 +79,9 @@ cursor-click = pointer
 cursor-scroll = ns-resize
 
 [bar/desktop]
-width = 40
+width = 40 
 height = 30
-offset-x = 10
+offset-x = 100%:-300
 offset-y = 10
 radius = 2.5
 fixed-center = true
@@ -102,17 +102,36 @@ font-1 = FontAwesome5Free:style=Regular:size=10;1
 font-2 = FontAwesome5Brands:style=Regular:size=10;1
 
 modules-left = 
-modules-center = desktop
+modules-center = workspaces
 modules-right = 
 
 cursor-click = pointer
 
-[module/desktop]
-type = custom/script
-exec = ~/scripts/wm.sh desktop
-tail = false
-interval = 1
-click-left = rofi -show window -theme slate -location 7 -xoffset 10
+[module/workspaces]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+
+format = <label-state>
+format-background = ${colors.background}
+
+label-active = %name%
+label-urgent = 
+label-occupied = 
+label-empty = 
+icon-default = 
+
+label-empty-padding = 1
+label-active-padding = 1
+label-urgent-padding = 1
+label-occupied-padding = 1
+
+label-empty-foreground = ${colors.foreground-alt}
+label-active-foreground = ${colors.foreground} 
+label-urgent-foreground = ${colors.foreground-alt}
+label-occupied-foreground = ${colors.foreground-alt}
 
 [bar/window]
 width = 190

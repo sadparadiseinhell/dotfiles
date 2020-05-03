@@ -97,13 +97,13 @@ osd.bg: flat solid
 osd.label.bg: flat solid
 osd.hilight.bg: flat solid
 osd.unhilight.bg: flat solid
-osd.bg.color: #f7eef5
-osd.label.bg.color: #f7eef5
-osd.label.text.color: #151e24
-osd.hilight.bg.color: #cdaece
-osd.unhilight.bg.color: #e7cbe1
+osd.bg.color: #0f1217
+osd.label.bg.color: #0f1217
+osd.label.text.color: #f7eef5
+osd.hilight.bg.color: #1e242e
+osd.unhilight.bg.color: #28303e
 osd.border.width: 2
-osd.border.color: #cdaece
+osd.border.color: #1e242e
 
 !! Fonts
 window.active.label.text.font: shadow=n:shadowoffset=1:shadowtint=75

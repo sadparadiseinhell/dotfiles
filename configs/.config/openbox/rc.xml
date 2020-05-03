@@ -131,7 +131,7 @@
       <name></name>
       <name></name>
     </names>
-    <popupTime>575</popupTime>
+    <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
        desktops.  Set this to 0 to disable the popup. -->
   </desktops>
@@ -374,7 +374,7 @@
     </keybind>
     <keybind key="A-r">
       <action name="Execute">
-        <command>rofi -show run -theme slate</command>
+        <command>rofi -show run -theme bottom</command>
       </action>
     </keybind>
     <keybind key="A-x">

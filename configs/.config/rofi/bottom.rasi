@@ -1,0 +1,63 @@
+configuration {
+  location: 7;
+  yoffset: -10;
+  xoffset: 10;
+}
+
+* {
+  base-bg: #0f1217;
+  selected-bg: #1e242e;
+  base-color: #222222aa;
+  selected-color: #f7eef5;
+  border-color: #1e242e;
+  transparent: #00000000;
+  text-color: #f7eef5;
+  font: "Roboto Bold 10";
+}
+#window {
+  width: 1360;
+  background-color: @base-bg;
+  margin: 0px 0px 0px 0px;
+  padding: -2px 0px -2px 0px;
+  children: [ horibox ];
+  border-radius: 3px;
+}
+#horibox {
+  background-color: @base-bg;
+  orientation: horizontal;
+  children: [ prompt, textbox-prompt-colon, entry, listview ];
+}
+#prompt {
+  text-color: @selected-color;
+  padding: 8px 0px 8px 10px;
+  background-color: @transparent;
+}
+#textbox-prompt-colon  {
+  expand: false;
+  str: ":";
+  padding: 8px 10px 8px 0px;
+  text-color: @selected-color;
+  background-color: @transparent;
+}
+#entry {
+  padding: 8px;
+  text-color: @selected-color;
+  background-color: @base-bg;
+  expand: false;
+  width: 7em;
+}
+#listview {
+  background-color: @base-bg;
+  layout: horizontal;
+  spacing: 5px;
+  lines: 100;
+}
+#element {
+  background-color: @base-bg;
+  padding: 8px;
+}
+#element selected {
+  border: 0px 0px;
+  text-color: @selected-color;
+  background-color: @selected-bg;
+}

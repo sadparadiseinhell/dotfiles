@@ -82,6 +82,7 @@ alias off='sleep 1; xset dpms force off'
 alias vim='nvim'
 alias subl='subl3'
 alias todo='$HOME/scripts/bigtodo.sh'
+alias x='startx $HOME/.xinitrc'
 
 # Shell
 alias c='clear'
