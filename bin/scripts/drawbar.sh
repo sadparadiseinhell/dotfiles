@@ -1,3 +1,5 @@
+#!/bin/sh
+
 #
 # Source: https://github.com/simonvic/dotfiles
 #

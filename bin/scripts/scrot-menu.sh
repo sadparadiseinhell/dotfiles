@@ -2,37 +2,78 @@
 
 source $HOME/scripts/launcher.sh
 
-CHOICE=$(echo -e 'fullscreen\narea\narea to clipboard\nactive window' | $LAUNCHER -p 'scrot menu ')
+CHOICE=$(printf 'Fullscreen\nFullscreen [Clip]\nArea\nArea [Clip]\nActive window' | $LAUNCHER -i -p 'Screenshot ')
 SOUND='/usr/share/sounds/freedesktop/stereo/camera-shutter.oga'
 SCROTDIR="$HOME/screenshots/"
 NAME="$(date +%G_%m_%d_%T).png"
 FILE="$HOME/scrot.png"
 
+countdown() {
+	if [[ -z $1 ]]; then
+		v='3'
+	else
+		v=$1
+	fi
+	
+	for (( i = $v; i > 0; i-- )); do
+		dunstify -r 1338 -t 1050 "Screenshot" "Taking shot in $i seconds"
+		sleep 1
+	done
+}
+
+fullscreen () {
+	countdown $1
+	maim -u $FILE
+	notify-send "Screenshot saved $NAME" -i $FILE -t 2500
+	paplay $SOUND
+	mv $FILE $SCROTDIR/$NAME
+}
+
+fullscreen_clip () {
+	FILE='/tmp/screenshot_clip.png'
+	maim $FILE
+	countdown
+	xclip -selection clipboard -t image/png $FILE
+	sleep 1
+	notify-send -i $FILE "Screenshot copied to clipboard"
+}
+
+area () {
+	sleep .5
+	maim -s $FILE
+	notify-send "Screenshot saved $NAME" -i $FILE -t 2500
+	paplay $SOUND
+	mv $FILE $SCROTDIR/$NAME
+}
+
+area_clip () {
+	sleep .5
+	maim -s | xclip -selection clipboard -t image/png
+	notify-send 'Screenshot copied to clipboard' -t 2500
+}
+
+active_window () {
+	sleep 1
+	maim -u -i $(xdotool getactivewindow) $FILE
+	notify-send "Screenshot saved $NAME" -i $FILE -t 2500
+	paplay $SOUND
+	mv $FILE $SCROTDIR/$NAME
+}
+
 case $CHOICE in
-	full*)
-		sleep 1
-		maim -u $FILE
-		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
-		paplay $SOUND
-		mv $FILE $SCROTDIR/$NAME
+	'Fullscreen')
+		fullscreen $1
 		;;
-	area)
-		sleep .5
-		maim -s $FILE
-		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
-		paplay $SOUND
-		mv $FILE $SCROTDIR/$NAME
+	'Fullscreen [Clip]')
+		fullscreen_clip $1
 		;;
-	'area to clipboard')
-		sleep .5
-		maim -s | xclip -selection clipboard -t image/png
-		notify-send 'screenshot copied to clipboard' -t 2500	
+	'Area')
+		area
 		;;
-	active*)
-		sleep 1
-		maim -u -i $(xdotool getactivewindow) $FILE
-		notify-send 'screenshot saved' "$NAME" -i $FILE -t 2500
-		paplay $SOUND
-		mv $FILE $SCROTDIR/$NAME
+	'Area [Clip]')
+		area_clip
+		;;
+	'Active window')
+		active_window
 		;;
 esac

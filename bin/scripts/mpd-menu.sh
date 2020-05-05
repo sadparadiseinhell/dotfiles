@@ -2,23 +2,60 @@
 
 source $HOME/scripts/launcher.sh
 
-ARTIST=$(mpc list artist | $LAUNCHER -p 'artist ')
-NUM=$(mpc list album artist "$ARTIST" | wc -l)
-if [[ -z $ARTIST ]]; then
-	exit 0
-else
-	if [[ $NUM -eq 1 ]]; then
+artist() {
+	lines(){ mpc list artist | wc -l ; }
+	lines=$(lines)
+	[ "$(lines)" -gt 10 ] && lines=10
+	mpc list artist | sort -f | $LAUNCHER -i -p "Artists " -l $lines
+}
+
+a_album() {
+	artist="$1"
+	lines(){ mpc list album artist "$artist" | wc -l ; }
+	lines=$(lines)
+	[ "$(lines)" -gt 10 ] && lines=10
+	mpc list album artist "$artist" | sort -f | $LAUNCHER -i -p "Albums " -l $lines
+}
+
+album() {
+	lines(){ mpc list album | wc -l ; }
+	lines=$(lines)
+	[ "$(lines)" -gt 10 ] && lines=10
+	mpc list album | sort -f | $LAUNCHER -i -p "Album " -l $lines
+}
+
+song() {
+	lines(){ mpc list title | wc -l ; }
+	lines=$(lines)
+	[ "$(lines)" -gt 10 ] && lines=10
+	mpc list title | sort -f | $LAUNCHER -i -p "Song " -l $lines
+}
+
+MODE=$(printf "Library\nAlbum\nSong" | $LAUNCHER -i -p "Choose mode " -l 3)
+
+case "$MODE" in
+	Library)
+		artist=$(artist)
+		[ ! "$artist" ] && exit
+		album=$(a_album "$artist")
+		[ ! "$album" ] && exit
 		mpc clear > /dev/null
-		mpc find artist "$ARTIST" | mpc add
+		mpc find artist "$artist" album "$album" | mpc add
 		$HOME/scripts/musicctrl.sh play
-		exit 0
-	else
-		ALBUM=$(mpc list album artist "$ARTIST" | $LAUNCHER -p 'album ')
-		if [[ -z $ALBUM ]]; then
-			exit 0
-		fi
+		;;
+	Song) 
+		song=$(song)		
+		[ ! "$song" ] && exit
 		mpc clear > /dev/null
-		mpc find artist "$ARTIST" album "$ALBUM" | mpc add
+		mpc search title "$song" | mpc add
 		$HOME/scripts/musicctrl.sh play
-	fi
-fi
+		;;
+	Album)
+		album=$(album)
+		[ ! "$album" ] && exit
+		mpc clear > /dev/null
+		mpc find album "$album" | mpc add
+		$HOME/scripts/musicctrl.sh play
+		;;
+esac
+

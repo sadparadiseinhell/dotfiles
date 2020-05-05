@@ -2,31 +2,31 @@
 
 source $HOME/scripts/launcher.sh
 
-MAIN=$(echo -e 'power\nscreenshot\nmusic\ntheme\nto-do\nvideo\nupdates\nother' | $LAUNCHER -p 'menu ')
+MAIN=$(echo -e 'Power\nScreenshot\nMusic\nTheme\nTo-Do\nVideo\nUpdates\nOther' | $LAUNCHER -i -p 'Menu ')
 
 second_menu () {
-	SECOND=$(echo -e 'run\napps\nset wallpaper\nscreencast\ntimer\ncalculator' | sort | $LAUNCHER -p 'menu ')
+	SECOND=$(echo -e 'Run\nApps\nSet wallpaper\nScreencast\nTimer\nCalculator' | sort | $LAUNCHER -i -p 'Menu ')
 	case $SECOND in
-		set*)
+		Set*)
 			$HOME/scripts/setwall.sh
 			;;
-		screencast)
+		Screencast)
 			$HOME/scripts/screencast.sh
 			;;
-		timer)
+		Timer)
 			$HOME/scripts/tinytimer.sh
 			;;
-		calc*)
+		Calc*)
 			$HOME/scripts/tinycalculator.sh
 			;;
-		apps)
+		Apps)
 			if [[ $LAUNCHER = rofi* ]]; then
 				rofi -show drun -theme slate
 			else
 				dmenu_run
 			fi
 			;;
-		run)
+		Run)
 			if [[ $LAUNCHER = rofi* ]]; then
 				rofi -show run -theme slate
 			else
@@ -37,28 +37,28 @@ second_menu () {
 }
 
 case $MAIN in
-	power)
+	Power)
 		$HOME/scripts/power-menu.sh
 		;;
-	screenshot)
+	Screenshot)
 		$HOME/scripts/scrot-menu.sh
 		;;
-	music)
+	Music)
 		$HOME/scripts/mpd-menu.sh
 		;;
-	theme)
+	Theme)
 		$HOME/scripts/theme.sh
 		;;
-	to-do)
+	To-Do)
 		$HOME/scripts/todo.sh
 		;;
-	video)
+	Video)
 		$HOME/scripts/video.sh
 		;;
-	updates)
+	Updates)
 		$HOME/scripts/checkupdates.sh
 		;;
-	other)
+	Other)
 		second_menu
 		;;
 esac

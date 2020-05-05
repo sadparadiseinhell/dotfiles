@@ -2,21 +2,21 @@
 
 source $HOME/scripts/launcher.sh
 
-OPT="$(echo -e 'lock\nlogout\nsuspend\nhibernate\nreboot\npoweroff' | $LAUNCHER -p 'power menu ')"
+OPT="$(printf 'Lock\nLogout\nSuspend\nHibernate\nReboot\nPoweroff' | $LAUNCHER -i -p 'Power menu ')"
 execute () {
 	case $OPT in
-		h*|r*|s*|p*) ACTION="systemctl $OPT" ;;
-		lock) ACTION="$HOME/scripts/lock.sh" ;;
-		logout) ACTION="/usr/bin/killall xinit" ;;
+		H*|R*|S*|P*) ACTION="systemctl $OPT" ;;
+		Lock) ACTION="$HOME/scripts/lock.sh" ;;
+		Logout) ACTION="/usr/bin/killall xinit" ;;
 	esac
 
 	if [[ $OPT = 'poweroff' ]] && [[ $CONFIRM = 'yes' ]]; then
 		paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga'
 	fi
 
-	if [[ $CONFIRM = 'yes' ]]; then
+	if [[ $CONFIRM = 'Yes' ]]; then
 		$ACTION
-	elif [[ $CONFIRM = 'no' ]]; then
+	elif [[ $CONFIRM = 'No' ]]; then
 		echo ':('
 	fi
 }
@@ -25,7 +25,7 @@ confirm () {
 	if [[ -z $OPT ]]; then
 		exit 0
 	else
-		CONFIRM=$(echo -e 'no\nyes' | $LAUNCHER -p "$OPT ")
+		CONFIRM=$(printf 'No\nYes' | $LAUNCHER -i -p "$OPT ")
 	fi
 }
 

@@ -3,7 +3,7 @@
 source $HOME/scripts/launcher.sh
 
 WALLDIR="$HOME/wallpapers"
-CHOSEN=$(ls $WALLDIR | $LAUNCHER -p "select wallpaper " )
+CHOSEN=$(ls $WALLDIR | $LAUNCHER -i -p "Select wallpaper " )
 
 if [[ "$CHOSEN" ]]; then
 	feh --bg-fill $WALLDIR/$CHOSEN

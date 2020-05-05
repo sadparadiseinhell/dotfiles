@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #0f1217
+background = #CC0f1217
 background-alt = #444
 ;foreground = ${xrdb:color7:#222}
 foreground = #f7eef5
@@ -29,9 +29,9 @@ alert = #bd2c40
 
 [bar/tiny]
 ;monitor = ${env:MONITOR:HDMI-1}
-width = 240
+width = 280
 height = 30
-offset-x = 100%:-250
+offset-x = 100%:-290
 offset-y = 10
 radius = 2.5
 fixed-center = true
@@ -60,7 +60,7 @@ font-3 = FontAwesome5Brands:style=Regular:size=10;1
 font-4 = Droid Sans:style=Regular:size=10
 
 modules-left = 
-modules-center = pulseaudio date menu
+modules-center = pulseaudio date spotlight menu
 modules-right = 
 
 tray-position = none
@@ -81,7 +81,7 @@ cursor-scroll = ns-resize
 [bar/desktop]
 width = 40 
 height = 30
-offset-x = 100%:-300
+offset-x = 100%:-340
 offset-y = 10
 radius = 2.5
 fixed-center = true
@@ -232,12 +232,19 @@ label-volume-foreground = #55aa55
 label-muted = muted
 label-muted-foreground = #666
 
+[module/spotlight]
+type = custom/script
+
+exec = echo %{F#DD9ACB}%{F-}
+click-left = rofi -modi "Global Search":"~/scripts/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -theme spot -show-icons
+format-padding = 1
+
 [module/menu]
 type = custom/script
 
 exec = echo %{F#ff8080}%{F-}
 click-left = $HOME/scripts/global-menu.sh
-format-padding = 0
+format-padding = 1
 
 [module/powermenu]
 type = custom/menu

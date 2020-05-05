@@ -7,10 +7,10 @@ source $HOME/scripts/launcher.sh
 FILE="$HOME/.todo.txt"
 touch "$FILE"
 HEIGHT=$(wc -l "$FILE" | awk '{print $1}')
-PROMPT='add/delete: '
+PROMPT='Add/Delete: '
 SOUND='/usr/share/sounds/freedesktop/stereo/dialog-information.oga'
 
-CMD=$($LAUNCHER -l "$HEIGHT" -p "$PROMPT" "$@" < "$FILE")
+CMD=$($LAUNCHER -i -l "$HEIGHT" -p "$PROMPT" "$@" < "$FILE")
 while [ -n "$CMD" ]; do
  	if grep -q "^$CMD\$" "$FILE"; then
 		grep -v "^$CMD\$" "$FILE" > "$FILE.$$"
@@ -22,6 +22,6 @@ while [ -n "$CMD" ]; do
 		paplay "$SOUND" 2>/dev/null &
  	fi
 
-	CMD=$($LAUNCHER -l "$HEIGHT" -p "$PROMPT" "$@" < "$FILE")
+	CMD=$($LAUNCHER -i -l "$HEIGHT" -p "$PROMPT" "$@" < "$FILE")
 done
 exit 0

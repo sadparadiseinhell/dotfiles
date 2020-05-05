@@ -5,30 +5,29 @@ configuration {
 }
 
 * {
-  base-bg: #0f1217;
-  selected-bg: #1e242e;
-  base-color: #222222aa;
-  selected-color: #f7eef5;
-  border-color: #1e242e;
+  background-color: #00000073;
+  selected-bg: #0f121766;
+  selected-fg: #f7eef5;
+  border-color: #1e242e66;
   transparent: #00000000;
   text-color: #f7eef5;
   font: "Roboto Bold 10";
 }
 #window {
-  width: 1360;
-  background-color: @base-bg;
+  width: 1320;
+  background-color: @background-color;
   margin: 0px 0px 0px 0px;
   padding: -2px 0px -2px 0px;
   children: [ horibox ];
   border-radius: 3px;
 }
 #horibox {
-  background-color: @base-bg;
+  background-color: @background-color;
   orientation: horizontal;
   children: [ prompt, textbox-prompt-colon, entry, listview ];
 }
 #prompt {
-  text-color: @selected-color;
+  text-color: @selected-fg;
   padding: 8px 0px 8px 10px;
   background-color: @transparent;
 }
@@ -36,28 +35,28 @@ configuration {
   expand: false;
   str: ":";
   padding: 8px 10px 8px 0px;
-  text-color: @selected-color;
+  text-color: @selected-fg;
   background-color: @transparent;
 }
 #entry {
   padding: 8px;
-  text-color: @selected-color;
-  background-color: @base-bg;
+  text-color: @selected-fg;
+  background-color: @transparent;
   expand: false;
   width: 7em;
 }
 #listview {
-  background-color: @base-bg;
+  background-color: @transparent;
   layout: horizontal;
-  spacing: 5px;
+  spacing: 0px;
   lines: 100;
 }
 #element {
-  background-color: @base-bg;
+  background-color: @transparent;
   padding: 8px;
 }
 #element selected {
   border: 0px 0px;
-  text-color: @selected-color;
+  text-color: @selected-fg;
   background-color: @selected-bg;
 }

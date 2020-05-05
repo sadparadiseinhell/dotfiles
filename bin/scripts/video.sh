@@ -2,16 +2,36 @@
 
 source $HOME/scripts/launcher.sh
 
-MENU=$(echo -e 'local\nlink\ntwitch\nsearch (youtube)\ndownload' | $LAUNCHER -p 'link/local: ')
+DOWNLOADS_DIR="$HOME/movies/downloads/"
+MENU=$(echo -e 'Local\nLink\nTwitch\nSearch (YouTube)\nDownload' | $LAUNCHER -i -p 'Link/Local: ')
 
 local_storage () {
 	DIR="$HOME/movies/"
-	CHOICE="$(ls $DIR | $LAUNCHER -l 5 -p 'select video ')"
+	CHOICE="$(ls $DIR | $LAUNCHER -l 5 -p 'Select video ')"
 	if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
+		if [[ -z $CHOICE ]]; then
+			exit 0
+		fi
 		mpv "$DIR$CHOICE"
 		exit 0
 	elif [[ -n $CHOICE ]] && [[ -d "$DIR$CHOICE" ]]; then
+		if [[ -z $CHOICE ]]; then
+			exit 0
+		fi
 		cd "$DIR$CHOICE"
+		NUM=$(ls "$DIR$CHOICE" | grep "\.mkv\|\.avi\|\.mp4" | wc -l)
+		if [[ $NUM -gt 1 ]]; then
+			cd "$DIR$CHOICE"
+			CHOICE="$(ls $PWD | $LAUNCHER -l 5 -p 'Select video ')"
+			if [[ -z $CHOICE ]]; then
+				exit 0
+			fi
+			DIR="$PWD/"
+			if [[ -n $CHOICE ]]; then
+				mpv "$DIR$CHOICE"
+				exit 0
+			fi
+		fi
 		mpv *{.mkv,.avi,.mp4}
 		if [[ $? != 0 ]]; then
 			cd $(ls $DIR$CHOICE)
@@ -23,12 +43,12 @@ local_storage () {
 	fi
 
 	if [[ $? != 0 ]]; then
-		notify-send -u critical -t 3000 'video cannot be opened'
+		notify-send -u critical -t 3000 "Video can't be opened"
 	fi
 }
 
 by_link () {
-	LINK=$( (echo 1 | grep 0) | $LAUNCHER -p 'paste a link to a video ')
+	LINK=$( (echo | grep 0) | $LAUNCHER -i -p 'Paste a link to a video ')
 	if [[ -n $LINK ]]; then
 		mpv --ytdl-format="[height=720]" $LINK
 	else
@@ -36,29 +56,42 @@ by_link () {
 	fi
 
 	if [[ $? != 0 ]]; then
-		notify-send -u critical -t 3000 'video cannot be opened'
+		notify-send -u critical -t 3000 "Video can't be opened"
 	fi
 }
 
 download () {
-	LINK=$(echo | grep 0 | $LAUNCHER -p 'paste a link to a video ')
+	if [[ ! -d $DOWNLOADS_DIR ]]; then
+		mkdir $DOWNLOADS_DIR
+	fi
+
+	LINK=$(echo | grep 0 | $LAUNCHER -i -p 'Paste a link to a video ')
 	if [[ -z $LINK ]]; then
 		exit 0
 	fi
 
-	cd $HOME/movies
-	youtube-dl -f bestvideo[height=1080]+bestaudio[ext=m4a] --merge-output-format mkv $LINK
+	QUALITY=$(echo -e '480\n720\n1080' | $LAUNCHER -i -p 'Quality ')
+	if [[ -z $QUALITY ]]; then
+		QUALITY='1080'
+	fi
+
+	if [[ $QUALITY != '1080' ]] && [[ $QUALITY != '720' ]] && [[ $QUALITY != '480' ]]; then
+		exit 0
+	fi
+
+	cd $DOWNLOADS_DIR
+	youtube-dl -f bestvideo[height=$QUALITY]+bestaudio[ext=m4a] --merge-output-format mkv $LINK
 
 	if [[ $? != 0 ]]; then
-		notify-send -u critical -t 3000 'video cannot be downloaded'
+		notify-send -u critical -t 3000 "Video can't be downloaded"
 		exit 0
 	else
-		notify-send -t 2000 'video downloaded'
+		notify-send -t 2000 'Video downloaded'
 	fi
 }
 
 yt_search () {
-	INPUT=$(echo | grep 0 | $LAUNCHER -p 'search ')
+	INPUT=$(echo | grep 0 | $LAUNCHER -i -p 'Search ')
 	if [[ -n $INPUT ]]; then
 		mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" ytdl://ytsearch:"$INPUT"
 	else
@@ -66,12 +99,12 @@ yt_search () {
 	fi
 
 	if [[ $? != 0 ]]; then
-		notify-send -u critical -t 3000 'video cannot be opened'
+		notify-send -u critical -t 3000 "Video can't be opened"
 	fi
 }
 
 twitch () {
-	LINK=$(echo | grep 0 | $LAUNCHER -p 'paste a link ')
+	LINK=$(echo | grep 0 | $LAUNCHER -i -p 'Paste a link ')
 	if [[ -n $LINK ]]; then
 		mpv --ytdl-format="720p+bestaudio" $LINK
 	else
@@ -79,24 +112,24 @@ twitch () {
 	fi
 
 	if [[ $? != 0 ]]; then
-		notify-send -u critical -t 3000 'video cannot be opened'
+		notify-send -u critical -t 3000 "Video can't be opened"
 	fi
 }
 
 case $MENU in
-	link)
+	Link)
 		by_link
 		;;
-	local)
+	Local)
 		local_storage
 		;;
-	download)
+	Download)
 		download
 		;;
-	search*)
+	Search*)
 		yt_search
 		;;
-	twitch)
+	Twitch)
 		twitch
 		;;
 	*)

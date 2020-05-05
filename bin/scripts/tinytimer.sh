@@ -4,7 +4,7 @@ source $HOME/scripts/launcher.sh
 
 START='/usr/share/sounds/freedesktop/stereo/window-attention.oga'
 END='/usr/share/sounds/freedesktop/stereo/alarm-clock-elapsed.oga'
-TIME=$(echo -e '5 minutes\n30 minutes\n1 hour\nstop timer' | $LAUNCHER -p 'timer ')
+TIME=$(echo -e '5 minutes\n30 minutes\n1 hour\nStop timer' | $LAUNCHER -i -p 'Timer ')
 
 start () {
 	paplay "$START" 2>/dev/null &
@@ -25,8 +25,8 @@ if [[ -n $TIME ]]; then
 			start
 			sleep 1h
 			;;
-		stop*)
-			notify-send 'timer stopped' -t 2000
+		Stop*)
+			notify-send 'Timer stopped' -t 2000
 			killall test.sh
 			;;
 		*s|*m|*h)
@@ -34,12 +34,12 @@ if [[ -n $TIME ]]; then
 			sleep $TIME
 			;;
 		*)
-			notify-send -u critical 'ERROR' 'pls try again' -t 5000
+			notify-send -u critical 'Error' 'Pls try again' -t 5000
 			exit 1
 			;;
 	esac
 	paplay "$END" 2>/dev/null &
-	notify-send -u critical 'timer finished' -t 6000
+	notify-send -u critical 'Timer finished' -t 6000
 else
 	exit 0
 fi

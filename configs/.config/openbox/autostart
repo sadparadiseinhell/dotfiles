@@ -15,12 +15,13 @@
 xrdb -load $HOME/.Xresources &
 $HOME/.config/polybar/launch.sh &
 feh --bg-fill $(cat $HOME/.currwall) &
-picom --config $HOME/.config/picom.conf &
+#picom --config $HOME/.config/picom.conf &
+picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 8 --experimental-backends --backend 'glx' &
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &
 dunst -config $HOME/.colors/dunst/dunstrc-colored &
 xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
--notify 10 -notifier "notify-send --urgency normal --expire-time=2500 \
-'locking screen in 10 seconds'" -corners +-00 -cornerdelay 10 \
+-notify 10 -notifier "notify-send -u normal -t 2500 \
+'Locking screen in 10 seconds'" -corners +-00 -cornerdelay 10 \
 -cornerredelay 10 -cornersize 20 &
 
 if [ "$(ps -aux | grep '[m]pd' | wc -l)" -eq 0 ]; then

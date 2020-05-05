@@ -3,7 +3,7 @@
 source $HOME/scripts/launcher.sh
 
 if [[ -z $1 ]]; then
-	THEME=$(ls -p .colors | grep -v / | $LAUNCHER -p 'theme ')
+	THEME=$(ls -p .colors | grep -v / | $LAUNCHER -i -p 'theme ')
 	XRES="$HOME/dotfiles/colors/.colors/$THEME"
 else
 	THEME=$1

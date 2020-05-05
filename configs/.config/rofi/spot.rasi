@@ -1,20 +1,20 @@
 configuration {
-  location: 5;
-  yoffset: -50;
-  xoffset: -10;
+  location: 0;
+  yoffset: 0;
+  xoffset: 0;
   lines: 8;
-  show-icons: false;
+  icon-theme: "Papirus";
+  show-icons: true;
 }
 
 * {
   background-color: #0f121766;
+  sel-color: #1e242e66;
   border-color: #0f121766;
   text-color: #f7eef5;
   spacing: 0;
-  width: 280px;
-  transparent: #00000000;
-  selected-bg: #0f121766;
-  selected-fg: #f7eef5; 
+  width: 600px;
+  font: "Roboto Bold 10";
 }
 
 window {
@@ -32,7 +32,7 @@ prompt {
 }
 
 textbox {
-  background-color: #1e242e66;
+  background-color: @sel-color;
   border: 0 0 0px 0;
   border-color: #282C3366;
 }
@@ -48,18 +48,16 @@ listview {
 }
 
 scrollbar {
-  background-color: @background-color;
-  handle-color: #1e242e66;
-  handle-width: 5px;
+   background-color: @background-color;
+   handle-color: @sel-color;
+   handle-width: 5px;
 }
 
 element {
-  background-color: @transparent;
   border: 0 0 0px 0;
   padding: 15px;
 }
 
 element selected {
-  background-color: @selected-bg;
-  text-color: @selected-fg;
+  background-color: @sel-color;
 }
