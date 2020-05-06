@@ -10,7 +10,7 @@ execute () {
 		Logout) ACTION="/usr/bin/killall xinit" ;;
 	esac
 
-	if [[ $OPT = 'poweroff' ]] && [[ $CONFIRM = 'yes' ]]; then
+	if [[ $OPT = 'Poweroff' ]] && [[ $CONFIRM = 'Yes' ]]; then
 		paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga'
 	fi
 

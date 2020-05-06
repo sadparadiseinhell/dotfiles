@@ -91,7 +91,7 @@ download () {
 }
 
 yt_search () {
-	INPUT=$(echo | grep 0 | $LAUNCHER -i -p 'Search ')
+	INPUT=$(echo | grep 0 | $LAUNCHER -l 0 -i -p 'Search ')
 	if [[ -n $INPUT ]]; then
 		mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" ytdl://ytsearch:"$INPUT"
 	else
