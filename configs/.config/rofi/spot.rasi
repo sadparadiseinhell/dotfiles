@@ -3,18 +3,20 @@ configuration {
   yoffset: 0;
   xoffset: 0;
   lines: 8;
+  font: "Roboto Bold 10";
   icon-theme: "Papirus";
   show-icons: true;
+  width: 550;
 }
 
 * {
   background-color: #0f121766;
-  sel-color: #1e242e66;
+  text-color: #cccccc99;
+  selected-bg: #0f121766;
+  selected-fg: #f7eef5;
   border-color: #0f121766;
-  text-color: #f7eef5;
+  transparent: #00000000;
   spacing: 0;
-  width: 600px;
-  font: "Roboto Bold 10";
 }
 
 window {
@@ -27,17 +29,19 @@ inputbar {
 }
 
 prompt {
+  text-color: @selected-fg;
   padding: 15px 0px 15px 15px;
   border: 0 0px 0 0;
 }
 
 textbox {
-  background-color: @sel-color;
+  background-color: @selected-bg;
   border: 0 0 0px 0;
-  border-color: #282C3366;
+  border-color: @border-color;
 }
 
 entry {
+  text-color: @selected-fg;
   padding: 15px;
 }
 
@@ -48,16 +52,18 @@ listview {
 }
 
 scrollbar {
-   background-color: @background-color;
-   handle-color: @sel-color;
+   background-color: @transparent;
+   handle-color: @selected-bg;
    handle-width: 5px;
 }
 
 element {
+  background-color: @transparent;
   border: 0 0 0px 0;
   padding: 15px;
 }
 
 element selected {
-  background-color: @sel-color;
+  text-color: @selected-fg;
+  background-color: @selected-bg;
 }

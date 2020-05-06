@@ -8,6 +8,13 @@ SCROTDIR="$HOME/screenshots/"
 NAME="$(date +%G_%m_%d_%T).png"
 FILE="$HOME/scrot.png"
 
+notification () {
+	ACTION=$(dunstify -A O,action 'Screenshot saved' "$NAME" -i $FILE -t 2500) #& paplay $SOUND)
+	if [[ $ACTION = 'O' ]]; then
+		xdg-open $SCROTDIR 2> /dev/null && exit &
+	fi
+}
+
 countdown() {
 	if [[ -z $1 ]]; then
 		v='3'
@@ -24,7 +31,7 @@ countdown() {
 fullscreen () {
 	countdown $1
 	maim -u $FILE
-	notify-send "Screenshot saved $NAME" -i $FILE -t 2500
+	notification &
 	paplay $SOUND
 	mv $FILE $SCROTDIR/$NAME
 }
@@ -41,7 +48,7 @@ fullscreen_clip () {
 area () {
 	sleep .5
 	maim -s $FILE
-	notify-send "Screenshot saved $NAME" -i $FILE -t 2500
+	notification &
 	paplay $SOUND
 	mv $FILE $SCROTDIR/$NAME
 }

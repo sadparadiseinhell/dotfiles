@@ -105,8 +105,8 @@
     history_length = 10
 
     # Defines action of mouse event
-    mouse_left_click = close_current
-    mouse_middle_click = do_action
+    mouse_left_click = do_action
+    mouse_middle_click = close_current
     mouse_right_click = close_all
 
     corner_radius=1.5

@@ -3,14 +3,14 @@
 WALLPAPER=$2
 CACHEPATH=$HOME/.cache/lockscreen
 
-WIDTH=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 1 |head -n1)
-HEIGHT=$(xrandr --query | grep ' connected' | grep -o '[0-9][0-9]*x[0-9][0-9]*[^ ]*' | sed -r 's/^[^0-9]*([0-9]+x[0-9]+).*$/\1/' |cut -d "x" -f 2 |head -n1)
+WIDTH=$(xrandr --current | grep '*' | awk '{print $1}' | sed 's/x/ /' | awk '{print $1}')
+HEIGHT=$(xrandr --current | grep '*' | awk '{print $1}' | sed 's/x/ /' | awk '{print $2}')
 
 TIME_COLOR=ffffff99
 DATE_COLOR=ffffff73
 FG_COLOR=ffffff80
 WRONG_COLOR=ff808099
-HIGHLIGHT_COLOR=0099334D
+HIGHLIGHT_COLOR=0808084D
 VERIF_COLOR=$FG_COLOR
 
 if [[ $DISPLAY && ! $WM ]]; then
@@ -20,7 +20,7 @@ if [[ $DISPLAY && ! $WM ]]; then
 fi
 
 cropbg () {
-	convert "$WALLPAPER" -resize ${WIDTH}x -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
+	convert "$WALLPAPER" -resize ${WIDTH}x${HEIGHT}^ -gravity center -crop ${WIDTH}x${HEIGHT}+0+0 +repage \( \
         -size 120x140 xc:none \
         \) -gravity south -compose over -composite $CACHEPATH/resize.png
 }
@@ -46,15 +46,15 @@ genbg () {
 
 appearance () {
 	i3lock -n --force-clock -i $CACHEPATH/resize-blur.png \
-    --timepos="w-1652:h-70" --datepos="w-1665:h-40" --wrongpos="w/2:h-40" --greeterpos="w/2:h-40"\
+    --indpos="70:h-r*2" --timepos="w/2:h/2" --datepos="w/2:h/2+40" --wrongpos="w/2:h-40" --greeterpos="w/2:h-40"\
     --insidevercolor=$FG_COLOR --insidewrongcolor=$WRONG_COLOR --insidecolor=fefefe00 \
     --ringvercolor=$VERIF_COLOR --ringwrongcolor=$WRONG_COLOR --ringcolor=$FG_COLOR \
     --keyhlcolor=$HIGHLIGHT_COLOR --bshlcolor=$HIGHLIGHT_COLOR --separatorcolor=00000000 \
     --datecolor=$DATE_COLOR --timecolor=$TIME_COLOR --wrongcolor=$TIME_COLOR --greetercolor=$FG_COLOR \
-    --timestr="%H:%M:%S" --timesize=40 --wrongsize=25 --greetersize=25 \
+    --timestr="%H:%M:%S" --timesize=50 --wrongsize=25 --greetersize=25 \
     --datestr="%a, %b %d" --datesize=25 \
     --line-uses-ring \
-    --radius 30 --ring-width 15 \
+    --radius 20 --ring-width 10 \
     --veriftext="" --greetertext="" --noinputtext="" --wrongtext="Wrong password, try again" \
     --date-font="Roboto:style=Bold" --time-font="Roboto:style=Bold" \
     --wrong-font="Roboto:style=Bold" --greeter-font="Roboto:style=Bold"

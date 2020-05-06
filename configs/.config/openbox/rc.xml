@@ -351,7 +351,7 @@
     <!-- Keybindings for running applications -->
     <keybind key="A-s">
       <action name="Execute">
-        <command>rofi -modi "Global Search":"/home/ma/scrps/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -theme spot -show-icons</command>
+        <command>rofi -modi "Global Search":"/home/ma/scripts/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -theme spot -show-icons</command>
       </action>
     </keybind>
     <keybind key="A-w">
