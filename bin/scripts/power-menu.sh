@@ -5,7 +5,10 @@ source $HOME/scripts/launcher.sh
 OPT="$(printf 'Lock\nLogout\nSuspend\nHibernate\nReboot\nPoweroff' | $LAUNCHER -i -p 'Power menu ')"
 execute () {
 	case $OPT in
-		H*|R*|S*|P*) ACTION="systemctl $OPT" ;;
+		Poweroff) ACTION="systemctl poweroff";;
+		Reboot) ACTION="systemctl reboot";;
+		Hibernate) ACTION="systemctl hibernate";;
+		Suspend) ACTION="systemctl suspend";;
 		Lock) ACTION="$HOME/scripts/lock.sh" ;;
 		Logout) ACTION="/usr/bin/killall xinit" ;;
 	esac
