@@ -29,9 +29,8 @@ blurbg () {
 	convert "$CACHEPATH/resize.png" \
 		-filter Gaussian \
 		-blur 0x8 \
+		-fill black -colorize 15% \
 		"$CACHEPATH/resize-blur.png"
-
-		#-fill black -colorize 15% \
 }
 
 genbg () {

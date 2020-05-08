@@ -1,6 +1,6 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions\nwget\npapirus-icon-theme\nrofi" | sort)
 
 PA=$(echo -e "sublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
 

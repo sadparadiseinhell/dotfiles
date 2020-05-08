@@ -65,12 +65,12 @@ download () {
 		mkdir $DOWNLOADS_DIR
 	fi
 
-	LINK=$(echo | grep 0 | $LAUNCHER -i -p 'Paste a link to a video ')
+	LINK=$(echo | grep 0 | $LAUNCHER -l 0 -i -p 'Paste a link to a video ')
 	if [[ -z $LINK ]]; then
 		exit 0
 	fi
 
-	QUALITY=$(echo -e '480\n720\n1080' | $LAUNCHER -i -p 'Quality ')
+	QUALITY=$(echo -e '480\n720\n1080' | $LAUNCHER -l 3 -i -p 'Quality ')
 	if [[ -z $QUALITY ]]; then
 		QUALITY='1080'
 	fi
@@ -104,7 +104,7 @@ yt_search () {
 }
 
 twitch () {
-	LINK=$(echo | grep 0 | $LAUNCHER -i -p 'Paste a link ')
+	LINK=$(echo | grep 0 | $LAUNCHER -l 0 -i -p 'Paste a link ')
 	if [[ -n $LINK ]]; then
 		mpv --ytdl-format="720p+bestaudio" $LINK
 	else

@@ -3,9 +3,11 @@
 source $HOME/scripts/launcher.sh
 
 MENU=$(printf 'Show updates\nUpdate system' | $LAUNCHER -i -p 'Updates ')
-HEIGHT=$(checkupdates | wc -l)
-if [[ $HEIGHT -gt 8 ]]; then
+NUM=$(checkupdates | wc -l)
+if [[ $NUM -gt 8 ]]; then
 	HEIGHT='8'
+else
+	HEIGHT=$NUM
 fi
 
 show_updates () {
@@ -13,15 +15,17 @@ show_updates () {
 		notify-send "$(printf 'No updates available\nPls try again later')" -t 2000
 		exit 0
 	else
-		echo "$(checkupdates)" | $LAUNCHER -l $HEIGHT -i -p 'list '
+		list=$(echo "$(checkupdates)" | $LAUNCHER -l $HEIGHT -i -p "$(echo "$NUM") updates " )
 	fi
 	
-	SECONDMENU=$(printf 'No\nYes' | $LAUNCHER -i -p 'Update? ')
+	[[ -z $list ]] && exit 0
+
+	second_menu=$(printf 'No\nYes' | $LAUNCHER -i -p 'Update? ')
 	
-	if [[ $SECONDMENU = 'Yes' ]]; then
+	if [[ $second_menu = 'Yes' ]]; then
 		st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm
 		if [[ $? -eq 0 ]]; then
-			notify-send 'update completed successfully'
+			notify-send 'Update completed successfully'
 		else
 			exit 0
 		fi

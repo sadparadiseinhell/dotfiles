@@ -383,7 +383,8 @@
       </action>
     </keybind>
     <keybind key="A-x">
-      <action name="Exit">
+      <action name="Execute">
+        <command>~/scripts/ob-exit.sh</command>
       </action>
     </keybind>
     <keybind key="XF86AudioPlay">

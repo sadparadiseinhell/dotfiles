@@ -14,7 +14,8 @@
 
 xrdb -load $HOME/.Xresources &
 $HOME/.config/polybar/launch.sh &
-feh --bg-fill $(cat $HOME/.currwall) &
+#feh --bg-fill $(cat $HOME/.currwall) &
+$HOME/.fehbg &
 #picom --config $HOME/.config/picom.conf &
 picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 6 --experimental-backends --backend 'glx' &
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &

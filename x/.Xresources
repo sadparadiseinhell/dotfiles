@@ -88,3 +88,41 @@ slock.caps:          #EBCB8B
 ! Font
 st.font:             DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
 dmenu.font:          Roboto:style=Bold:size=10
+
+
+! URxvt
+URxvt.background:    [85]#15181e
+
+URxvt.font:          xft:DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
+URxvt.letterSpace:   0
+
+*.internalBorder:    30
+
+URxvt*scrollBar:     false
+URxvt.scrollstyle:   plain
+
+URxvt.saveLines:     5000
+URxvt.pointerBlank:  true
+URxvt.cursorBlink:   true
+
+URxvt.geometry:      61x22+0+0
+
+URxvt.depth:         32
+
+*.secondaryWheel:    1
+
+URxvt.antialias:     true
+
+! URxvt.keysym.C-1: command:\033]710;-xos4-terminus-medium-r-normal--14-*-*-*-*-*-u\007\033]711;-xos4-terminus-bold-r-normal--14-*-*-*-*-*-u\007
+! URxvt.keysym.C-2: command:\033]710;-xos4-terminus-medium-r-normal--24-*-*-*-*-*-u\007\033]711;-xos4-terminus-bold-r-normal--22-*-*-*-*-*-u\007
+
+
+URxvt.urlLauncher:    chromium
+URxvt.matcher.button: 1
+URxvt.keysym.M-u:     perl:url-select:select_next
+URxvt.colorUL:        #86a2be
+URxvt.underlineURLs:  true
+URxvt.underlineColor: yellow
+
+!URxvt.keysym.Shift-Control-V: eval:paste_clipboard
+!URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
