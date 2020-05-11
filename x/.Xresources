@@ -54,7 +54,7 @@
 
 ! dwm normal colors
 dwm.normfgcolor:     #D8DEE9
-dwm.normbgcolor:     #2E3440
+dwm.normbgcolor:     #0f1217
 dwm.normbordercolor: #434C5E
 dwm.normfloatcolor:  #434C5E
 

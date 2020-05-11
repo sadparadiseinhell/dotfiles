@@ -31,9 +31,12 @@ song() {
 	mpc list title | sort -f | $LAUNCHER -i -p "Song " -l $lines
 }
 
-MODE=$(printf "Library\nAlbum\nSong" | $LAUNCHER -i -p "Choose mode " -l 3)
+MODE=$(printf "Control\nLibrary\nAlbum\nSong" | $LAUNCHER -l 4 -i -p "Choose mode ")
 
 case "$MODE" in
+	Control)
+		$HOME/scripts/mpd-rofi.sh
+		;;
 	Library)
 		artist=$(artist)
 		[ ! "$artist" ] && exit
