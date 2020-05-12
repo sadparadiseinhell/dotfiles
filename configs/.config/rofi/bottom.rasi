@@ -10,17 +10,17 @@ configuration {
 }
 
 * {
-  background-color: #00000073;
-  text-color: #cccccc99;
-  selected-bg: #0f121766;
-  selected-fg: #f7eef5;
-  border-color: #1e242e66;
   transparent: #00000000;
+  background-color: @transparent;
+  text-color: #cccccc99;
+  selected-bg: #0f1217B3;
+  selected-fg: #f7eef5;
+  border-color: #1e242eB3;
   spacing: 0;
 }
 
 window {
-  background-color: @background-color;
+  background-color: #0f1217F2;
   margin: 0px 0px 0px 0px;
   padding: -2px 0px -2px 0px;
   children: [ horibox ];

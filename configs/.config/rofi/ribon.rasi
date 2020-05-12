@@ -3,8 +3,8 @@ configuration {
 }
 
 * {
-  base-bg: #0f1217;
-  selected-bg: #1e242e;
+  base-bg: #0f1217B3;
+  selected-bg: #0f1217B3;
   base-color: #222222aa;
   selected-color: #f7eef5;
   border-color: #1e242e;

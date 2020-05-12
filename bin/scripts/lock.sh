@@ -60,9 +60,14 @@ appearance () {
 }
 
 lock () {
-	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop
-	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause
-	mpc pause
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.spotify /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Stop 2> /dev/null
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Pause 2> /dev/null
+	
+	if [[ $(mpc status) == *"[playing]"* ]]; then
+	    STATUS='playing'
+	    mpc -q pause
+	fi
+
 	pkill -u $USER -USR1 dunst
 	
 	if [[ $WM = 'openbox' ]]; then
@@ -72,8 +77,12 @@ lock () {
 	fi
 	
 	pkill -u $USER -USR2 dunst
-	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play
-	#mpc play
+	dbus-send --print-reply --dest=org.mpris.MediaPlayer2.mpv /org/mpris/MediaPlayer2 org.mpris.MediaPlayer2.Player.Play 2> /dev/null
+
+	if [[ $STATUS = 'playing' ]]; then
+		mpc -q play
+	fi
+
 }
 
 show_help () {

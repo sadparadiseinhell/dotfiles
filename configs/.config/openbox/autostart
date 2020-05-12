@@ -14,10 +14,9 @@
 
 xrdb -load $HOME/.Xresources &
 $HOME/.config/polybar/launch.sh &
-#feh --bg-fill $(cat $HOME/.currwall) &
 $HOME/.fehbg &
-#picom --config $HOME/.config/picom.conf &
-picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 6 --experimental-backends --backend 'glx' &
+picom --config $HOME/.config/picom.conf &
+#picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 6 --experimental-backends --backend 'glx' &
 setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &
 dunst -config $HOME/.colors/dunst/dunstrc-colored &
 xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \

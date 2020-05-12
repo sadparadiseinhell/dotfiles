@@ -6,15 +6,15 @@ refreshbar () {
 
 case $1 in
 	prev)
-	mpc prev &> /dev/null
+	mpc -q prev
 	refreshbar
 		;;
 	next)
-	mpc next &> /dev/null
+	mpc -q next
 	refreshbar
 		;;
 	play)
-	mpc toggle &> /dev/null
+	mpc -q toggle
 	refreshbar
 		;;
 esac

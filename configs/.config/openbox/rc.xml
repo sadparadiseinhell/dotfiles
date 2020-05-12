@@ -349,9 +349,14 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="A-S-p">
+      <action name="Execute">
+        <command>~/scripts/power-menu.sh -a</command>
+      </action>
+    </keybind>
     <keybind key="A-S-m">
       <action name="Execute">
-        <command>~/scripts/mpd-rofi.sh</command>
+        <command>~/scripts/mpd-menu.sh -a</command>
       </action>
     </keybind>
     <keybind key="A-s">

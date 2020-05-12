@@ -34,6 +34,8 @@ sendNotification () {
 	
 	if [ $VOLUME -ge $WARNINGLEVEL ]; then
 		URGENCY=critical
+	else
+		URGENCY=normal
 	fi
 	
 	if [ $PLAYSOUND = true ]; then

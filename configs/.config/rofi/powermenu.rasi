@@ -1,7 +1,7 @@
 /*
  *
  * Author : Aditya Shakya (adi1090x)
- * Mail   : adi1090x@gmail.com
+ * Mail : adi1090x@gmail.com
  * Github : @adi1090x
  * Reddit : @adi1090x
  *
@@ -14,6 +14,7 @@ configuration {
 }
 
 * {
+  /* General */
   text-font:                 "Roboto Bold 10";
   icon-font:                 "Font Awesome 16";
 
@@ -30,8 +31,6 @@ configuration {
   background-light:          #00000000;
   accent:                    #6b90c5;
   foreground:                #f7eef5;
-  on:                        #88bd8d;
-  off:                       #ff8080;
   transparent:               #00000000;
 }
 
@@ -102,7 +101,7 @@ textbox-prompt-colon {
 
 #textbox-prompt-colon {
   expand: false;
-  str: "MPD";
+  str: "System";
   padding: 12px 15px 10px 15px;
   border: 0px;
   border-radius: 3px 0px 0px 3px;
@@ -117,7 +116,7 @@ textbox-prompt-colon {
 
 #listview {
   spacing: @option-6-listview-spacing;
-  lines: 6;
+  lines: 5;
 }
 
 #element {
@@ -139,9 +138,9 @@ element.active {
 }
 
 element.selected.urgent {
-  background-color: @transparent;
-  text-color: @accent;
-  border-color: @transparent;
+  background-color: @on;
+  text-color: @background;
+  border-color: @on;
 }
 
 element.selected.urgent {
@@ -163,4 +162,3 @@ element.selected.active {
 element.selected.active {
   border-color: @accent;
 }
-

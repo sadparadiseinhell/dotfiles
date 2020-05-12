@@ -10,17 +10,18 @@ configuration {
 }
 
 * {
-  background-color: #0f121766;
-  text-color: #cccccc99;
-  selected-bg: #0f121766;
-  selected-fg: #f7eef5;
-  border-color: #0f121766;
   transparent: #00000000;
+  background-color: @transparent;
+  text-color: #ccccccB3;
+  selected-bg: #0f1217B3;
+  selected-fg: #f7eef5;
+  border-color: #0f1217B3;
   spacing: 0;
 }
 
 window {
   border-radius: 3px;
+  background-color: #0f1217F2;
 }
 
 inputbar {
