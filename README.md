@@ -23,7 +23,9 @@
   - [sxiv](https://github.com/muennich/sxiv)
 * network manager: [network manager](https://wiki.gnome.org/Projects/NetworkManager/)
 * notification daemon: [dunst](https://dunst-project.org/)
-* screen locker: [slock](https://tools.suckless.org/slock/) with patches
+* screen locker:
+  - [i3lock-color](https://github.com/Raymo111/i3lock-color/) (for openbox)
+  - [slock](https://tools.suckless.org/slock/) with patches (for dwm)
 * screenshot tool: [maim](https://github.com/naelstrof/maim)
 * terminal: [st](https://st.suckless.org/)
 * text editor:
