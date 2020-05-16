@@ -156,13 +156,13 @@
      Many programs reserve space automatically, but you can use this in other
      cases. -->
   <margins>
-    <top>10</top>
-    <bottom>10</bottom>
-    <left>10</left>
-    <right>10</right>
+    <top>0</top>
+    <bottom>0</bottom>
+    <left>0</left>
+    <right>0</right>
   </margins>
   <dock>
-    <position>TopLeft</position>
+    <position>BottomLeft</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>0</floatingX>
     <floatingY>0</floatingY>
@@ -349,6 +349,11 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="A-t">
+      <action name="Execute">
+        <command>~/scripts/tile.sh</command>
+      </action>
+    </keybind>
     <keybind key="A-S-a">
       <action name="Execute">
         <command>~/scripts/apps.sh -a</command>
@@ -935,5 +940,36 @@
 
   # end of the example
 -->
+    <application class="*">
+      <decor>yes</decor>
+    </application>
+    <application name="pcmanfm">
+      <position force="no">
+        <x>center</x>
+        <y>center</y>
+      </position>
+    </application>
+    <application name="st">
+      <position force="yes">
+        <x>center</x>
+        <y>center</y>
+      </position>
+    </application>
+    <application title="ncmpcpp">
+      <desktop>3</desktop>
+      <focus>yes</focus>
+    </application>
+    <application name="subl3">
+      <desktop>2</desktop>
+      <focus>yes</focus>
+    </application>
+    <application name="chromium">
+      <desktop>1</desktop>
+      <focus>yes</focus>
+    </application>
+    <application name="telegram-desktop">
+      <desktop>4</desktop>
+      <focus>no</focus>
+    </application>
   </applications>
 </openbox_config>

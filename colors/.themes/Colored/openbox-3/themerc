@@ -9,7 +9,7 @@ border.Width: 0
 padding.width: 7
 
 window.active.border.color: #f7eef5
-window.inactive.border.color: #151e24
+window.inactive.border.color: #0f1217
 menu.border.color: #cdaece
 menu.overlap: 0
 window.frameColor: #eeeeee
@@ -40,10 +40,10 @@ window.active.title.bg.colorTo: #f7eef5
 window.active.*.bg.border.color: #000000
 
 window.active.label.bg: parentrelative
-window.active.label.text.color: #151e24
+window.active.label.text.color: #0f1217
 
 window.active.button.*.bg: parentrelative
-window.active.button.*.image.color: #151e24
+window.active.button.*.image.color: #0f1217
 window.active.button.*.bg.border.color: #4e5860
 
 window.active.button.hover.bg.color: #576773
@@ -66,7 +66,7 @@ window.handle.width: 0
 
 !! Inactive Windows
 window.inactive.title.bg: flat
-window.inactive.title.bg.color: #151e24
+window.inactive.title.bg.color: #0f1217
 window.inactive.title.bg.colorTo: #f8f7f2
 window.inactive.*.border.color: #bfbfbf
 
