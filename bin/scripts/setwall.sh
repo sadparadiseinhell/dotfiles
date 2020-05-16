@@ -22,7 +22,8 @@ unsplash () {
 	
 	feh --bg-fill $pic
 	notify-send "New wallpaper set" -t 3200
-	exec scripts/lock.sh -i $(cat .fehbg | tail -n 1 | awk '{print $4}' | sed s/\'//g)
+	scripts/lock.sh -i $(cat .fehbg | tail -n 1 | awk '{print $4}' | sed s/\'//g)
+	cp $HOME/.cache/lockscreen/resize-blur.png /dm/background.jpg
 }
 
 local_storage () {
@@ -41,7 +42,8 @@ local_storage () {
 
 	feh --bg-fill $(echo $selwall)
 	notify-send "$(echo $selwall | sed 's/\// /g' | awk '{print $4}') set as wallpaper" -t 3200
-	exec scripts/lock.sh -i $(cat .fehbg | tail -n 1 | awk '{print $4}' | sed s/\'//g)
+	scripts/lock.sh -i $(cat .fehbg | tail -n 1 | awk '{print $4}' | sed s/\'//g)
+	cp $HOME/.cache/lockscreen/resize-blur.png /dm/background.jpg
 }
 
 case $CHOSEN in

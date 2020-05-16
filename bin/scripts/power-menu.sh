@@ -14,26 +14,26 @@ menu () {
 			Logout) ACTION="/usr/bin/killall xinit" ;;
 		esac
 	
-		if [[ $opt = 'Poweroff' ]] && [[ $confitm = 'Yes' ]]; then
+		if [[ $opt = 'Poweroff' ]] && [[ $confirm = 'Yes' ]]; then
 			paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga'
 		fi
 	
-		if [[ $confitm = 'Yes' ]]; then
+		if [[ $confirm = 'Yes' ]]; then
 			$ACTION
-		elif [[ $confitm = 'No' ]]; then
+		elif [[ $confirm = 'No' ]]; then
 			echo ':('
 		fi
 	}
 	
-	confitm () {
+	confirm () {
 		if [[ -z $opt ]]; then
 			exit 0
 		else
-			confitm=$(printf 'No\nYes' | $LAUNCHER -i -p "$opt ")
+			confirm=$(printf 'No\nYes' | $LAUNCHER -i -p "$opt ")
 		fi
 	}
 	
-	confitm && execute
+	confirm && execute
 	
 	exit 0
 

@@ -2,7 +2,7 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 	
-	Plug 'itchyny/lightline.vim'
+"	Plug 'itchyny/lightline.vim'
 	Plug 'chrisbra/Colorizer'
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'jiangmiao/auto-pairs'
@@ -46,20 +46,20 @@ set nowritebackup
 " Lightline
 
 "set laststatus=2
-let g:lightline = {
-      \ 'colorscheme': 'nord',
-      \ 'active': {
-      \   'right': [ [ 'lineinfo' ],
-      \              [ 'percent' ],
-      \              [ 'fileencoding' ] ]
-      \ },
-      \ }
+"let g:lightline = {
+"      \ 'colorscheme': 'nord',
+"      \ 'active': {
+"      \   'right': [ [ 'lineinfo' ],
+"      \              [ 'percent' ],
+"      \              [ 'fileencoding' ] ]
+"      \ },
+"      \ }
 
 " Colorscheme
-colorscheme palenight
-let g:gruvbox_contrast_dark = 'hard'
-set background=dark
-highlight Normal ctermfg=white ctermbg=black
+"colorscheme palenight
+"let g:gruvbox_contrast_dark = 'hard'
+"set background=dark
+"highlight Normal ctermfg=white ctermbg=black
 
 " Colorizer
 :let g:colorizer_auto_color = 1

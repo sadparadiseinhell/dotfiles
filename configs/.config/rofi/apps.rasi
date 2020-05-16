@@ -1,0 +1,149 @@
+configuration {
+  location: 5;
+  yoffset: -50;
+  xoffset: -10;
+}
+
+* {
+  text-font:                 "Roboto Bold 10";
+  icon-font:                 "Font Awesome 16";
+
+  option-6-listview-spacing: 10px;
+
+  menu-window-padding:       5px 15px;
+  menu-inputbar-margin:      10px 0px;
+  menu-prompt-padding:       10px 20px 10px 20px;
+  menu-prompt-margin:        0px 0px 0px -2px;
+  menu-element-border:       0px;
+  menu-element-padding:      10px 15px 5px 15px;
+
+  background:                #0f1217F2;
+  background-light:          #00000000;
+  accent:                    #6b90c5;
+  foreground:                #f7eef5;
+  on:                        #88bd8d;
+  off:                       #ff8080;
+  transparent:               #00000000;
+}
+
+/* ########### */
+
+#window {
+  background-color: @background;
+  width: 330px;
+  height: 120px;
+  border-radius: 3px;
+}
+
+/* ########### */
+
+* {
+  background-color: @transparent;
+  text-color: @foreground;
+  font: @icon-font;
+}
+
+#horibox {
+  children: [ listview ];
+}
+
+#listview {
+  layout: horizontal;
+}
+
+#element {
+  padding: @option-element-padding;
+  background-color: @background-light;
+}
+
+#element.selected {
+  background-color: @transparent;
+  text-color: @accent;
+}
+
+/* ########### */
+
+* {
+  font: @text-font;
+}
+
+#window {
+  padding: @menu-window-padding;
+  children: [ inputbar, horibox ];
+}
+
+#inputbar {
+  children: [ textbox-prompt-colon, prompt ];
+  margin: @menu-inputbar-margin;
+}
+
+#prompt {
+  margin: @menu-prompt-margin;
+  background-color: @background-light;
+  text-color: @accent;
+}
+
+#textbox-prompt-colon {
+  expand: false;
+  str: "Apps";
+  padding: 10px 15px 10px 15px;
+  border: 0px;
+  border-radius: 3px;
+  background-color: @accent;
+  border-color: @accent;
+  text-color: @background;
+}
+
+#horibox {
+  padding: 0px;
+}
+
+#listview {
+  spacing: @option-6-listview-spacing;
+  lines: 6;
+}
+
+#element {
+  font: @icon-font;
+  border: @menu-element-border;
+  padding: @menu-element-padding;
+  border-color: @background-light;
+  border-radius: 3px;
+}
+
+#element.selected {
+  border-color: @accent;
+}
+
+element.active {
+  background-color: @transparent;
+  text-color: @on;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  border-color: @accent;
+}
+
+element.urgent {
+  background-color: @transparent;
+  text-color: @off;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  border-color: @accent;
+}
+

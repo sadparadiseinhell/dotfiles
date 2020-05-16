@@ -83,6 +83,7 @@ alias vim='nvim'
 alias subl='subl3'
 alias todo='$HOME/scripts/bigtodo.sh'
 alias x='startx $HOME/.xinitrc'
+alias picom-blur="picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 6 --experimental-backends --backend 'glx' &!"
 
 # Shell
 alias c='clear'

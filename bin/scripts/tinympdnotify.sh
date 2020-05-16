@@ -4,7 +4,7 @@ MUSIC_DIR=$HOME/music/
 COVER=/tmp/cover.png
 SIZE=100x100
 
-extract_cover() {
+extract_cover () {
 
     ffmpeg -i "$MUSIC_DIR$(mpc current -f %file%)" $COVER -y &> /dev/null
 
@@ -39,6 +39,11 @@ extract_cover() {
 
 }
 
+notification () {
+    action=$(dunstify -A O,action -r 3595 -i $COVER "$(mpc current -f "%title%\n%artist%\n%album%")")
+    [[ $action = 'O' ]] && st -e ncmpcpp 2> /dev/null && exit &
+}
+
 while true; do
     mpc current --wait &>/dev/null
     STATUS=$?
@@ -47,7 +52,7 @@ while true; do
         extract_cover
         
         if [ $STATUS -eq 0 ]; then
-            dunstify -r 3595 -i $COVER "$(mpc current -f "%title%\n%artist%\n%album%")"
+            notification
         fi
 
         rm /tmp/cover.png
