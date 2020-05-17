@@ -955,6 +955,10 @@
         <y>center</y>
       </position>
     </application>
+    <application title="discord">
+      <desktop>4</desktop>
+      <focus>yes</focus>
+    </application>
     <application title="ncmpcpp">
       <desktop>3</desktop>
       <focus>yes</focus>
