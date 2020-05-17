@@ -1,8 +1,8 @@
 #!/bin/sh
 
-PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \ntmux \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions\nwget\npapirus-icon-theme\nrofi" | sort)
+PP=$(echo -e "xorg-server \nxorg-apps \nxorg-xinit \nleafpad \nalsa-utils \npulseaudio \nlibnotify \nchromium \npicom \npcmanfm \nsxiv \ndunst \npython-dbus \nmpd \nncmpcpp \nttf-font-awesome \nfeh \nnetworkmanager \nadapta-gtk-theme \ntumbler \nffmpegthumbnailer \ntransmission-gtk \nmpv \nttf-dejavu \nttf-roboto \nttf-droid \nmpc \nyoutube-dl \ncurl \npamixer \nlxappearance \npacman-contrib \nxarchiver \nunzip \nman \nxclip \nxautolock \nstow \nw3m \nneovim \nbc \nxdotool \ntelegram-desktop \nttf-opensans \nnoto-fonts \nmaim \nzsh \nzsh-completions \nwget \npapirus-icon-theme \nrofi \nwmctrl \nlightdm \nopenbox \ni3lock-color" | sort)
 
-PA=$(echo -e "sublime-text-dev \npaper-icon-theme-git \nchromium-widevine" | sort)
+PA=$(echo -e "sublime-text-dev \nchromium-widevine \npolybar" | sort)
 
 pcmnpackages () {
 	read -p "$(echo -e "Install base packages (pacman)? (y/N): ")" choice
@@ -43,7 +43,7 @@ aurpackages () {
 		read -p "$(echo -e "\nShow package list? (y/N): ")" choice
 		if [[ "$choice" = [Yy] ]]; then
 			echo -e "\n$PA"
-			read -p "$(echo -e "\nEdit package list? (y/}N): ")" choice
+			read -p "$(echo -e "\nEdit package list? (y/N): ")" choice
 			if [[ "$choice" = [Yy] ]]; then
 				echo "$PA" > /tmp/packagelistaur.txt
 				read -p "$(echo -e "\nEditor: ")" editor
@@ -278,9 +278,11 @@ clear
 
 echo -e "Let's start\n"
 
-pcmnpackages    # Install packages from official repositories
+## Install packages from official repositories
+pcmnpackages
 
-read -p "$(echo -e "Install VirtualBox additions? (y/N): ")" choice    # Install VirtualBox additions
+## Install VirtualBox additions
+read -p "$(echo -e "Install VirtualBox additions? (y/N): ")" choice
 if [[ "$choice" = [Yy] ]]; then
     sudo pacman -S xf86-video-vmware virtualbox-guest-utils virtualbox-guest-modules-arch --noconfirm
     echo -e "\nDONE\n"
@@ -288,7 +290,8 @@ else
 	echo -e "\n~\n"
 fi
 
-read -p "$(echo -e "Install yay? (y/N): ")" choice    # Install yay
+## Install yay
+read -p "$(echo -e "Install yay? (y/N): ")" choice
 if [[ "$choice" = [Yy] ]]; then
 	git clone https://aur.archlinux.org/yay.git
 	cd yay
@@ -300,9 +303,11 @@ else
 	echo -e "\n~\n"
 fi
 
-aurpackages     # Install packages from AUR
+## Install packages from AUR
+aurpackages
 
-read -p "$(echo -e "Install NVIDIA proprietary driver? (y/N): ")" choice    # Install NVIDIA driver
+## Install NVIDIA driver
+read -p "$(echo -e "Install NVIDIA proprietary driver? (y/N): ")" choice
 if [[ "$choice" = [Yy] ]]; then
     yay -S nvidia-340xx-dkms --noconfirm
     echo -e "\nDONE\n"
@@ -310,15 +315,18 @@ else
 	echo -e "\n~\n"
 fi
 
-read -p "$(echo -e "Create folders for music, movies, screenshots? (y/N): ")" choice    # Create directories
+## Create directories
+read -p "$(echo -e "Create folders for music, movies, screenshots? (y/N): ")" choice
 if [[ "$choice" = [Yy] ]]; then
 	mkdir $HOME/{music,movies,screenshots}
 	echo -e "\nDONE\n"
 fi
 
-dotfiles    # Clone and install dotfiles
+## Clone and install dotfiles
+dotfiles
 
-read -p "$(echo -e "\nSet wallpaper? (y/N): ")" choice    # Set wallpaper
+## Set wallpaper
+read -p "$(echo -e "\nSet wallpaper? (y/N): ")" choice
 if [[ "$choice" = [Yy] ]]; then
 	feh -z --bg-fill $HOME/wallpapers/
 	echo -e "\nDONE"
