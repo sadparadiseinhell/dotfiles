@@ -280,14 +280,14 @@ label-muted-foreground = #666
 type = custom/script
 
 exec = echo %{F#DD9ACB}%{F-}
-click-left = rofi -modi "Global Search":"~/scripts/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -width 280 -xoffset -10 -yoffset -50 -location 5 -theme spot -show-icons
+click-left = rofi -modi "Global Search":"~/scripts/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -width 330 -xoffset -10 -yoffset -50 -location 5 -theme spot -show-icons
 format-padding = 1
 
 [module/menu]
 type = custom/script
 
 exec = echo %{F#ff8080}%{F-}
-click-left = $HOME/scripts/global-menu.sh
+click-left = $HOME/projects/rofi-menus/main-menu.sh
 format-padding = 1
 
 [module/powermenu]

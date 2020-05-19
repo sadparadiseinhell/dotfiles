@@ -28,7 +28,7 @@ countdown () {
 }
 
 menu () {
-	choice=$(printf 'Fullscreen\nFullscreen [Clip]\nArea\nArea [Clip]\nActive window' | $LAUNCHER -i -p 'Screenshot ')
+	choice=$(printf 'Fullscreen\nFullscreen [Clip]\nArea\nArea [Clip]\nActive window' | $LAUNCHER -i -l 5 -p 'Screenshot ')
 	
 	fullscreen () {
 		countdown $@

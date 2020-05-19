@@ -424,12 +424,12 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>~/scripts/scrot-menu.sh -a</command>
+        <command>~/scripts/scrot-menu.sh -m</command>
       </action>
     </keybind>
     <keybind key="A-Print">
       <action name="Execute">
-        <command>~/scripts/scrot-menu.sh -m</command>
+        <command>~/scripts/scrot-menu.sh -a</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">

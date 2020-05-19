@@ -3,11 +3,11 @@
 source $HOME/scripts/launcher.sh
 
 WALLDIR="$HOME/wallpapers"
-CHOSEN=$(echo -e "Unsplash\nLocal storage" | $LAUNCHER -l 2 -i -p "Select wallpaper " )
+CHOSEN=$(echo -e "Unsplash\nLocal storage" | $LAUNCHER -l 2 -i -p "Select wallpaper ")
 
 unsplash () {
 	pic="$HOME/.cache/wallpaper_unsplash.jpg"
-	chosen=$(echo | grep 0 | $LAUNCHER -i -l 0 -p 'Enter search term: ')
+	chosen=$(echo | grep 0 | $LAUNCHER -l 0 -p 'Enter search term: ')
 	
 	if [[ -z $chosen ]]; then
 		exit 0
