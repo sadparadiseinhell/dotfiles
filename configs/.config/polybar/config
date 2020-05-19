@@ -287,7 +287,7 @@ format-padding = 1
 type = custom/script
 
 exec = echo %{F#ff8080}%{F-}
-click-left = $HOME/projects/rofi-menus/main-menu.sh
+click-left = $HOME/scripts/global-menu.sh
 format-padding = 1
 
 [module/powermenu]
