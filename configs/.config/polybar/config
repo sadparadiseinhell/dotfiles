@@ -107,6 +107,57 @@ modules-right =
 
 cursor-click = pointer
 
+[bar/wide]
+;monitor = ${env:MONITOR:HDMI-1}
+width = 100%
+height = 30
+offset-x = 0
+offset-y = 0
+radius = 0
+fixed-center = true
+
+bottom = false
+
+background = ${colors.background}
+foreground = ${colors.foreground}
+
+line-size = 0
+line-color = #f00
+
+border-size = 0
+border-color = #00000000
+
+padding-left = 0
+padding-right = 2
+
+module-margin-left = 1
+module-margin-right = 2
+
+font-0 = Roboto:style=Bold:size=10;2
+font-1 = FontAwesome5Free:style=Solid:size=10;1
+font-2 = FontAwesome5Free:style=Regular:size=10;1
+font-3 = FontAwesome5Brands:style=Regular:size=10;1
+font-4 = Droid Sans:style=Regular:size=10
+
+modules-left = full_workspaces 
+modules-center = xwindow
+modules-right = pulseaudio date
+
+tray-position = right
+tray-padding = 1
+tray-background = ${colors.background}
+tray-detached = false
+tray-maxsize = 18
+tray-transparent = true
+tray-offset-x = 0
+tray-offset-y = 0
+tray-scale = 1.0
+
+;override-redirect = true
+
+cursor-click = pointer
+cursor-scroll = ns-resize
+
 [module/workspaces]
 type = internal/xworkspaces
 
@@ -133,9 +184,35 @@ label-active-foreground = ${colors.foreground}
 label-urgent-foreground = ${colors.foreground-alt}
 label-occupied-foreground = ${colors.foreground-alt}
 
+[module/full_workspaces]
+type = internal/xworkspaces
+
+pin-workspaces = false
+enable-click = true
+enable-scroll = true
+
+format = <label-state>
+format-background = ${colors.background}
+
+label-active = %name%
+label-urgent = %name%
+label-occupied = %name%
+label-empty = %name%
+icon-default = 
+
+label-empty-padding = 2
+label-active-padding = 2
+label-urgent-padding = 2
+label-occupied-padding = 2
+
+label-empty-foreground = ${colors.foreground-alt}
+label-active-foreground = ${colors.foreground} 
+label-urgent-foreground = ${colors.foreground-alt}
+label-occupied-foreground = ${colors.foreground-alt}
+
 [module/xwindow]
 type = internal/xwindow
-label = %title:0:25:...%
+label = %title:0:60:...%
 
 [module/xkeyboard]
 type = internal/xkeyboard

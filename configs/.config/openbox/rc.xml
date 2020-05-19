@@ -467,7 +467,7 @@
     </keybind>
     <keybind key="A-S-Return">
       <action name="Execute">
-        <command>st -g 75x25</command>
+        <command>st -g 67x22</command>
       </action>
     </keybind>
     <keybind key="A-S-n">

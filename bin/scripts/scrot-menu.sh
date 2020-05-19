@@ -92,7 +92,7 @@ applet () {
 	area=''
 	window=''
 	
-	options="$screen\n$area\n$window\n$vid"
+	options="$screen\n$area\n$window"
 	opt="$(echo -e "$options" | $ROFIAPPLET -p '' -dmenu -selected-row 0)"
 	execute () {
 		case $opt in
@@ -127,7 +127,7 @@ applet () {
 	
 	location () {
 		clip="" #
-		disc="" #
+		disc="" #
 	
 		conf="$clip\n$disc"
 	

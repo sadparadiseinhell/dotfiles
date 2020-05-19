@@ -89,11 +89,12 @@ slock.caps:          #EBCB8B
 st.font:             DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
 dmenu.font:          Roboto:style=Bold:size=10
 
+st.alpha: 0.98
 
 ! URxvt
 URxvt.background:    [85]#15181e
 
-URxvt.font:          xft:DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
+*.font:          xft:DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
 URxvt.letterSpace:   0
 
 *.internalBorder:    30
@@ -126,3 +127,7 @@ URxvt.underlineColor: yellow
 
 !URxvt.keysym.Shift-Control-V: eval:paste_clipboard
 !URxvt.keysym.Shift-Control-C: eval:selection_to_clipboard
+
+!XTerm.termName: xterm-256color
+!XTerm.vt100.scrollBar: true
+!XTerm.vt100.scrollbar.width: 8

@@ -8,7 +8,7 @@ static char *fonts[] =
 {
 	"Roboto:style=Bold:size=10"
 };
-static const char *prompt      = NULL;      /* -p  option; prompt to the left of input field */
+static const char *prompt = NULL;      /* -p  option; prompt to the left of input field */
 static char *colors[][2] =
 {
 	/*               fg         bg       */
@@ -24,7 +24,7 @@ static unsigned int lineheight = 26;         /* -h option; minimum height of a m
  * Characters not considered part of a word while deleting words
  * for example: " /?\"&[]"
  */
-static const char worddelimiters[] = " ";
+static const char worddelimiters[] = "";
 
 /* Size of the window border */
 static unsigned int border_width = 0;
