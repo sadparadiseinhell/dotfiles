@@ -1,9 +1,0 @@
-!disk
-/test
-!test
-find: paths must precede expression: `texttest.txt'
-global
-/home/ma/dotfiles/bin/scripts/global-menu.sh
-global-menu
-/home/ma/dotfiles/bin/scripts/global-menu.sh
-gitignore
