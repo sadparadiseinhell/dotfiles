@@ -30,7 +30,7 @@
 * terminal: [st](https://st.suckless.org/)
 * text editor:
   - [sublime text 3](https://www.sublimetext.com/3)
-  - [neovim](https://neovim.io/)
+  - [vim](https://www.vim.org/)
     - plugin manager: [plug](https://github.com/junegunn/vim-plug)
 * wm:
   - [dwm](https://dwm.suckless.org/) with patches
