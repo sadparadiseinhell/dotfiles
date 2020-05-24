@@ -1,0 +1,16 @@
+doc/tags
+post.pl
+vim_passfile
+.*.un~
+.*.sw*
+# ignore vimballs
+*.vba
+*.vmb
+# ignore *.orig files
+*.orig
+*.pl
+stuff/*
+*.css
+*.txt
+testfile*
+.VimballRecord
