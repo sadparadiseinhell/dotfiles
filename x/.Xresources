@@ -114,10 +114,6 @@ URxvt.depth:         32
 
 URxvt.antialias:     true
 
-! URxvt.keysym.C-1: command:\033]710;-xos4-terminus-medium-r-normal--14-*-*-*-*-*-u\007\033]711;-xos4-terminus-bold-r-normal--14-*-*-*-*-*-u\007
-! URxvt.keysym.C-2: command:\033]710;-xos4-terminus-medium-r-normal--24-*-*-*-*-*-u\007\033]711;-xos4-terminus-bold-r-normal--22-*-*-*-*-*-u\007
-
-
 URxvt.urlLauncher:    chromium
 URxvt.matcher.button: 1
 URxvt.keysym.M-u:     perl:url-select:select_next
