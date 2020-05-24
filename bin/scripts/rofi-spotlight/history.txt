@@ -6,3 +6,4 @@ global
 /home/ma/dotfiles/bin/scripts/global-menu.sh
 global-menu
 /home/ma/dotfiles/bin/scripts/global-menu.sh
+gitignore
