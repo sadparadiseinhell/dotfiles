@@ -110,13 +110,13 @@ cursor-click = pointer
 [bar/wide]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 30
+height = 32
 offset-x = 0
 offset-y = 0
 radius = 0
 fixed-center = true
 
-bottom = false
+bottom = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
@@ -139,8 +139,8 @@ font-2 = FontAwesome5Free:style=Regular:size=10;1
 font-3 = FontAwesome5Brands:style=Regular:size=10;1
 font-4 = Droid Sans:style=Regular:size=10
 
-modules-left = full_workspaces 
-modules-center = xwindow
+modules-left = full_workspaces xwindow
+modules-center =
 modules-right = pulseaudio date
 
 tray-position = right
@@ -232,20 +232,20 @@ label-indicator-underline = ${colors.secondary}
 
 [module/mpd]
 type = internal/mpd
-format-online = <label-song>
-;format-online = <icon-prev> <icon-stop> <toggle> <icon-next>
+;format-online = <label-song> <toggle>
+format-online = <icon-prev> <label-song> <icon-next>
 
 format-playing = ${self.format-online}
 format-paused = ${self.format-online}
 format-stopped = ${self.format-online}
 
-icon-prev = 
-icon-stop = 
-icon-play = 
-icon-pause = 
-icon-next = 
-
-label-song =   %artist% - %title%
+icon-prev = <<
+icon-stop = s
+icon-play = >
+icon-pause = ||
+icon-next = >>
+;
+label-song = %artist% - %title%
 
 label-song-maxlen = 35
 label-song-ellipsis = true

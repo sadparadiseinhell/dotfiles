@@ -2,7 +2,7 @@
 
 source $HOME/scripts/launcher.sh
 
-MAIN=$(echo -e 'Power\nScreenshot\nMusic\nSet wallpaper\nTo-Do\nVideo\nUpdates\nOther' | $LAUNCHER -i -p 'Menu ')
+MAIN=$(echo -e 'Power\nScreenshot\nMusic\nWallpaper\nTo-Do\nVideo\nUpdates\nOther' | $LAUNCHER -i -p 'Menu ')
 
 second_menu () {
 	SECOND=$(echo -e 'Run\nApps\nTheme\nScreencast\nTimer\nCalculator' | sort | $LAUNCHER -i -p 'Menu ')
@@ -46,7 +46,7 @@ case $MAIN in
 	Music)
 		$HOME/scripts/mpd-menu.sh
 		;;
-	Set*)
+	Wallpaper)
 		$HOME/scripts/setwall.sh
 		;;
 	To-Do)

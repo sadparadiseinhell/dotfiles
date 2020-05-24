@@ -162,16 +162,16 @@
     <right>0</right>
   </margins>
   <dock>
-    <position>BottomLeft</position>
+    <position>Floating</position>
     <!-- (Top|Bottom)(Left|Right|)|Top|Bottom|Left|Right|Floating -->
     <floatingX>0</floatingX>
     <floatingY>0</floatingY>
     <noStrut>no</noStrut>
-    <stacking>Above</stacking>
+    <stacking>Below</stacking>
     <!-- 'Above', 'Normal', or 'Below' -->
     <direction>Vertical</direction>
     <!-- 'Vertical' or 'Horizontal' -->
-    <autoHide>no</autoHide>
+    <autoHide>yes</autoHide>
     <hideDelay>300</hideDelay>
     <!-- in milliseconds (1000 = 1 second) -->
     <showDelay>300</showDelay>
@@ -954,6 +954,10 @@
         <x>center</x>
         <y>center</y>
       </position>
+    </application>
+    <application class="mpv">
+      <desktop>3</desktop>
+      <focus>yes</focus>
     </application>
     <application title="discord">
       <desktop>4</desktop>

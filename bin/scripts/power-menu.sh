@@ -51,7 +51,7 @@ applet () {
 	
 	options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
 	
-	chosen="$(echo -e "$options" | $rofi_command -p "UP - $uptime" -dmenu -selected-row 2)"
+	chosen="$(echo -e "$options" | $rofi_command -p "Up - $uptime" -dmenu -selected-row 2)"
 	case $chosen in
 	    $shutdown)
 			paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga'

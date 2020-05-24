@@ -2,16 +2,12 @@ set nocompatible
 
 call plug#begin('~/.vim/plugged')
 	
-"	Plug 'itchyny/lightline.vim'
 	Plug 'chrisbra/Colorizer'
 	Plug 'scrooloose/nerdtree', { 'on': 'NERDTreeToggle' }
 	Plug 'jiangmiao/auto-pairs'
 	
 	" Colorschemes
-	Plug 'arcticicestudio/nord-vim'
 	Plug 'morhetz/gruvbox'
-	Plug 'dracula/vim', { 'as': 'dracula' }
-	Plug 'drewtempelmeyer/palenight.vim'
 
 call plug#end()
 
@@ -43,20 +39,8 @@ set nobackup
 set noswapfile
 set nowritebackup
 
-" Lightline
-
-"set laststatus=2
-"let g:lightline = {
-"      \ 'colorscheme': 'nord',
-"      \ 'active': {
-"      \   'right': [ [ 'lineinfo' ],
-"      \              [ 'percent' ],
-"      \              [ 'fileencoding' ] ]
-"      \ },
-"      \ }
-
 " Colorscheme
-"colorscheme palenight
+"colorscheme gruvbox
 "let g:gruvbox_contrast_dark = 'hard'
 "set background=dark
 "highlight Normal ctermfg=white ctermbg=black

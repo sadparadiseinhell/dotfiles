@@ -8,7 +8,7 @@ MENU=$(echo -e 'Local\nLink\nTwitch\nSearch (YouTube)\nDownload' | $LAUNCHER -i 
 local_storage () {
 	DIR="$HOME/movies/"
 	CHOICE="$(ls $DIR | $LAUNCHER -l 5 -p 'Select video ')"
-	if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
+	if [[ -n $CHOICE ]] && [[ "$CHOICE" = *[.mkv,.avi] ]]; then
 		if [[ -z $CHOICE ]]; then
 			exit 0
 		fi
