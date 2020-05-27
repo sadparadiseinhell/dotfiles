@@ -97,9 +97,10 @@ padding-right = 2
 module-margin-left = 1
 module-margin-right = 2
 
-font-0 = FontAwesome5Free:style=Solid:size=10;1
-font-1 = FontAwesome5Free:style=Regular:size=10;1
-font-2 = FontAwesome5Brands:style=Regular:size=10;1
+font-0 = Roboto:style=Bold:size=10;2
+font-1 = FontAwesome5Free:style=Solid:size=10;1
+font-2 = FontAwesome5Free:style=Regular:size=10;1
+font-3 = FontAwesome5Brands:style=Regular:size=10;1
 
 modules-left = 
 modules-center = workspaces
@@ -165,14 +166,19 @@ pin-workspaces = false
 enable-click = true
 enable-scroll = true
 
+icon-0 = 1;
+icon-1 = 2;
+icon-2 = 3;
+icon-3 = 4;
+icon-4 = 5;
+icon-default = ♟
+
 format = <label-state>
 format-background = ${colors.background}
-
-label-active = %name%
+label-active = %icon%
 label-urgent = 
 label-occupied = 
 label-empty = 
-icon-default = 
 
 label-empty-padding = 1
 label-active-padding = 1

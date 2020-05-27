@@ -125,11 +125,11 @@
     <number>5</number>
     <firstdesk>1</firstdesk>
     <names>
-      <name></name>
-      <name></name>
-      <name></name>
-      <name></name>
-      <name></name>
+      <name>1</name>
+      <name>2</name>
+      <name>3</name>
+      <name>4</name>
+      <name>5</name>
     </names>
     <popupTime>0</popupTime>
     <!-- The number of milliseconds to show the popup for when switching
@@ -361,12 +361,12 @@
     </keybind>
     <keybind key="A-S-p">
       <action name="Execute">
-        <command>~/scripts/power-menu.sh -a</command>
+        <command>~/scripts/awesome-menu.sh -p</command>
       </action>
     </keybind>
     <keybind key="A-S-m">
       <action name="Execute">
-        <command>~/scripts/mpd-menu.sh -a</command>
+        <command>~/scripts/awesome-menu.sh -mc</command>
       </action>
     </keybind>
     <keybind key="A-s">
@@ -381,7 +381,7 @@
     </keybind>
     <keybind key="A-c">
       <action name="Execute">
-        <command>xdotool getactivewindow windowsize 1200 800 windowmove 240 90</command>
+        <command>~/scripts/tile.sh -c</command>
       </action>
     </keybind>
     <keybind key="A-m">
@@ -394,12 +394,12 @@
     </keybind>
     <keybind key="A-S-r">
       <action name="Execute">
-        <command>~/scripts/global-menu.sh</command>
+        <command>~/scripts/awesome-menu.sh -g</command>
       </action>
     </keybind>
     <keybind key="A-r">
       <action name="Execute">
-        <command>rofi -show run -theme bottom</command>
+        <command>rofi -show run -theme slate</command>
       </action>
     </keybind>
     <keybind key="A-x">
@@ -498,6 +498,16 @@
     <screenEdgeWarpMouse>false</screenEdgeWarpMouse>
     <!-- Set this to TRUE to move the mouse pointer across the desktop when
        switching due to hitting the edge of the screen -->
+    <context name="Frame">
+      <mousebind button="W-Middle" action="Press">
+      <action name="Focus"/>
+          <action name="Raise"/>
+          <action name="Unshade"/>
+          <action name="Execute">
+              <command>~/scripts/resize.sh</command>
+          </action>
+      </mousebind>
+    </context>
     <context name="Frame">
       <mousebind button="A-Left" action="Press">
         <action name="Focus"/>

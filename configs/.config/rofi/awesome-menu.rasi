@@ -1,0 +1,110 @@
+configuration {
+  location: 0;
+  yoffset: 0;
+  xoffset: 0;
+  lines: 0; 
+  font: "Font Awesome 22";
+  icon-theme: "Papirus";
+  show-icons: false;
+  width: 400;
+}
+
+* {
+  transparent: #00000000;
+  background-color: @transparent;
+  text-color: #cccccc99;
+  selected-bg: #0f1217B3;
+  selected-fg: #f7eef5;
+  border-color: #1e242eB3;
+  spacing: 0;
+
+  accent:                    #6b90c5;
+  on:                        #88bd8d;
+  off:                       #ff8080;
+}
+
+window {
+  background-color: #0f1217F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
+  children: [ horibox ];
+  border-radius: 3px;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ listview ];
+}
+
+prompt {
+  text-color: @selected-fg;
+  padding: 8px 0px 8px 10px;
+  background-color: @transparent;
+}
+
+textbox-prompt-colon  {
+  expand: false;
+  str: ":";
+  padding: 8px 10px 8px 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+}
+
+entry {
+  padding: 8px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+  expand: false;
+  width: 7em;
+}
+
+listview {
+  background-color: @transparent;
+  layout: horizontal;
+  spacing: 24px;
+  lines: 100;
+}
+
+#element {
+  background-color: @transparent;
+  padding: 8px;
+}
+
+#element selected {
+  border: 0px 0px;
+  text-color: @selected-fg;
+  background-color: @selected-bg;
+}
+
+element.active {
+  background-color: @transparent;
+  text-color: @on;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  border-color: @accent;
+}
+
+element.urgent {
+  background-color: @transparent;
+  text-color: @off;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  border-color: @accent;
+}
