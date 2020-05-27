@@ -8,30 +8,52 @@ function power {
 	lock=""
 	suspend=""
 	logout=""
-	
+
 	options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
-	
 	chosen="$(echo -e "$options" | $ROFICOMMAND -width 357 -dmenu -selected-row 2)"
-	case $chosen in
-	    $shutdown)
+
+	execute () {
+		case $chosen in
+			$shutdown)
+				ACTION="systemctl poweroff"
+				;;
+			$reboot)
+				ACTION="systemctl reboot"
+				;;
+			$suspend)
+				ACTION="systemctl suspend"
+				;;
+			$lock)
+				ACTION="$HOME/scripts/lock.sh"
+				;;
+			$logout)
+				ACTION="openbox --exit"
+				;;
+		esac
+	
+		if [[ $chosen = $shutdown ]] && [[ $confirm = $yes ]]; then
 			paplay '/usr/share/sounds/freedesktop/stereo/service-logout.oga'
-	        systemctl poweroff
-	        ;;
-	    $reboot)
-	        systemctl reboot
-	        ;;
-	    $lock)
-	        $HOME/scripts/lock.sh
-	        ;;
-	    $suspend)
-	        mpc -q pause
-	        pamixer -t
-	        systemctl suspend
-	        ;;
-	    $logout)
-	        openbox --exit
-	        ;;
-	esac
+		fi
+
+		[[ $confirm = $yes ]] && $ACTION
+	}
+	
+	yes=''
+	no=''
+
+	options="$yes\n$no"
+
+	confirm () {
+		if [[ -z $chosen ]]; then
+			exit 0
+		else
+			confirm="$(echo -e "$options" | $ROFICOMMAND -width 140 -dmenu -selected-row 1)"
+		fi
+	}
+
+	confirm && execute
+
+	exit 0
 }
 
 function music_control {

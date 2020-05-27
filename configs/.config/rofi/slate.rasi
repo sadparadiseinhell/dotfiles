@@ -2,12 +2,12 @@ configuration {
   location: 0;
   yoffset: 0;
   xoffset: 0;
-  lines: 4;
+  lines: 6;
   font: "Roboto Bold 10";
   icon-theme: "Papirus";
   show-icons: false;
   width: 480;
-  columns: 2;
+  columns: 1;
 }
 
 * {
