@@ -351,7 +351,7 @@ function video {
 	
 	local_storage () {
 		DIR="$HOME/movies/"
-		CHOICE="$(ls $DIR | $rofi -l 5 -p 'Select video: ')"
+		CHOICE="$(ls --group-directories-first $DIR | $rofi -l 5 -p 'Select video: ')"
 		if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
 			if [[ -z $CHOICE ]]; then
 				exit 0
