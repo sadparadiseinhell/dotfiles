@@ -18,7 +18,7 @@ nitrogen --save --set-zoom-fill $polybar_path/wallpapers/bg_1.jpg
 # polybar ---------------------------------
 sed -i -e 's/bg = .*/bg = #F20f1217/g' $polybar_path/colors.ini
 sed -i -e 's/bg-alt = .*/bg-alt = #5C6F7B/g' $polybar_path/colors.ini
-sed -i -e 's/fg = .*/fg = #C4C7C5/g' $polybar_path/colors.ini
+sed -i -e 's/fg = .*/fg = #E0E2E1/g' $polybar_path/colors.ini
 sed -i -e 's/ac = .*/ac = #4DD0E1/g' $polybar_path/colors.ini
 
 sed -i -e 's/red = .*/red = #EC7875/g' $polybar_path/colors.ini
