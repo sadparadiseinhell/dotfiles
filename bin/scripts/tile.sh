@@ -35,6 +35,10 @@ one_win () {
 	xdotool getactivewindow windowsize $(( $WIDTH - ($GAPS * 2) )) $(( $HEIGHT - $PANELHEIGHT - ($GAPS * 2) )) windowmove $GAPS $HGAPS
 }
 
+focus_fullscreen () {
+	xdotool getwindowfocus windowsize $(( $WIDTH - ($GAPS * 2) )) $(( $HEIGHT - $PANELHEIGHT - ($GAPS * 2) )) windowmove $GAPS $HGAPS
+}
+
 two_win () {
 	xdotool windowsize $(echo $WINDOWS | awk '{print $1}') \
 	$(( $WIDTH / 2 - $GAPS - ($GAPS / 2) )) \
@@ -99,6 +103,10 @@ centered () {
 case $1 in
 	-c)
 		centered
+		exit
+		;;
+	-f)
+		focus_fullscreen
 		exit
 		;;
 esac

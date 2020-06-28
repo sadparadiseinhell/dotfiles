@@ -96,16 +96,16 @@ function music_control {
 	
 	# Get the current playing song
 	NUM=$(mpc -f %title% current | wc -c)
-	if [[ $NUM -ge '25' ]]; then
-	    current=$(echo $(mpc -f %title% current | cut -c -25)...)
+	if [[ $NUM -ge '40' ]]; then
+	    current=$(echo $(mpc -f "%artist% - %title%" current | cut -c -43)...)
 	elif [[ -z "$(mpc -f %title% current)" ]]; then
-	    current="-"
+	    current="(・_・;)"
 	else
-	    current=$(mpc -f %title% current)
+	    current=$(mpc -f "%artist% - %title%" current)
 	fi
 	
 	# Spawn the mpd menu with the "Play / Pause" entry selected by default
-	chosen="$(echo -e "$options" | $ROFICOMMAND -width 425 -dmenu $active $urgent -selected-row 2)"
+	chosen="$(echo -e "$options" | rofi -theme music.rasi -width 425 -dmenu $active $urgent -selected-row 2 -p "$current")"
 	case $chosen in
 	    $previous)
 	        mpc -q prev
@@ -216,6 +216,7 @@ function screenshot {
 	notification () {
 		action=$(dunstify -A O,action 'Screenshot saved' "$name" -i $file -t 2500)
 		[[ $action = 'O' ]] && xdg-open $scrotdir 2> /dev/null && exit &
+		#[[ $action = 'O' ]] && xdg-open $scrotdir/$name 2> /dev/null && exit &
 	}
 	
 	countdown () {

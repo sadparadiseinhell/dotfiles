@@ -349,9 +349,19 @@
       </action>
     </keybind>
     <!-- Keybindings for running applications -->
+    <keybind key="A-h">
+      <action name="Execute">
+        <command>polybar-msg cmd toggle</command>
+      </action>
+    </keybind>
     <keybind key="A-t">
       <action name="Execute">
         <command>~/scripts/tile.sh</command>
+      </action>
+    </keybind>
+    <keybind key="A-f">
+      <action name="Execute">
+        <command>~/scripts/tile.sh -f</command>
       </action>
     </keybind>
     <keybind key="A-S-a">
@@ -424,7 +434,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>~/scripts/scrot-menu.sh -m</command>
+        <command>~/scripts/awesome-menu.sh -s</command>
       </action>
     </keybind>
     <keybind key="A-Print">
@@ -987,6 +997,10 @@
     </application>
     <application name="telegram-desktop">
       <desktop>4</desktop>
+      <focus>no</focus>
+    </application>
+    <application name="transmission-gtk">
+      <desktop>5</desktop>
       <focus>no</focus>
     </application>
   </applications>

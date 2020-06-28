@@ -13,11 +13,11 @@
 #fi
 
 xrdb -load $HOME/.Xresources &
-$HOME/.config/polybar/black-white/launch.sh &
+$HOME/.config/polybar/2c/launch.sh &
 $HOME/.fehbg &
 picom --config $HOME/.config/picom.conf &
 #picom --config $HOME/.config/picom.conf --blur-method 'dual_kawase' --blur-strength 6 --experimental-backends --backend 'glx' &
-setxkbmap -model pc105 -layout us,ru,ua -option grp:ctrl_alt_toggle &
+setxkbmap -model pc105 -layout us,ru,ua -option grp:alt_caps_toggle &
 dunst -config $HOME/.colors/dunst/dunstrc-colored &
 xautolock -time 10 -detectsleep -locker "$HOME/scripts/lock.sh" \
 -notify 10 -notifier "notify-send -u normal -t 2500 \

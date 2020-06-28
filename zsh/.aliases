@@ -53,7 +53,7 @@ alias go='git push -u origin'
 
 # Media
 alias watch='mpv --ytdl-format="bestvideo[ext=mp4][height<=?720]+bestaudio[ext=m4a]" $1'
-alias start-minidlna="minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid"
+alias start-minidlna="rm $HOME/.config/minidlna/cache/files.db; minidlnad -f /home/$USER/.config/minidlna/minidlna.conf -P /home/$USER/.config/minidlna/minidlna.pid"
 alias stop-minidlna='killall minidlnad'
 alias sxiv='sxiv -b'
 

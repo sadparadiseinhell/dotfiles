@@ -1,0 +1,168 @@
+configuration {
+  location: 0;
+  yoffset: 0;
+  xoffset: 0;
+  lines: 0; 
+  font: "Font Awesome 22";
+  icon-theme: "Papirus";
+  show-icons: false;
+  width: 400;
+}
+
+* {
+  text-font:                 "Roboto Bold 12";
+  icon-font:                 "Font Awesome 22";
+
+  option-6-listview-spacing: 10px;
+
+  menu-window-padding:       5px 15px;
+  menu-inputbar-margin:      10px 0px;
+  menu-prompt-padding:       10px 20px 10px 20px;
+  menu-prompt-margin:        0px 0px 0px -2px;
+  menu-element-border:       0px;
+  menu-element-padding:      10px 15px 5px 15px;
+
+  transparent: #00000000;
+  background-color: @transparent;
+  text-color: #cccccc99;
+  selected-bg: #0f1217B3;
+  selected-fg: #f7eef5;
+  border-color: #1e242eB3;
+  spacing: 0;
+
+  accent:                    #6b90c5;
+  on:                        #88bd8d;
+  off:                       #ff8080;
+}
+
+/* ########### */
+
+#window {
+  background-color: #0f1217F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
+  children: [ horibox ];
+  border-radius: 3px;
+}
+
+
+/* ########### */
+/*
+* {
+  background-color: @transparent;
+  text-color: @foreground;
+  font: @icon-font;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ listview ];
+}
+
+#listview {
+  layout: horizontal;
+}
+
+#element {
+  padding: @option-element-padding;
+  background-color: @background-light;
+}
+
+#element.selected {
+  background-color: @transparent;
+  text-color: @accent;
+}
+
+
+
+* {
+  font: @text-font;
+}
+*/
+window {
+  background-color: #0f1217F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
+  children: [ inputbar, horibox ];
+  border-radius: 3px;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ listview ];
+}
+
+prompt {
+  text-color: #0f1217F2;
+  padding: 8px 10px 8px 10px;
+  background-color: @accent;
+  font: "Roboto Bold 13";
+  border-radius: 3px;
+  border: 0px;
+}
+
+#inputbar {
+  children: [ textbox-prompt-colon, prompt ];
+  padding: 5px 5px 10px 5px;
+}
+
+textbox-prompt-colon  {
+  expand: false;
+  str: "";
+  padding: 0px 0px 0px 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+}
+
+listview {
+  background-color: @transparent;
+  layout: horizontal;
+  spacing: 24px;
+  lines: 100;
+}
+
+#element {
+  background-color: @transparent;
+  padding: 8px;
+}
+
+#element selected {
+  border: 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+}
+
+element.active {
+  background-color: @transparent;
+  text-color: @on;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.urgent {
+  border-color: @accent;
+}
+
+element.urgent {
+  background-color: @transparent;
+  text-color: @off;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  background-color: @transparent;
+  text-color: @accent;
+  border-color: @transparent;
+}
+
+element.selected.active {
+  border-color: @accent;
+}
+
