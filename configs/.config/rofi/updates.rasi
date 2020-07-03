@@ -10,6 +10,18 @@ configuration {
 }
 
 * {
+  text-font:                 "Roboto Bold 12";
+  icon-font:                 "Font Awesome 22";
+
+  option-6-listview-spacing: 10px;
+
+  menu-window-padding:       5px 15px;
+  menu-inputbar-margin:      10px 0px;
+  menu-prompt-padding:       10px 20px 10px 20px;
+  menu-prompt-margin:        0px 0px 0px -2px;
+  menu-element-border:       0px;
+  menu-element-padding:      10px 15px 5px 15px;
+
   transparent: #00000000;
   background-color: @transparent;
   text-color: #93939399;
@@ -23,11 +35,56 @@ configuration {
   off:                       #ff8080;
 }
 
-window {
+/* ########### */
+
+#window {
   background-color: #f2f2f2F2;
   margin: 0px 0px 0px 0px;
   padding: 15px 15px 10px 15px;
   children: [ horibox ];
+  border-radius: 3px;
+}
+
+
+/* ########### */
+/*
+* {
+  background-color: @transparent;
+  text-color: @foreground;
+  font: @icon-font;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ listview ];
+}
+
+#listview {
+  layout: horizontal;
+}
+
+#element {
+  padding: @option-element-padding;
+  background-color: @background-light;
+}
+
+#element.selected {
+  background-color: @transparent;
+  text-color: @accent;
+}
+
+
+
+* {
+  font: @text-font;
+}
+*/
+window {
+  background-color: #f2f2f2F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
+  children: [ inputbar, horibox ];
   border-radius: 3px;
 }
 
@@ -38,37 +95,37 @@ horibox {
 }
 
 prompt {
-  text-color: @selected-fg;
-  padding: 8px 0px 8px 10px;
-  background-color: @transparent;
+  text-color: #0f1217F2;
+  padding: 8px 10px 8px 10px;
+  background-color: @accent;
+  font: @text-font;
+  border-radius: 3px;
+  border: 0px;
+}
+
+#inputbar {
+  children: [ textbox-prompt-colon, prompt ];
+  padding: 5px 5px 10px 5px;
 }
 
 textbox-prompt-colon  {
   expand: false;
-  str: ":";
-  padding: 8px 10px 8px 0px;
+  str: "";
+  padding: 0px 0px 0px 0px;
   text-color: @selected-fg;
   background-color: @transparent;
-}
-
-entry {
-  padding: 8px;
-  text-color: @selected-fg;
-  background-color: @transparent;
-  expand: false;
-  width: 7em;
 }
 
 listview {
   background-color: @transparent;
   layout: horizontal;
-  spacing: 24px;
+  spacing: 26px;
   lines: 100;
 }
 
 #element {
   background-color: @transparent;
-  padding: 8px;
+  padding: 6px;
 }
 
 #element selected {
@@ -108,3 +165,4 @@ element.selected.active {
 element.selected.active {
   border-color: @accent;
 }
+

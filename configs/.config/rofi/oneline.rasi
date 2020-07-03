@@ -1,0 +1,74 @@
+configuration {
+  location: 0;
+  yoffset: 0;
+  xoffset: 0;
+  lines: 0; 
+  font: "Roboto Bold 13";
+  icon-theme: "Papirus";
+  show-icons: false;
+  width: 557;
+}
+
+* {
+  transparent: #00000000;
+  background-color: @transparent;
+  text-color: #7A7A7A99;
+  selected-bg: @transparent;
+  selected-fg: #262425;
+  border-color: #1e242eB3;
+  spacing: 0;
+}
+
+window {
+  background-color: #f2f2f2F2;
+  margin: 0px 0px 0px 0px;
+  padding: 20px 10px 20px 10px;
+  children: [ horibox ];
+  border-radius: 3px;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ entry, listview ];
+}
+
+prompt {
+  text-color: @selected-fg;
+  padding: 8px 0px 8px 10px;
+  background-color: @transparent;
+}
+
+textbox-prompt-colon  {
+  expand: false;
+  str: ":";
+  padding: 8px 0px 8px 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+}
+
+entry {
+  padding: -100px;
+  text-color: @selected-fg;
+  background-color: @transparent;
+  expand: false;
+  width: 0px;
+}
+
+listview {
+  background-color: @transparent;
+  layout: horizontal;
+  spacing: 0px;
+  lines: 100;
+}
+
+element {
+  background-color: @transparent;
+  padding: 8px;
+}
+
+element selected {
+  border: 0px 0px;
+  text-color: @selected-fg;
+  background-color: @selected-bg;
+}

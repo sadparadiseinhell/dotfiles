@@ -4,7 +4,7 @@
 
 DUNST_PATH="$HOME/.colors/dunst/dunstrc-colored"
 POLYBAR_PATH="$HOME/.config/polybar/2c"
-ROFI_PATH="$HOME/.config/rofi/awesome-menu.rasi"
+ROFI_PATH="$HOME/.config/rofi"
 
 ## Dark mode ##
 
@@ -45,9 +45,40 @@ if [[ $(cat $POLYBAR_PATH/colors.ini | grep fg) = "fg = #222222" || $1 = "-d" ]]
 	polybar-msg cmd restart
 
 # rofi ------------------------------------
-	sed -i -e '26,28s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH
-	sed -i -e '0,/text-color/s/text-color: .*/text-color: #cccccc99;/g' $ROFI_PATH
-	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH
+	sed -i -e '26,28s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/awesome-menu.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #cccccc99;/g' $ROFI_PATH/awesome-menu.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/awesome-menu.rasi
+
+	sed -i -e '23,27s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #ccccccB3;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #0f1217B3;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/slate.rasi
+
+	sed -i -e '23,25s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #ccccccB3;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #0f1217B3;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/spot.rasi
+
+	sed -i -e '23,27s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #ccccccB3;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #0f1217B3;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/mix.rasi
+
+	sed -i -e '21,25s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/oneline.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #ccccccB3;/g' $ROFI_PATH/oneline.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/oneline.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/music.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #cccccc99;/g' $ROFI_PATH/music.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/music.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/mpd.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #cccccc99;/g' $ROFI_PATH/mpd.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/mpd.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #0f1217F2;/g' $ROFI_PATH/updates.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #cccccc99;/g' $ROFI_PATH/updates.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #f7eef5;/g' $ROFI_PATH/updates.rasi
 
 ## Light mode ##
 
@@ -87,8 +118,38 @@ elif [[ $(cat $POLYBAR_PATH/colors.ini | grep fg) = "fg = #E0E2E1" || $1 = "-l" 
 	polybar-msg cmd restart
 
 # rofi ------------------------------------
-	sed -i -e '26,28s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH
-	sed -i -e '0,/text-color/s/text-color: .*/text-color: #93939399;/g' $ROFI_PATH
-	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH
+	sed -i -e '26,28s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/awesome-menu.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #93939399;/g' $ROFI_PATH/awesome-menu.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/awesome-menu.rasi
 
+	sed -i -e '23,27s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #7A7A7A99;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #D7D7D7F2;/g' $ROFI_PATH/slate.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/slate.rasi
+
+	sed -i -e '23,25s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #7A7A7A99;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #D7D7D7F2;/g' $ROFI_PATH/spot.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/spot.rasi
+
+	sed -i -e '23,27s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #7A7A7A99;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/selected-bg/s/selected-bg: .*/selected-bg: #D7D7D7F2;/g' $ROFI_PATH/mix.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/mix.rasi
+
+	sed -i -e '21,25s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/oneline.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #7A7A7A99;/g' $ROFI_PATH/oneline.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/oneline.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/music.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #93939399;/g' $ROFI_PATH/music.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/music.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/mpd.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #93939399;/g' $ROFI_PATH/mpd.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/mpd.rasi
+
+	sed -i -e '82,85s/background-color: .*/background-color: #f2f2f2F2;/g' $ROFI_PATH/updates.rasi
+	sed -i -e '0,/text-color/s/text-color: .*/text-color: #93939399;/g' $ROFI_PATH/updates.rasi
+	sed -i -e '0,/selected-fg/s/selected-fg: .*/selected-fg: #262425;/g' $ROFI_PATH/updates.rasi
 fi

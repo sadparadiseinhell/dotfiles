@@ -111,3 +111,5 @@ man() {
     LESS_TERMCAP_us=$'\e[01;32m' \
     command man "$@"
 }
+
+export SUDO_ASKPASS="/home/ma/scripts/askpass.sh"

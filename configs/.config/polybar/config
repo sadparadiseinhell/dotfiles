@@ -16,12 +16,20 @@
 ;
 ;==========================================================
 
+;; File Inclusion
+; include an external file, like module file, etc.
+
+include-file = ~/.config/polybar/2c/colors.ini
+include-file = ~/.config/polybar/2c/user_modules.ini
+
+;; _-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_-_
+
 [colors]
-;background = ${xrdb:color0:#222}
-background = #F20f1217
+background = ${color.bg}
+;background = #F20f1217
 background-alt = #444
-;foreground = ${xrdb:color7:#222}
-foreground = #f7eef5
+foreground = ${color.fg}
+;foreground = #f7eef5
 foreground-alt = #555
 primary = #ffb52a
 secondary = #e60053
@@ -60,7 +68,7 @@ font-3 = FontAwesome5Brands:style=Regular:size=10;1
 font-4 = Droid Sans:style=Regular:size=10
 
 modules-left = 
-modules-center = pulseaudio date spotlight menu
+modules-center = pulseaudio date time spotlight style menu_button
 modules-right = 
 
 tray-position = none
@@ -72,6 +80,8 @@ tray-transparent = true
 tray-offset-x = -250
 tray-offset-y = 0
 tray-scale = 1.0
+
+enable-ipc = true
 
 ;override-redirect = true
 
@@ -105,6 +115,8 @@ font-3 = FontAwesome5Brands:style=Regular:size=10;1
 modules-left = 
 modules-center = workspaces
 modules-right = 
+
+enable-ipc = true
 
 cursor-click = pointer
 
@@ -153,6 +165,8 @@ tray-transparent = true
 tray-offset-x = 0
 tray-offset-y = 0
 tray-scale = 1.0
+
+enable-ipc = true
 
 ;override-redirect = true
 
@@ -260,17 +274,27 @@ label-song-ellipsis = true
 type = internal/date
 interval = 5
 
-date = "%{F#f2db55}%{F-}  %a, %b %d "
+date = "  %a, %b %d "
 date-alt = 
 
-time = " %{F#6b90c5}%{F-}  %H:%M"
-time-alt = 
-
-format-prefix = 
-format-prefix-foreground = ${colors.foreground-alt}
+format-prefix = 
+format-prefix-foreground = ${color.yeshade2}
 format-underline = #0a6cf5
 
-label = %date% %time%
+label = %date%
+
+[module/time]
+type = internal/date
+interval = 5
+
+time = "  %H:%M"
+time-alt = 
+
+format-prefix = 
+format-prefix-foreground = ${color.blshade6}
+format-underline = #0a6cf5
+
+label = %time%
 
 [module/pulseaudio]
 type = internal/pulseaudio
@@ -283,47 +307,20 @@ label-muted = muted
 label-muted-foreground = #666
 
 [module/spotlight]
-type = custom/script
+type = custom/text
 
-exec = echo %{F#DD9ACB}%{F-}
+content = 
 click-left = rofi -modi "Global Search":"~/scripts/rofi-spotlight/rofi-spotlight.sh" -show "Global Search" -width 330 -xoffset -10 -yoffset -50 -location 5 -theme spot -show-icons
 format-padding = 1
+content-foreground = ${color.pink}
 
-[module/menu]
-type = custom/script
+[module/menu_button]
+type = custom/text
 
-exec = echo %{F#ff8080}%{F-}
-click-left = $HOME/scripts/global-menu.sh
+content = 
+click-left = ~/scripts/theme-control.sh -g
 format-padding = 1
-
-[module/powermenu]
-type = custom/menu
-
-expand-right = true
-
-format-spacing = 1
-
-label-open = 
-label-open-foreground = ${colors.secondary}
-label-close =  cancel
-label-close-foreground = ${colors.secondary}
-label-separator = |
-label-separator-foreground = ${colors.foreground-alt}
-
-menu-0-0 = reboot
-menu-0-0-exec = menu-open-1
-menu-0-1 = power off
-menu-0-1-exec = menu-open-2
-
-menu-1-0 = cancel
-menu-1-0-exec = menu-open-0
-menu-1-1 = reboot
-menu-1-1-exec = sudo reboot
-
-menu-2-0 = power off
-menu-2-0-exec = sudo poweroff
-menu-2-1 = cancel
-menu-2-1-exec = menu-open-0
+content-foreground = ${color.reshade6}
 
 [settings]
 screenchange-reload = true

@@ -371,12 +371,12 @@
     </keybind>
     <keybind key="A-S-p">
       <action name="Execute">
-        <command>~/scripts/awesome-menu.sh -p</command>
+        <command>~/scripts/theme-control.sh -p</command>
       </action>
     </keybind>
     <keybind key="A-S-m">
       <action name="Execute">
-        <command>~/scripts/awesome-menu.sh -mc</command>
+        <command>~/scripts/theme-control.sh -m</command>
       </action>
     </keybind>
     <keybind key="A-s">
@@ -386,7 +386,7 @@
     </keybind>
     <keybind key="A-w">
       <action name="Execute">
-        <command>rofi -show window -theme slate</command>
+        <command>~/scripts/theme-control.sh -w</command>
       </action>
     </keybind>
     <keybind key="A-c">
@@ -404,12 +404,12 @@
     </keybind>
     <keybind key="A-S-r">
       <action name="Execute">
-        <command>~/scripts/awesome-menu.sh -g</command>
+        <command>~/scripts/theme-control.sh -g</command>
       </action>
     </keybind>
     <keybind key="A-r">
       <action name="Execute">
-        <command>rofi -show run -theme slate</command>
+        <command>~/scripts/theme-control.sh -r</command>
       </action>
     </keybind>
     <keybind key="A-x">
@@ -434,12 +434,7 @@
     </keybind>
     <keybind key="Print">
       <action name="Execute">
-        <command>~/scripts/awesome-menu.sh -s</command>
-      </action>
-    </keybind>
-    <keybind key="A-Print">
-      <action name="Execute">
-        <command>~/scripts/scrot-menu.sh -a</command>
+        <command>~/scripts/theme-control.sh -s</command>
       </action>
     </keybind>
     <keybind key="XF86AudioRaiseVolume">

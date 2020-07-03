@@ -10,7 +10,7 @@ configuration {
 }
 
 * {
-  text-font:                 "Roboto Bold 12";
+  text-font:                 "Roboto Bold 13";
   icon-font:                 "Font Awesome 22";
 
   option-6-listview-spacing: 10px;
@@ -24,9 +24,9 @@ configuration {
 
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #cccccc99;
+  text-color: #93939399;
   selected-bg: #0f1217B3;
-  selected-fg: #f7eef5;
+  selected-fg: #262425;
   border-color: #1e242eB3;
   spacing: 0;
 
@@ -81,7 +81,7 @@ horibox {
 }
 */
 window {
-  background-color: #0f1217F2;
+  background-color: #f2f2f2F2;
   margin: 0px 0px 0px 0px;
   padding: 15px 15px 10px 15px;
   children: [ inputbar, horibox ];
@@ -98,7 +98,7 @@ prompt {
   text-color: #0f1217F2;
   padding: 8px 10px 8px 10px;
   background-color: @accent;
-  font: "Roboto Bold 13";
+  font: @text-font;
   border-radius: 3px;
   border: 0px;
 }

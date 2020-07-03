@@ -1,21 +1,17 @@
-/*
- *
- * Author : Aditya Shakya (adi1090x)
- * Mail   : adi1090x@gmail.com
- * Github : @adi1090x
- * Reddit : @adi1090x
- *
- */
-
 configuration {
   location: 5;
   yoffset: -50;
   xoffset: -10;
+  lines: 0; 
+  font: "Font Awesome 12";
+  icon-theme: "Papirus";
+  show-icons: false;
+  width: 280;
 }
 
 * {
   text-font:                 "Roboto Bold 10";
-  icon-font:                 "Font Awesome 16";
+  icon-font:                 "Font Awesome 12";
 
   option-6-listview-spacing: 10px;
 
@@ -26,33 +22,41 @@ configuration {
   menu-element-border:       0px;
   menu-element-padding:      10px 15px 5px 15px;
 
-  background:                #0f1217F2;
-  background-light:          #00000000;
+  transparent: #00000000;
+  background-color: @transparent;
+  text-color: #93939399;
+  selected-bg: #0f1217B3;
+  selected-fg: #262425;
+  border-color: #1e242eB3;
+  spacing: 0;
+
   accent:                    #6b90c5;
-  foreground:                #f7eef5;
   on:                        #88bd8d;
   off:                       #ff8080;
-  transparent:               #00000000;
 }
 
 /* ########### */
 
 #window {
-  background-color: @background;
-  width: 330px;
-  height: 120px;
+  background-color: #0f1217F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
+  children: [ horibox ];
   border-radius: 3px;
 }
 
-/* ########### */
 
+/* ########### */
+/*
 * {
   background-color: @transparent;
   text-color: @foreground;
   font: @icon-font;
 }
 
-#horibox {
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
   children: [ listview ];
 }
 
@@ -70,66 +74,64 @@ configuration {
   text-color: @accent;
 }
 
-/* ########### */
+
 
 * {
   font: @text-font;
 }
-
-#window {
-  padding: @menu-window-padding;
+*/
+window {
+  background-color: #f2f2f2F2;
+  margin: 0px 0px 0px 0px;
+  padding: 15px 15px 10px 15px;
   children: [ inputbar, horibox ];
+  border-radius: 3px;
+}
+
+horibox {
+  background-color: @background-color;
+  orientation: horizontal;
+  children: [ listview ];
+}
+
+prompt {
+  text-color: #0f1217F2;
+  padding: 8px 10px 8px 10px;
+  background-color: @accent;
+  font: @text-font;
+  border-radius: 3px;
+  border: 0px;
 }
 
 #inputbar {
   children: [ textbox-prompt-colon, prompt ];
-  margin: @menu-inputbar-margin;
+  padding: 5px 5px 10px 5px;
 }
 
-prompt,
-textbox-prompt-colon {
-  padding: @menu-prompt-padding;
-  border: 2px;
-  border-color: @accent;
-  border-radius: 0px 3px 3px 0px;
-}
-
-#prompt {
-  margin: @menu-prompt-margin;
-  background-color: @background-light;
-  text-color: @accent;
-}
-
-#textbox-prompt-colon {
+textbox-prompt-colon  {
   expand: false;
-  str: "MPD";
-  padding: 12px 15px 10px 15px;
-  border: 0px;
-  border-radius: 3px 0px 0px 3px;
-  background-color: @accent;
-  border-color: @accent;
-  text-color: @background;
+  str: "";
+  padding: 0px 0px 0px 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
 }
 
-#horibox {
-  padding: 0px;
-}
-
-#listview {
-  spacing: @option-6-listview-spacing;
-  lines: 6;
+listview {
+  background-color: @transparent;
+  layout: horizontal;
+  spacing: 25px;
+  lines: 100;
 }
 
 #element {
-  font: @icon-font;
-  border: @menu-element-border;
-  padding: @menu-element-padding;
-  border-color: @background-light;
-  border-radius: 3px;
+  background-color: @transparent;
+  padding: 6px;
 }
 
-#element.selected {
-  border-color: @accent;
+#element selected {
+  border: 0px;
+  text-color: @selected-fg;
+  background-color: @transparent;
 }
 
 element.active {

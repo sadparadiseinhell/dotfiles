@@ -1,11 +1,12 @@
 #!/bin/sh
 
-source $HOME/scripts/launcher.sh
+#source $HOME/scripts/launcher.sh
+LAUNCHER='rofi -dmenu -theme slate'
 
-MAIN=$(echo -e 'Power\nScreenshot\nMusic\nWallpaper\nTo-Do\nVideo\nUpdates\nOther' | $LAUNCHER -i -p 'Menu ')
+MAIN=$(echo -e 'Power\nScreenshot\nMusic\nWallpaper\nTo-Do\nVideo\nUpdates\nOther' | $LAUNCHER -i -p 'Menu:')
 
 second_menu () {
-	SECOND=$(echo -e 'Run\nApps\nTheme\nScreencast\nTimer\nCalculator' | sort | $LAUNCHER -i -p 'Menu ')
+	SECOND=$(echo -e 'Run\nApps\nTheme\nScreencast\nTimer\nCalculator' | sort | $LAUNCHER -i -p 'Menu:')
 	case $SECOND in
 		Theme)
 			$HOME/scripts/theme.sh

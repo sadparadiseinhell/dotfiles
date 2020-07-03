@@ -1,18 +1,18 @@
 #!/bin/sh
 
-ROFICOMMAND='rofi -theme awesome-menu.rasi'
+ROFICOMMAND='rofi -theme mix.rasi'
 
 # Power -----------------------------------
 
 function power {
-	shutdown=""
-	reboot=""
-	lock=""
-	suspend=""
-	logout=""
+	shutdown="  Shutdown"
+	reboot="  Reboot"
+	lock="  Lock"
+	suspend="  Suspend"
+	logout="  Logout"
 
 	options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
-	chosen="$(echo -e "$options" | $ROFICOMMAND -width 357 -dmenu -selected-row 2)"
+	chosen="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 2 -columns 1 -lines 4 -p '  Power:')"
 
 	execute () {
 		case $chosen in
@@ -40,8 +40,8 @@ function power {
 		[[ $confirm = $yes ]] && $ACTION
 	}
 	
-	yes=''
-	no=''
+	yes='   Yes'
+	no='    No'
 
 	options="$yes\n$no"
 
@@ -49,7 +49,7 @@ function power {
 		if [[ -z $chosen ]]; then
 			exit 0
 		else
-			confirm="$(echo -e "$options" | $ROFICOMMAND -width 140 -dmenu -selected-row 1)"
+			confirm="$(echo -e "$options" | $ROFICOMMAND -i -width 155 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Confirm:')"
 		fi
 	}
 
@@ -91,8 +91,10 @@ function music_control {
 	stop=""
 	next=""
 	previous=""
+	
+	playlist=""
 
-	options="$previous\n$stop\n$play_pause\n$next\n$tog_repeat\n$tog_random"
+	options="$previous\n$stop\n$play_pause\n$next\n$tog_repeat\n$tog_random\n$playlist"
 	
 	NUM=$(mpc -f %title% current | wc -c)
 	if [[ $NUM -ge '40' ]]; then
@@ -133,52 +135,54 @@ function music_control {
 	            notify-send 'Random mode is off' -t 2000
 	        fi
 	        ;;
+		$playlist)
+			SONG=$(mpc playlist | rofi -dmenu -theme mix -p '  Playlist')
+			mpc searchplay "$(echo ${SONG#*-})"
+			;;
 	esac
 }
 
 # Music -----------------------------------
 
 function music {
-	launcher='rofi -dmenu -width 330 -theme mix'
+	launcher='rofi -dmenu -width 270 -theme mix'
+
+	control='  Control'
+	library='  Library'
+	album='  Albums'
+	song='  Songs'
 	
 	artist() {
 		lines(){ mpc list artist | wc -l ; }
 		lines=$(lines)
-		[ "$(lines)" -gt 6 ] && lines=6
-		mpc list artist | sort -f | $launcher -i -p "$library " -l $lines
+		[ "$(lines)" -gt 4 ] && lines=4
+		mpc list artist | sort -f | $launcher -i -p "$library:" -l $lines -columns 1
 	}
 	
 	a_album() {
 		artist="$1"
 		lines(){ mpc list album artist "$artist" | wc -l ; }
 		lines=$(lines)
-		[ "$(lines)" -gt 6 ] && lines=6
+		[ "$(lines)" -gt 4 ] && lines=4
 		mpc list album artist "$artist" | sort -f | $launcher -i -p "$album " -l $lines
 	}
 	
 	album() {
 		lines(){ mpc list album | wc -l ; }
 		lines=$(lines)
-		[ "$(lines)" -gt 6 ] && lines=6
-		mpc list album | sort -f | $launcher -i -p "$album " -l $lines
+		[ "$(lines)" -gt 4 ] && lines=4
+		mpc list album | sort -f | $launcher -i -p "$album:" -l $lines -columns 1
 	}
 	
 	song() {
 		lines(){ mpc list title | wc -l ; }
 		lines=$(lines)
-		[ "$(lines)" -gt 6 ] && lines=6
-		mpc list title | sort -f | $launcher -i -p "$song " -l $lines
+		[ "$(lines)" -gt 4 ] && lines=4
+		mpc list title | sort -f | $launcher -i -p "$song:" -l $lines
 	}
-
-	control=''
-	library=''
-	album=''
-	song=''
-
-	playlist=""
 	
 	options="$control\n$library\n$album\n$song"
-	opt="$(echo -e "$options" | $ROFICOMMAND -width 285 -dmenu -selected-row 0)"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -p '  Music:')"
 	case $opt in
 		$control)
 			music_control
@@ -205,14 +209,6 @@ function music {
 			mpc clear > /dev/null
 			mpc find album "$album" | mpc add
 			$HOME/scripts/musicctrl.sh play
-			;;
-		$playlist)
-			SONG=$(mpc playlist | rofi -dmenu -theme mix -p '  Playlist')
-			if [[ -z $SONG ]]; then
-				exit 0
-			else
-				mpc searchplay "$(echo ${SONG#*-})"
-			fi
 			;;
 	esac
 }
@@ -244,12 +240,12 @@ function screenshot {
 		done
 	}
 
-	screen=''
-	area=''
-	window=''
+	screen='  Fullscreen'
+	area='  Area'
+	window='  Window'
 	
 	options="$screen\n$area\n$window"
-	opt="$(echo -e "$options" | $ROFICOMMAND -width 215 -dmenu -selected-row 0)"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -lines 3 -p '  Screenshot:')"
 	execute () {
 		case $opt in
 			$screen)
@@ -282,15 +278,15 @@ function screenshot {
 	}
 	
 	location () {
-		clip="" #
-		disc="" #
+		clip="  Clipboard" #
+		disc="  Storage" #
 	
 		conf="$clip\n$disc"
 	
 		if [[ -z $opt ]]; then
 			exit 0
 		else
-			location="$(echo -e "$conf" | $ROFICOMMAND -width 135 -dmenu -selected-row 1)"
+			location="$(echo -e "$conf" | $ROFICOMMAND -i -width 240 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Save to:')"
 		fi
 	}
 	
@@ -306,7 +302,7 @@ function wallpaper {
 	
 	unsplash () {
 		pic="$HOME/.cache/wallpaper_unsplash.jpg"
-		chosen=$(rofi -i -dmenu -l 0 -width 330 -theme mix -p 'Enter search term: ')
+		chosen=$(rofi -i -dmenu -l 0 -width 270 -theme mix -p '  Enter search term:')
 		
 		if [[ -z $chosen ]]; then
 			exit 0
@@ -345,11 +341,11 @@ function wallpaper {
 		cp $HOME/.cache/lockscreen/resize-blur.png /dm/background.jpg
 	}
 	
-	unsplash=''
-	local=''
+	unsplash='  Unsplash'
+	local='  Local Storage'
 	
 	options="$unsplash\n$local"
-	opt="$(echo -e "$options" | $ROFICOMMAND -width 150 -dmenu -selected-row 0)"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -columns 2 -lines 1 -p '  Wallpapers:')"
 	case $opt in
 		$unsplash)
 			unsplash
@@ -363,12 +359,12 @@ function wallpaper {
 # Video -----------------------------------
 
 function video {
-	rofi="rofi -dmenu -width 330 -theme mix"
+	rofi="rofi -dmenu -width 270 -theme mix"
 	DOWNLOADS_DIR="$HOME/movies/downloads/"
 	
 	local_storage () {
 		DIR="$HOME/movies/"
-		CHOICE="$(ls --group-directories-first $DIR | $rofi -l 5 -p 'Select video: ')"
+		CHOICE="$(ls --group-directories-first $DIR | $rofi -l 4 -p '  Select video:')"
 		if [[ -n $CHOICE ]] && [[ "$CHOICE" = *.mkv ]]; then
 			if [[ -z $CHOICE ]]; then
 				exit 0
@@ -383,7 +379,7 @@ function video {
 			NUM=$(ls "$DIR$CHOICE" | grep "\.mkv\|\.avi\|\.mp4" | wc -l)
 			if [[ $NUM -gt 1 ]]; then
 				cd "$DIR$CHOICE"
-				CHOICE="$(ls $PWD | $rofi -l 5 -p 'Select video: ')"
+				CHOICE="$(ls $PWD | $rofi -l 4 -p '  Select video:')"
 				if [[ -z $CHOICE ]]; then
 					exit 0
 				fi
@@ -409,7 +405,7 @@ function video {
 	}
 	
 	by_link () {
-		LINK=$( (echo | grep 0) | $rofi -l 0 -i -p 'Paste a link to a video: ')
+		LINK=$( (echo | grep 0) | $rofi -l 0 -i -p '  Paste a link to a video:')
 		if [[ -n $LINK ]]; then
 			mpv --ytdl-format="[height=720]" $LINK
 		else
@@ -426,12 +422,12 @@ function video {
 			mkdir $DOWNLOADS_DIR
 		fi
 	
-		LINK=$(echo | grep 0 | $rofi -l 0 -i -p 'Paste a link to a video: ')
+		LINK=$(echo | grep 0 | $rofi -l 0 -i -p '  Paste a link to a video:')
 		if [[ -z $LINK ]]; then
 			exit 0
 		fi
 	
-		QUALITY=$(echo -e '480\n720\n1080' | $rofi -l 3 -i -p 'Quality: ')
+		QUALITY=$(echo -e '480\n720\n1080' | $rofi -l 3 -i -p '  Quality:')
 		if [[ -z $QUALITY ]]; then
 			QUALITY='1080'
 		fi
@@ -452,7 +448,7 @@ function video {
 	}
 	
 	yt_search () {
-		INPUT=$(echo | grep 0 | $rofi -l 0 -i -p 'Search: ')
+		INPUT=$(echo | grep 0 | $rofi -l 0 -i -p '  Search:')
 		if [[ -n $INPUT ]]; then
 			mpv --ytdl-format="bestvideo[height<=1080]+bestaudio" ytdl://ytsearch:"$INPUT"
 		else
@@ -465,7 +461,7 @@ function video {
 	}
 	
 	twitch () {
-		LINK=$(echo | grep 0 | $rofi -l 0 -i -p 'Paste a link: ')
+		LINK=$(echo | grep 0 | $rofi -l 0 -i -p '  Paste a link:')
 		if [[ -n $LINK ]]; then
 			mpv --ytdl-format="720p+bestaudio" $LINK
 		else
@@ -477,14 +473,14 @@ function video {
 		fi
 	}
 	
-	link=''
-	local=''
-	download=''
-	search=''
-	twitch=''
+	link='  Link'
+	local='  Local'
+	download='  Download'
+	search='  YouTube Search'
+	twitch='  Twitch'
 	
-	options="$link\n$local\n$download\n$search\n$twitch"
-	opt="$(echo -e "$options" | $ROFICOMMAND -width 360 -dmenu -selected-row 0)"
+	options="$link\n$local\n$search\n$download\n$twitch"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -columns 2 -lines 3 -p '  Video:')"
 	case $opt in
 		$link)
 			by_link
@@ -510,11 +506,9 @@ function video {
 # Updates -----------------------------------
 
 function updates {
-	#rofi="rofi -dmenu -width 330 -theme slate"
-	
 	NUM=$(checkupdates | wc -l)
-	if [[ $NUM -gt 8 ]]; then
-		HEIGHT='8'
+	if [[ $NUM -gt 4 ]]; then
+		HEIGHT='4'
 	else
 		HEIGHT=$NUM
 	fi
@@ -524,20 +518,19 @@ function updates {
 			notify-send "$(printf 'There is nothing to do!')" -t 2000
 			exit 0
 		else
-			list=$(echo "$(checkupdates)" | rofi -dmenu -width 330 -theme mix -l $HEIGHT -i -p "$(echo "$NUM") updates " )
+			list=$(echo "$(checkupdates)" | rofi -dmenu -i -width 270 -theme mix -l $HEIGHT -p "$(echo "  $NUM") updates " )
 		fi
 		
 		[[ -z $list ]] && exit 0
 		
-		yes=''
-		no=''
+		yes='  Yes'
+		no='  No'
 
 		options="$yes\n$no"
-
-		second_menu=$(echo -e "$options" | rofi -dmenu -width 131 -theme updates -i -p ' Update? ')
+		second_menu="$(echo -e "$options" | $ROFICOMMAND -i -width 160 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Update:')"
 		
 		if [[ $second_menu = $yes ]]; then
-			st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm
+			sudo -A st -T 'update' -c 'updates' -g 75x25 -e pacman -Syu --noconfirm
 			if [[ $? -eq 0 ]]; then
 				notify-send 'Update completed successfully!'
 			else
@@ -548,7 +541,7 @@ function updates {
 			exit 0
 		fi
 	}
-	
+
 	show_updates
 
 	#update_system () {
@@ -642,27 +635,41 @@ function todo {
 
 function menu {
 	second_menu () {
-		apps=''
-		screencast=''
-		theme=''
-		timer=''
-		calculator=''
+		function calculator {
+			LAUNCHER='rofi -dmenu -width 270 -theme mix'
+			while true; do
+				MAIN=$(echo | grep 0 | $LAUNCHER -l 0 -i -p '  Enter an example:')
+				if [[ -z $MAIN ]]; then
+					exit 0
+				fi
+				RES=$(echo $MAIN | bc | $LAUNCHER -l 1 -i -p '  Result:')
+				if [[ -z $RES ]]; then
+					exit 0
+				fi
+			done
+		}
+
+		apps='  Apps'
+		screencast='  Screencast'
+		timer='  Timer'
+		theme='  Theme'
+		calculator='  Calculator'
 	
 		options="$apps\n$calculator\n$timer\n$theme\n$screencast"
-		opt="$(echo -e "$options" | $ROFICOMMAND -width 350 -dmenu -selected-row 0)"
-	
+		opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -p '  Menu:')"
+
 		case $opt in
 			$screencast)
-				$HOME/scripts/awesome-menu.sh -sc
+				$HOME/scripts/awesome-menu-mix.sh -sc
 				;;
 			$timer)
 				$HOME/projects/rofi-menus/tinytimer.sh
 				;;
 			$calculator)
-				$HOME/projects/rofi-menus/tinycalculator.sh
+				calculator
 				;;
 			$apps)
-				rofi -show drun -width 360 -theme slate
+				rofi -show drun -theme mix -width 270 -p '  Apps'
 				;;
 			$theme)
 				$HOME/scripts/theme-control.sh -c
@@ -670,38 +677,39 @@ function menu {
 		esac
 	}
 	
-	power=''
-	screenshot=''
-	music=''
-	wallpapers=''
-	todo=''
-	video=''
-	updates=''
-	other=''
+	power='  Power'
+	screenshot='  Screenshot'
+	music='  Music'
+	wallpapers='  Wallpapers'
+	todo='  To-Do'
+	video='  Video'
+	updates='  Updates'
+	other='  Other'
 	
 	options="$power\n$screenshot\n$music\n$wallpapers\n$todo\n$video\n$updates\n$other"
-	opt="$(echo -e "$options" | $ROFICOMMAND -width 557 -dmenu -selected-row 0)"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -p '  Menu:')"
+
 	case $opt in
 		$power)
-			$HOME/scripts/awesome-menu.sh -p
+			$HOME/scripts/awesome-menu-mix.sh -p
 			;;
 		$screenshot)
-			$HOME/scripts/awesome-menu.sh -s
+			$HOME/scripts/awesome-menu-mix.sh -s
 			;;
 		$music)
-			$HOME/scripts/awesome-menu.sh -m
+			$HOME/scripts/awesome-menu-mix.sh -m
 			;;
 		$wallpapers)
-			$HOME/scripts/awesome-menu.sh -w
+			$HOME/scripts/awesome-menu-mix.sh -w
 			;;
 		$todo)
 			todo
 			;;
 		$video)
-			$HOME/scripts/awesome-menu.sh -v
+			$HOME/scripts/awesome-menu-mix.sh -v
 			;;
 		$updates)
-			$HOME/scripts/awesome-menu.sh -u
+			$HOME/scripts/awesome-menu-mix.sh -u
 			;;
 		$other)
 			second_menu
