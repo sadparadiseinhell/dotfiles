@@ -5,7 +5,7 @@
     follow = mouse
 
     # Make the width 3740 (3840 - 100), have 50 left margin and 95 above
-    geometry = "300x0-10+40"
+    geometry = "300x0-10+10"
 
     # Show how many messages are currently hidden (because of geometry).
     indicate_hidden = yes

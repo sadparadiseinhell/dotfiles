@@ -49,7 +49,7 @@ function power {
 		if [[ -z $chosen ]]; then
 			exit 0
 		else
-			confirm="$(echo -e "$options" | $ROFICOMMAND -i -width 155 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Confirm:')"
+			confirm="$(echo -e "$options" | $ROFICOMMAND -i -width 280 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Confirm:')"
 		fi
 	}
 

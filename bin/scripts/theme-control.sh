@@ -1,9 +1,9 @@
 #!/bin/sh
 
 DUNST_PATH="$HOME/.colors/dunst/dunstrc-colored"
-SCRIPT=awesome-menu-mix.sh
-THEME=mix.rasi
-WIDTH=270
+SCRIPT=bottom-menu.sh
+THEME=slate.rasi
+WIDTH=280
 
 function change {
 	function dn {
