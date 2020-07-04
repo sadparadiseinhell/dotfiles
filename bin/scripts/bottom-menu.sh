@@ -12,7 +12,7 @@ function power {
 	logout="  Logout"
 
 	options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
-	chosen="$(echo -e "$options" | $ROFICOMMAND -i -width 280 -dmenu -selected-row 2 -columns 1 -lines 4 -p '  Power:')"
+	chosen="$(echo -e "$options" | $ROFICOMMAND -i -width 280 -dmenu -selected-row 2 -columns 1 -lines 5 -p '  Power:')"
 
 	execute () {
 		case $chosen in

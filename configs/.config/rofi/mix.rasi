@@ -13,16 +13,16 @@ configuration {
 * {
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #7A7A7A99;
-  selected-bg: #D7D7D7F2;
-  selected-fg: #262425;
+  text-color: #ccccccB3;
+  selected-bg: #0f1217B3;
+  selected-fg: #f7eef5;
   border-color: #0f1217B3;
   spacing: 0;
 }
 
 window {
   border-radius: 3px;
-  background-color: #f2f2f2F2;
+  background-color: #0f1217F2;
 }
 
 inputbar {

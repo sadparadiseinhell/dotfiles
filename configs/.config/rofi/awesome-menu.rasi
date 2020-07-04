@@ -12,9 +12,9 @@ configuration {
 * {
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #93939399;
+  text-color: #cccccc99;
   selected-bg: #0f1217B3;
-  selected-fg: #262425;
+  selected-fg: #f7eef5;
   border-color: #1e242eB3;
   spacing: 0;
 
@@ -24,7 +24,7 @@ configuration {
 }
 
 window {
-  background-color: #f2f2f2F2;
+  background-color: #0f1217F2;
   margin: 0px 0px 0px 0px;
   padding: 15px 15px 10px 15px;
   children: [ horibox ];

@@ -12,15 +12,15 @@ configuration {
 * {
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #7A7A7A99;
+  text-color: #ccccccB3;
   selected-bg: @transparent;
-  selected-fg: #262425;
+  selected-fg: #f7eef5;
   border-color: #1e242eB3;
   spacing: 0;
 }
 
 window {
-  background-color: #f2f2f2F2;
+  background-color: #0f1217F2;
   margin: 0px 0px 0px 0px;
   padding: 20px 10px 20px 10px;
   children: [ horibox ];

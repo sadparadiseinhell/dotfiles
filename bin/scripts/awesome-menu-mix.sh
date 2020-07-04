@@ -529,6 +529,8 @@ function updates {
 		options="$yes\n$no"
 		second_menu="$(echo -e "$options" | $ROFICOMMAND -i -width 160 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Update:')"
 		
+		export SUDO_ASKPASS="/home/ma/scripts/askpass.sh"
+		
 		if [[ $second_menu = $yes ]]; then
 			sudo -A st -T 'update' -c 'updates' -g 75x25 -e pacman -Syu --noconfirm
 			if [[ $? -eq 0 ]]; then
@@ -656,7 +658,7 @@ function menu {
 		calculator='  Calculator'
 	
 		options="$apps\n$calculator\n$timer\n$theme\n$screencast"
-		opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -p '  Menu:')"
+		opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -columns 2 -l 4 -selected-row 0 -p '  Menu:')"
 
 		case $opt in
 			$screencast)
@@ -687,7 +689,7 @@ function menu {
 	other='  Other'
 	
 	options="$power\n$screenshot\n$music\n$wallpapers\n$todo\n$video\n$updates\n$other"
-	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 0 -p '  Menu:')"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -columns 2 -l 4 -selected-row 0 -p '  Menu:')"
 
 	case $opt in
 		$power)

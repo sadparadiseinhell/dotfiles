@@ -31,7 +31,7 @@
     horizontal_padding = 15
 
     # The frame color and width of the notification
-    frame_color = "#ffffff"
+    frame_color = "#0f1217"
     frame_width = 1
 
     # Define a color for the separator.
@@ -119,19 +119,19 @@
 
 # Set the bg and fg (text) color for all notifications
 [urgency_low]
-    frame_color = "#ffffff"
-    background = "#ffffff"
+    frame_color = "#0f1217"
+    background = "#0f1217"
     foreground = "#91bb8e"
     timeout = 4
 
 [urgency_normal]
-    frame_color = "#ffffff"
-    background = "#ffffff"
-    foreground = "#0f1217"
+    frame_color = "#0f1217"
+    background = "#0f1217"
+    foreground = "#f2f2f2"
     timeout = 5
 
 [urgency_critical]
-    frame_color = "#ffffff"
-    background = "#ffffff"
+    frame_color = "#0f1217"
+    background = "#0f1217"
     foreground = "#cdaece"
     timeout = 8
