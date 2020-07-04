@@ -1,8 +1,10 @@
 #!/bin/sh
 
+source $HOME/scripts/theme-control.sh
+
 rofi -dmenu\
     -password\
     -i\
-    -no-fixed-num-lines\
     -p "Password:"\
-    -theme mix.rasi
+    -l 0\
+    -theme $THEME

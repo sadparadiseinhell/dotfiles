@@ -9,6 +9,8 @@ configuration {
   width: 400;
 }
 
+@import "colors.rasi"
+
 * {
   text-font:                 "Roboto Bold 12";
   icon-font:                 "Font Awesome 22";
@@ -24,15 +26,11 @@ configuration {
 
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #cccccc99;
+  text-color: @foreground;
   selected-bg: #0f1217B3;
-  selected-fg: #f7eef5;
+  selected-fg: @selected;
   border-color: #1e242eB3;
   spacing: 0;
-
-  accent:                    #6b90c5;
-  on:                        #88bd8d;
-  off:                       #ff8080;
 }
 
 /* ########### */

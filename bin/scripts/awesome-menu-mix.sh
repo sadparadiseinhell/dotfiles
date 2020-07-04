@@ -12,7 +12,7 @@ function power {
 	logout="  Logout"
 
 	options="$shutdown\n$reboot\n$lock\n$suspend\n$logout"
-	chosen="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 2 -columns 1 -lines 4 -p '  Power:')"
+	chosen="$(echo -e "$options" | $ROFICOMMAND -i -width 270 -dmenu -selected-row 2 -columns 2 -lines 4 -p '  Power:')"
 
 	execute () {
 		case $chosen in
@@ -94,7 +94,7 @@ function music_control {
 	
 	playlist=""
 
-	options="$previous\n$stop\n$play_pause\n$next\n$tog_repeat\n$tog_random\n$playlist"
+	options="$previous\n$stop\n$play_pause\n$next\n$tog_repeat\n$tog_random"
 	
 	NUM=$(mpc -f %title% current | wc -c)
 	if [[ $NUM -ge '40' ]]; then
@@ -135,10 +135,10 @@ function music_control {
 	            notify-send 'Random mode is off' -t 2000
 	        fi
 	        ;;
-		$playlist)
-			SONG=$(mpc playlist | rofi -dmenu -theme mix -p '  Playlist')
-			mpc searchplay "$(echo ${SONG#*-})"
-			;;
+		#$playlist)
+		#	SONG=$(mpc playlist | rofi -dmenu -theme mix -p '  Playlist')
+		#	mpc searchplay "$(echo ${SONG#*-})"
+		#	;;
 	esac
 }
 
@@ -532,10 +532,11 @@ function updates {
 		export SUDO_ASKPASS="/home/ma/scripts/askpass.sh"
 		
 		if [[ $second_menu = $yes ]]; then
-			sudo -A st -T 'update' -c 'updates' -g 75x25 -e pacman -Syu --noconfirm
+			sudo -A pacman -Syu --noconfirm
 			if [[ $? -eq 0 ]]; then
 				notify-send 'Update completed successfully!'
 			else
+				notify-send 'Error!'
 				exit 0
 			fi
 			exit 0

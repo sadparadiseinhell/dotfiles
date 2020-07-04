@@ -103,7 +103,7 @@ function music_control {
 	    current=$(mpc -f "%artist% - %title%" current)
 	fi
 	
-	chosen="$(echo -e "$options" | rofi -theme mpd.rasi -width 280 -dmenu $active $urgent -selected-row 2 -p "$current")"
+	chosen="$(echo -e "$options" | rofi -theme mpd.rasi -width 330 -dmenu $active $urgent -selected-row 2 -p "$current")"
 	case $chosen in
 	    $previous)
 	        mpc -q prev
@@ -523,11 +523,14 @@ function updates {
 		options="$yes\n$no"
 		second_menu="$(echo -e "$options" | $ROFICOMMAND -i -width 280 -dmenu -selected-row 1 -columns 2 -lines 1 -p '  Update:')"
 		
+		export SUDO_ASKPASS="/home/ma/scripts/askpass.sh"
+		
 		if [[ $second_menu = $yes ]]; then
-			st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm
+			sudo -A pacman -Syu --noconfirm
 			if [[ $? -eq 0 ]]; then
 				notify-send 'Update completed successfully!'
 			else
+				notify-send 'Error!'
 				exit 0
 			fi
 			exit 0

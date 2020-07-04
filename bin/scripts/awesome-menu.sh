@@ -511,7 +511,7 @@ function video {
 
 function updates {
 	#rofi="rofi -dmenu -width 330 -theme slate"
-	
+			
 	NUM=$(checkupdates | wc -l)
 	if [[ $NUM -gt 8 ]]; then
 		HEIGHT='8'
@@ -536,11 +536,15 @@ function updates {
 
 		second_menu=$(echo -e "$options" | rofi -dmenu -width 131 -theme updates -i -p ' Update? ')
 		
+		SUDO_ASKPASS="$(rofi -dmenu -password -i -p "Password:" -l 0 -theme $THEME)"
+		
 		if [[ $second_menu = $yes ]]; then
-			st -T 'update' -c 'updates' -g 75x25 -e sudo pacman -Syu --noconfirm
+			#sudo -A st -T 'update' -c 'updates' -g 75x25 -e pacman -Syu --noconfirm
+			sudo -A pacman -Syu --noconfirm
 			if [[ $? -eq 0 ]]; then
 				notify-send 'Update completed successfully!'
 			else
+				notify-send 'Error!'
 				exit 0
 			fi
 			exit 0

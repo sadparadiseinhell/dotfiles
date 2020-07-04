@@ -1,0 +1,26 @@
+* {
+shade1: #0f1217F2;
+shade2: #cccccc99;
+shade3: #f7eef5;
+shade4: #0f1217B3;
+shade5: #FF8F00;
+shade6: #FFCA28;
+shade7: #FFD54F;
+shade8: #FFE082;
+}
+
+@import "colors.rasi"
+
+* {
+    background:                     @shade1;
+    foreground:                     @shade2;
+    selected:               		@shade3;
+    selected-bg:               		@shade4;
+    border:               			@shade5;
+    border-alt:               		@shade6;
+    background-alt:                 @shade7;
+    urgent:                         #DA4453;
+    accent:                         #6b90c5;
+    on:                             #88bd8d;
+    off:                            #ff8080;
+}

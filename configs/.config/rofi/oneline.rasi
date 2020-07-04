@@ -9,18 +9,20 @@ configuration {
   width: 557;
 }
 
+@import "colors.rasi"
+
 * {
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #ccccccB3;
+  text-color: @foreground;
   selected-bg: @transparent;
-  selected-fg: #f7eef5;
+  selected-fg: @selected;
   border-color: #1e242eB3;
   spacing: 0;
 }
 
 window {
-  background-color: #0f1217F2;
+  background-color: @background;
   margin: 0px 0px 0px 0px;
   padding: 20px 10px 20px 10px;
   children: [ horibox ];
@@ -30,7 +32,7 @@ window {
 horibox {
   background-color: @background-color;
   orientation: horizontal;
-  children: [ entry, listview ];
+  children: [ prompt, entry, listview ];
 }
 
 prompt {
@@ -48,11 +50,11 @@ textbox-prompt-colon  {
 }
 
 entry {
-  padding: -100px;
+  padding: 8px;
   text-color: @selected-fg;
   background-color: @transparent;
   expand: false;
-  width: 0px;
+  width: 100px;
 }
 
 listview {

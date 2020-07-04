@@ -10,19 +10,21 @@ configuration {
   columns: 1;
 }
 
+@import "colors.rasi"
+
 * {
   transparent: #00000000;
   background-color: @transparent;
-  text-color: #ccccccB3;
-  selected-bg: #0f1217B3;
-  selected-fg: #f7eef5;
-  border-color: #0f1217B3;
+  text-color: @foreground;
+  selected-bg: @selected-bg;
+  selected-fg: @selected;
+  border-color: #1e242eB3;
   spacing: 0;
 }
 
 window {
   border-radius: 3px;
-  background-color: #0f1217F2;
+  background-color: @background;
 }
 
 inputbar {
