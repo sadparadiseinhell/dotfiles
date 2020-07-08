@@ -14,7 +14,6 @@
 ! Theme
 !#include "PATH TO FILE"
 
-
 ! special
 *.foreground:        #D8DEE9
 *.background:        #15181e
@@ -89,12 +88,12 @@ slock.caps:          #EBCB8B
 st.font:             DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
 dmenu.font:          Roboto:style=Bold:size=10
 
-st.alpha: 0.98
+st.alpha: 1.0
 
 ! URxvt
 URxvt.background:    [85]#15181e
 
-*.font:          xft:DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
+*.font:              xft:DejaVu Sans Mono:pixelsize=15:antialias=true:autohint=true
 URxvt.letterSpace:   0
 
 *.internalBorder:    30
@@ -127,3 +126,40 @@ URxvt.underlineColor: yellow
 !XTerm.termName: xterm-256color
 !XTerm.vt100.scrollBar: true
 !XTerm.vt100.scrollbar.width: 8
+
+
+!! special
+!*.foreground:        #D8DEE9
+!*.background:        #15181e
+!
+!! black
+!*.color0:            #3B4252
+!*.color8:            #4C566A
+!
+!! red
+!*.color1:            #BF616A
+!*.color9:            #BF616A
+!
+!! green
+!*.color2:            #A3BE8C
+!*.color10:           #A3BE8C
+!
+!! yellow
+!*.color3:            #EBCB8B
+!*.color11:           #EBCB8B
+!
+!! blue
+!*.color4:            #81A1C1
+!*.color12:           #81A1C1
+!
+!! magenta
+!*.color5:            #B48EAD
+!*.color13:           #B48EAD
+!
+!! cyan
+!*.color6:            #88C0D0
+!*.color14:           #8FBCBB
+!
+!! white
+!*.color7:            #E5E9F0
+!*.color15:           #ECEFF4
