@@ -11,19 +11,9 @@ fi
 
 DEFAULTSESSION='openbox-session'
 
-dynamic_wm () {
-	$HOME/scripts/dwmautostart.sh &
-	while true; do
-		dwm >/dev/null 2>&1
-	done
-}
-
 case "$1" in
 	openbox)
 		exec openbox-session
-		;;
-	dwm)
-		dynamic_wm
 		;;
 	*)
 		exec $DEFAULTSESSION

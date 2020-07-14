@@ -109,7 +109,7 @@ function music_control {
 	        mpc -q prev
 	        ;;
 	    $play_pause)
-	        $HOME/scripts/musicctrl.sh play
+	        mpc -q toggle
 	        ;;
 	    $stop)
 	        mpc -q stop
@@ -190,21 +190,21 @@ function music {
 			[ ! "$album" ] && exit
 			mpc clear > /dev/null
 			mpc find artist "$artist" album "$album" | mpc add
-			$HOME/scripts/musicctrl.sh play
+			mpc -q toggle
 			;;
 		$song)
 			song=$(song)		
 			[ ! "$song" ] && exit
 			mpc clear > /dev/null
 			mpc search title "$song" | mpc add
-			$HOME/scripts/musicctrl.sh play
+			mpc -q toggle
 			;;
 		$album)
 			album=$(album)
 			[ ! "$album" ] && exit
 			mpc clear > /dev/null
 			mpc find album "$album" | mpc add
-			$HOME/scripts/musicctrl.sh play
+			mpc -q toggle
 			;;
 		$playlist)
 			SONG=$(mpc playlist | rofi -dmenu -theme mix -p '  Playlist')

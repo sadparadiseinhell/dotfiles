@@ -12,7 +12,7 @@
 #  gnome-settings-daemon &
 #fi
 
-xrdb -load $HOME/.Xresources &
+xrdb -load $HOME/dotfiles/x/.Xresources &
 $HOME/.config/polybar/2c/launch.sh &
 $HOME/.fehbg &
 picom --config $HOME/.config/picom.conf &
