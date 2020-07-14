@@ -142,4 +142,6 @@ configuration {
 /*	me-select-entry: "MousePrimary";*/
 /*	me-accept-entry: "MouseDPrimary";*/
 /*	me-accept-custom: "Control+MouseDPrimary";*/
+	me-select-entry: "MouseSecondary";
+	me-accept-entry: "MousePrimary";
 }

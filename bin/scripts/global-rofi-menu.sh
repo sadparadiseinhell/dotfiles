@@ -2,7 +2,7 @@
 
 MIX='mix.rasi -width 270'
 SLATE='slate.rasi -width 280'
-ROFICOMMAND="rofi -theme $SLATE"
+ROFICOMMAND="rofi -theme $MIX"
 
 # Power -----------------------------------
 
@@ -659,51 +659,53 @@ function todo {
 	exit 0
 }
 
+# other -----------------------------------
+
+function other {
+	function calculator {
+		while true; do
+			MAIN=$(echo | grep 0 | $ROFICOMMAND -dmenu -l 0 -i -p '  Enter an example:')
+			if [[ -z $MAIN ]]; then
+				exit 0
+			fi
+			RES=$(echo $MAIN | bc | $ROFICOMMAND -dmenu -l 1 -i -p '  Result:')
+			if [[ -z $RES ]]; then
+				exit 0
+			fi
+		done
+	}
+
+	apps='  Apps'
+	screencast='  Screencast'
+	timer='  Timer'
+	theme='  Theme'
+	calculator='  Calculator'
+
+	options="$apps\n$calculator\n$timer\n$theme\n$screencast"
+	opt="$(echo -e "$options" | $ROFICOMMAND -i -dmenu -columns 2 -l 4 -selected-row 0 -p '  Menu:')"
+
+	case $opt in
+		$screencast)
+			$0 -sc
+			;;
+		$timer)
+			timer
+			;;
+		$calculator)
+			calculator
+			;;
+		$apps)
+			$ROFICOMMAND -show drun -p '  Apps'
+			;;
+		$theme)
+			$HOME/scripts/theme-control.sh -c
+			;;
+	esac
+}
+
 # Menu -----------------------------------
 
 function menu {
-	second_menu () {
-		function calculator {
-			while true; do
-				MAIN=$(echo | grep 0 | $ROFICOMMAND -dmenu -l 0 -i -p '  Enter an example:')
-				if [[ -z $MAIN ]]; then
-					exit 0
-				fi
-				RES=$(echo $MAIN | bc | $ROFICOMMAND -dmenu -l 1 -i -p '  Result:')
-				if [[ -z $RES ]]; then
-					exit 0
-				fi
-			done
-		}
-
-		apps='  Apps'
-		screencast='  Screencast'
-		timer='  Timer'
-		theme='  Theme'
-		calculator='  Calculator'
-	
-		options="$apps\n$calculator\n$timer\n$theme\n$screencast"
-		opt="$(echo -e "$options" | $ROFICOMMAND -i -dmenu -columns 2 -l 4 -selected-row 0 -p '  Menu:')"
-
-		case $opt in
-			$screencast)
-				$0 -sc
-				;;
-			$timer)
-				timer
-				;;
-			$calculator)
-				calculator
-				;;
-			$apps)
-				$ROFICOMMAND -show drun -p '  Apps'
-				;;
-			$theme)
-				$HOME/scripts/theme-control.sh -c
-				;;
-		esac
-	}
-	
 	power='  Power'
 	screenshot='  Screenshot'
 	music='  Music'
@@ -743,7 +745,7 @@ function menu {
 			$0 -u
 			;;
 		$other)
-			second_menu
+			other
 			;;
 	esac
 }
@@ -775,5 +777,8 @@ case $1 in
 		;;
 	-mc)
 		music_control
+		;;
+	-o)
+		other
 		;;
 esac

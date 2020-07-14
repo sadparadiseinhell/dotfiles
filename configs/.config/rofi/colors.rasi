@@ -1,8 +1,8 @@
 * {
-shade1: #f2f2f2F2;
-shade2: #93939399;
-shade3: #262425;
-shade4: #D7D7D7F2;
+shade1: #0f1217F2;
+shade2: #cccccc99;
+shade3: #f7eef5;
+shade4: #0f1217B3;
 shade5: #FF8F00;
 shade6: #FFCA28;
 shade7: #FFD54F;
